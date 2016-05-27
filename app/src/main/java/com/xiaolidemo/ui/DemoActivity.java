@@ -50,7 +50,7 @@ public class DemoActivity extends BaseActivity {
                             Thread.sleep(5000);
                             Message message = mHandler.obtainMessage();
                             message.what = 111111;
-                            message.obj="dddf";
+                            message.obj="模拟发送消息";
                             mHandler.sendMessage(message);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
