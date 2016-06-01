@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">XiaoliDemo</string>
+    <string name="app_name">萧离</string>
     <string name="demo">第一个DEMO</string>
+    <string name="guide_btn_start">开始体验</string>
 </resources>
