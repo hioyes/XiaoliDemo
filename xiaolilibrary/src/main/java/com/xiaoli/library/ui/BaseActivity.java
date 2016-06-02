@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.View;
 
 import com.xiaoli.library.C;
 import com.xiaoli.library.net.CommonHandler;
@@ -19,7 +20,7 @@ import com.xiaoli.library.utils.ThreadPoolUtils;
  * @date 2014-11-6 下午8:15:32
  * @Description:Activity基类
  */
-public abstract class BaseActivity extends Activity implements CommonHandler.HandlerWork {
+public abstract class BaseActivity extends Activity implements CommonHandler.HandlerWork,View.OnClickListener{
 
     protected HttpWrapper mHttpWrapper = new HttpWrapper().getInstance();
     protected Handler mHandler = CommonHandler.getInstance().getHandler();
@@ -84,5 +85,11 @@ public abstract class BaseActivity extends Activity implements CommonHandler.Han
     public void onBackPressed() {
         super.onBackPressed();
         ThreadPoolUtils.destoryMyThread(this);
+    }
+
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mRlLogin"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+
+    <RelativeLayout
+        android:id="@+id/mRlUserPanel"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/shape_login_user">
+
+        <ImageView
+            android:id="@+id/mIvUserIcon"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:src="@mipmap/login_user" />
+        <View
+            android:id="@+id/mVUserLine"
+            android:layout_toRightOf="@id/mIvUserIcon"
+            android:layout_width="1dp"
+            android:layout_height="23dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_centerVertical="true"
+            android:background="@color/gray"
+            ></View>
+
+        <com.xiaoli.library.ui.custom.ClearEditText
+            android:id="@+id/mEtUserName"
+            android:layout_toRightOf="@id/mVUserLine"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:hint="@string/loginUserHint"
+            android:maxLength="11"
+            android:paddingRight="10dp"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="@color/loginEdColor"
+            android:textColorHint="@color/loginEtHintColor"
+            android:textSize="15dp" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/mRlPwdPanel"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/mRlUserPanel"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shape_login_user">
+
+        <ImageView
+            android:id="@+id/mIvPwdIcon"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:src="@mipmap/login_pwd" />
+
+        <View
+            android:id="@+id/mVPwdLine"
+            android:layout_toRightOf="@id/mIvPwdIcon"
+            android:layout_width="1dp"
+            android:layout_height="23dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_centerVertical="true"
+            android:background="@color/gray"
+            ></View>
+
+        <EditText
+            android:id="@+id/mEtPassword"
+            android:layout_toRightOf="@id/mVPwdLine"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:hint="@string/loginPwdHint"
+            android:maxLength="20"
+            android:password="true"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="@color/loginEdColor"
+            android:textColorHint="@color/loginEtHintColor"
+            android:textSize="14dp" />
+
+        <ImageButton
+            android:id="@+id/mIbHidePwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginRight="5dp"
+            android:background="@null"
+            android:src="@mipmap/login_pwd_hide" />
+
+        <ImageButton
+            android:id="@+id/mIbClearPwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginRight="8dp"
+            android:layout_toLeftOf="@id/mIbHidePwd"
+            android:background="@null"
+            android:src="@drawable/login_del"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/mBtnLogin"
+        android:layout_below="@id/mRlPwdPanel"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/shape_login_btn"
+        android:text="@string/login"
+        android:textColor="@android:color/white"
+        android:textSize="18dp" />
+
+
+</RelativeLayout>

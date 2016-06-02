@@ -19,6 +19,9 @@
         <activity android:name=".ui.common.GuideActivity"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".ui.common.LoginActivity"
+            android:screenOrientation="portrait">
+        </activity>
 
         <activity
             android:name=".ui.DemoActivity"

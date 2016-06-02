@@ -2,4 +2,8 @@
     <string name="app_name">萧离</string>
     <string name="demo">第一个DEMO</string>
     <string name="guide_btn_start">开始体验</string>
+    <!-- 登录 -->
+    <string name="loginUserHint">请输入用户名</string>
+    <string name="loginPwdHint">请输入密码</string>
+    <string name="login">登录</string>
 </resources>

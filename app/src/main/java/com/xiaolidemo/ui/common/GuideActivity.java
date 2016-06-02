@@ -12,7 +12,6 @@ import com.xiaoli.library.ui.BaseActivity;
 import com.xiaoli.library.utils.DensityUtils;
 import com.xiaoli.library.utils.ForwardUtils;
 import com.xiaolidemo.R;
-import com.xiaolidemo.ui.DemoActivity;
 
 import java.util.ArrayList;
 
@@ -47,7 +46,7 @@ public class GuideActivity extends BaseActivity {
         mBtnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ForwardUtils.to(GuideActivity.this, DemoActivity.class);
+                ForwardUtils.to(GuideActivity.this, LoginActivity.class);
                 finish();
             }
         });

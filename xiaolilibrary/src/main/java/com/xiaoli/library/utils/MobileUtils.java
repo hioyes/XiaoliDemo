@@ -39,19 +39,19 @@ public class MobileUtils {
 
 	/**
 	 * 调用系统界面，给指定的号码拨打电话
-	 * @param context 上下文
+	 * @param activity
 	 * @param number 电话号码
      * @return 0为成功，1 没有拨打电话的权限
      */
-	public static int call(Context context, String number) {
+	public static int call(Activity activity, String number) {
 		Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number));
 		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+		if (ActivityCompat.checkSelfPermission(activity.getApplicationContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
 			//没有打拨打电话的权限
 
 			return 1;
 		}
-		context.startActivity(intent);
+		activity.startActivity(intent);
 		return 0;
 	}
 
