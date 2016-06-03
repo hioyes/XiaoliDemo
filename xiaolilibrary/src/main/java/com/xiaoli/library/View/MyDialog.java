@@ -1,4 +1,4 @@
-package com.xiaoli.library.ui.custom;
+package com.xiaoli.library.View;
 
 import android.app.Dialog;
 import android.content.Context;

@@ -33,7 +33,7 @@
             android:background="@color/gray"
             ></View>
 
-        <com.xiaoli.library.ui.custom.ClearEditText
+        <com.xiaoli.library.View.ClearEditText
             android:id="@+id/mEtUserName"
             android:layout_toRightOf="@id/mVUserLine"
             android:layout_width="match_parent"

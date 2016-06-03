@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.xiaoli.library.C;
 import com.xiaoli.library.R;
-import com.xiaoli.library.ui.custom.MyDialog;
+import com.xiaoli.library.View.MyDialog;
 
 
 /**

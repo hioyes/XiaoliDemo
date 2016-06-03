@@ -1,4 +1,4 @@
-package com.xiaoli.library.ui.custom;
+package com.xiaoli.library.View;
 
 import android.content.Context;
 import android.graphics.Rect;
