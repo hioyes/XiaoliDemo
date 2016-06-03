@@ -9,6 +9,7 @@ import android.os.Message;
 import android.view.View;
 
 import com.xiaoli.library.C;
+import com.xiaoli.library.View.LoadingDialog;
 import com.xiaoli.library.net.CommonHandler;
 import com.xiaoli.library.net.HttpWrapper;
 import com.xiaoli.library.utils.ThreadPoolUtils;

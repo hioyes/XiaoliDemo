@@ -116,7 +116,7 @@
             android:layout_marginRight="8dp"
             android:layout_toLeftOf="@id/mIbHidePwd"
             android:background="@null"
-            android:src="@drawable/login_del"
+            android:src="@mipmap/login_del"
             android:visibility="invisible" />
     </RelativeLayout>
 

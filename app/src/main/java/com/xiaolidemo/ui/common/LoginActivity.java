@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
+import com.xiaoli.library.View.LoadingDialog;
 import com.xiaoli.library.ui.BaseActivity;
 import com.xiaoli.library.View.ClearEditText;
 import com.xiaoli.library.utils.ForwardUtils;
@@ -107,7 +108,6 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-
     }
 
     @Override
