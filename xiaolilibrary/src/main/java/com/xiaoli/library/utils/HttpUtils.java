@@ -3,11 +3,16 @@ package com.xiaoli.library.utils;
 import android.util.Log;
 
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.net.URL;
@@ -19,13 +24,14 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author xiaokx Email:hioyes@qq.com
- * @ClassName: HttpUtils
- * @date 2014-11-6 下午8:17:55
- * @Description:http网络请求工具类
+ *HttpConnection网络请求工具类
+ *  xiaokx
+ *  hioyes@qq.com
+ *  2014-11-6
  */
 public class HttpUtils {
 
+    private static StringBuilder sb2;
     private static final int readTimeOut = 10 * 1000; // 读取超时
     private static final int connectTimeout = 10 * 1000; // 超时时间
 
@@ -216,6 +222,129 @@ public class HttpUtils {
         }
         return result;
     }
+
+
+    /**
+     * 通过拼接的方式构造请求内容，实现参数传输以及文件传输
+     *
+     * @param actionUrl
+     * @param params
+     * @param files
+     * @return
+     * @throws IOException
+     */
+    public static String postImg(String actionUrl, Map<String, String> params, Map<String, File> files) {
+        HttpURLConnection conn = null;
+        DataOutputStream outStream = null;
+        InputStream is = null;
+        InputStream in = null;
+        try {
+            String BOUNDARY = java.util.UUID.randomUUID().toString();
+            String PREFIX = "--", LINEND = "\r\n";
+            String MULTIPART_FROM_DATA = "multipart/form-data";
+            String CHARSET = "UTF-8";
+
+            URL uri = new URL(actionUrl);
+            conn = (HttpURLConnection) uri.openConnection();
+            conn.setReadTimeout(120 * 1000); // 缓存的最长时间
+            conn.setDoInput(true);// 允许输入
+            conn.setDoOutput(true);// 允许输出
+            conn.setUseCaches(false); // 不允许使用缓存
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("connection", "keep-alive");
+            conn.setRequestProperty("Charsert", CHARSET);
+            conn.setRequestProperty("Content-Type", MULTIPART_FROM_DATA
+                    + ";boundary=" + BOUNDARY);
+
+            // 首先组拼文本类型的参数
+            StringBuilder sb = new StringBuilder();
+            for (Map.Entry<String, String> entry : params.entrySet()) {
+                sb.append(PREFIX);
+                sb.append(BOUNDARY);
+                sb.append(LINEND);
+                sb.append("Content-Disposition: form-data; name=\"" + entry.getKey() + "\"" + LINEND);
+                sb.append("Content-Type: text/plain; charset=" + CHARSET + LINEND);
+                sb.append("Content-Transfer-Encoding: 8bit" + LINEND);
+                sb.append(LINEND);
+                sb.append(entry.getValue());
+                sb.append(LINEND);
+            }
+
+            outStream = new DataOutputStream(conn
+                    .getOutputStream());
+            outStream.write(sb.toString().getBytes());
+
+            // 发送文件数据
+            if (files != null) {
+                for (Map.Entry<String, File> file : files.entrySet()) {
+                    StringBuilder sb1 = new StringBuilder();
+                    sb1.append(PREFIX);
+                    sb1.append(BOUNDARY);
+                    sb1.append(LINEND);
+                    sb1.append("Content-Disposition: form-data; name=\"" + file.getKey() + "\"; filename=\"" + file.getKey() + "\"" + LINEND);
+                    sb1.append("Content-Type: application/octet-stream; charset=" + CHARSET + LINEND);
+                    sb1.append(LINEND);
+                    outStream.write(sb1.toString().getBytes());
+
+                    is = new FileInputStream(file.getValue());
+                    byte[] buffer = new byte[1024];
+                    int len = 0;
+                    while ((len = is.read(buffer)) != -1) {
+                        outStream.write(buffer, 0, len);
+                    }
+
+                    is.close();
+                    outStream.write(LINEND.getBytes());
+                }
+
+                // 请求结束标志
+                byte[] end_data = (PREFIX + BOUNDARY + PREFIX + LINEND).getBytes();
+                outStream.write(end_data);
+                outStream.flush();
+                // 得到响应码
+                sb2 = new StringBuilder();
+                int res = conn.getResponseCode();
+                if (res == 200) {
+                    in = conn.getInputStream();
+                    int ch;
+                    while ((ch = in.read()) != -1) {
+                        sb2.append((char) ch);
+                    }
+                }
+                outStream.close();
+                conn.disconnect();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (outStream != null) {
+                    outStream.close();
+                }
+                if (is != null) {
+                    is.close();
+                }
+                if (in != null) {
+                    in.close();
+                }
+                if (conn != null) {
+                    conn.disconnect();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
+        }
+        String result = null;
+        try {
+            result = StringUtils.changeCharset(sb2.toString().getBytes("ISO8859-1"), "UTF-8");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
 
     /**
      * 将Map中的参数转成字符串形式

@@ -8,8 +8,9 @@ import android.os.SystemClock;
 
 /**
  * 轮询工具类
- * @author xiaokx on 2016-4-22 12:00
- * @Email:hioyes@qq.com
+ *  xiaokx
+ *  hioyes@qq.com
+ *  2014-11-6
  */
 public class PollingUtils {
 

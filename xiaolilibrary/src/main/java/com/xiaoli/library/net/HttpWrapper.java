@@ -5,13 +5,14 @@ import android.os.Handler;
 
 import com.xiaoli.library.net.impl.HttpConnection;
 
+import java.io.File;
 import java.util.Map;
 
 /**
- * @ClassName: HttpWrapper
- * @author xiaokx Email:hioyes@qq.com
- * @date 2014-11-6 下午8:17:55
- * @Description:http请求装饰者
+ *网络请求请求装饰者
+ *  xiaokx
+ *  hioyes@qq.com
+ *  2014-11-6
  */
 public class HttpWrapper implements INetwork {
 	private static HttpWrapper httpWrapper = null;
@@ -61,12 +62,12 @@ public class HttpWrapper implements INetwork {
 	}
 
 	@Override
-	public String postImg(String url, String filePath, String fileName, Map<String, String> params, Handler handler, int taskid, Context context) {
-		return netwrok.postImg(url,filePath,fileName,params,handler,taskid,context);
+	public String postImg(String url, Map<String, File> files, Handler handler, int taskid, Context context) {
+		return netwrok.postImg(url,files,handler,taskid,context);
 	}
 
 	@Override
-	public String postImg(String url, String[] filePath, String fileName, Map<String, String> params, Handler handler, int taskid, Context context) {
-		return netwrok.postImg(url,filePath,fileName,params,handler,taskid,context);
+	public String postImg(String url, Map<String, String> params, Map<String, File> files, Handler handler, int taskid, Context context) {
+		return netwrok.postImg(url,params,files,handler,taskid,context);
 	}
 }

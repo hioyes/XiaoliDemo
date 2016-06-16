@@ -17,10 +17,10 @@ import com.xiaoli.library.View.MyDialog;
 
 
 /**
- * @author xiaokx Email:hioyes@qq.com
- * @ClassName:PromptUtils
- * @date 2015-11-14
- * @Description:内容提示工具类
+ * 内容提示工具类
+ *  xiaokx
+ *  hioyes@qq.com
+ *  2014-11-6
  */
 public class PromptUtils {
 
@@ -45,7 +45,7 @@ public class PromptUtils {
     }
 
     /**
-     *
+     *信息提示
      * @param tip
      */
     public synchronized static void showToast(int tip) {
@@ -61,7 +61,7 @@ public class PromptUtils {
     }
 
     /**
-     *
+     *信息提示
      * @param tipStr
      *            提示内容
      */

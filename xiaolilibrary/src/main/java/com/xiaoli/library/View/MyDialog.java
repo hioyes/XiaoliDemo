@@ -12,10 +12,10 @@ import android.view.WindowManager;
 import com.xiaoli.library.R;
 
 /**
- * @author xiaokx Email:hioyes@qq.com
- * @ClassName:MyDialog
- * @date 2015-12-16
- * @Description:自定义dialog,实现动态指定资源文件；手动取消；停留时间的设置
+ *自定义dialog,实现动态指定资源文件；手动取消；停留时间的设置
+ *  xiaokx
+ *  hioyes@qq.com
+ *  2014-11-6
  */
 public class MyDialog extends Dialog {
 

@@ -4,10 +4,10 @@ package com.xiaoli.library.task;
 import com.xiaoli.library.utils.FileUtils;
 
 /**
- * @author xiaokx Email:hioyes@qq.com
- * @ClassName:LogThread
- * @date 2015-12-21
- * @Description:日志写入线程实现类
+ *日志写入线程实现类
+ *  xiaokx
+ *  hioyes@qq.com
+ *  2014-11-6
  */
 public class LogThread implements Runnable {
 

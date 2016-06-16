@@ -6,8 +6,9 @@ import android.os.Message;
 
 /**
  * 全局通用handler
- * @author xiaokx on 2016-4-20 19:54
- * @Email:hioyes@qq.com
+ *  xiaokx
+ *  hioyes@qq.com
+ *  2014-11-6
  */
 public  class CommonHandler {
 

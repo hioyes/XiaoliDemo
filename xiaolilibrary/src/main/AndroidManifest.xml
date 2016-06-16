@@ -1,12 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.xiaoli.library">
 
-    <!-- Required 一些系统要求的权限，如访问网络等-->
-    <permission
-        android:name="com.lubaocar.analytics.permission.JPUSH_MESSAGE"
-        android:protectionLevel="signature" />
-    <uses-permission android:name="com.lubaocar.analytics.permission.JPUSH_MESSAGE" />
-
     <!-- 访问网络状态 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- 因特网 -->

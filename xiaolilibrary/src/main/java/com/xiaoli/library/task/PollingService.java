@@ -14,8 +14,9 @@ import com.xiaoli.library.utils.DateUtils;
 
 /**
  * 轮询service
- * @author xiaokx on 2016-4-22 12:09
- * @Email:hioyes@qq.com
+ *  xiaokx
+ *  hioyes@qq.com
+ *  2014-11-6
  */
 public class PollingService extends Service {
 

@@ -12,10 +12,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @author xiaokx Email:hioyes@qq.com
- * @ClassName:DaoUtils
- * @date 2015-11-23
- * @Description:Sqlite数据层访问基类
+ * Sqlite数据层访问基类
+ *  xiaokx
+ *  hioyes@qq.com
+ *  2014-11-6
  */
 public class DaoUtils {
     public static String buildPageSql(String _sql, int pageNo, int pageSize) {

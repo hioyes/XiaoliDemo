@@ -4,13 +4,15 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 /**
- * @ClassName: CurrencyUtils
- * @author xiaokx Email:hioyes@qq.com
- * @date 2014-11-6 下午8:17:55
- * @Description:由于Java的简单类型不能够精确的对浮点数进行运算， 这个工具类提供精确的浮点数运算，包括加减乘除和四舍五入。
+ *由于Java的简单类型不能够精确的对浮点数进行运算， 这个工具类提供精确的浮点数运算，包括加减乘除和四舍五入。
+ *  xiaokx
+ *  hioyes@qq.com
+ *  2014-11-6
  */
 public final class CurrencyUtils {
-	// 默认除法运算精度
+	/**
+	 * 默认除法运算精度
+	 */
 	private static final int DEF_DIV_SCALE = 2;
 
 	// 这个类不能实例化
@@ -24,7 +26,7 @@ public final class CurrencyUtils {
 	 *            被加数
 	 * @param v2
 	 *            加数
-	 * @return 两个参数的和
+	 * @return 两个参数的和v1+v2
 	 */
 	public static Double add(Double v1, Double v2) {
 		try {
@@ -59,7 +61,7 @@ public final class CurrencyUtils {
 	 *            被乘数
 	 * @param v2
 	 *            乘数
-	 * @return 两个参数的积
+	 * @return 两个参数的积v1*v2
 	 */
 	public static double mul(double v1, double v2) {
 		BigDecimal b1 = new BigDecimal(Double.toString(v1));
@@ -74,7 +76,7 @@ public final class CurrencyUtils {
 	 *            被除数
 	 * @param v2
 	 *            除数
-	 * @return 两个参数的商的字符串
+	 * @return 两个参数的商的字符串v1/v2
 	 */
 	public static String divForStr(double v1, double v2) {
 		Double val = div(v1, v2, DEF_DIV_SCALE);
@@ -87,7 +89,7 @@ public final class CurrencyUtils {
 	 * @param v1 被除数
 	 * @param v2  除数
 	 * @param scale  保留小数长度
-	 * @return 两个参数的商的字符串
+	 * @return 两个参数的商的字符串v1/v2
 	 */
 	public static String divForStr(double v1, double v2, int scale) {
 		Double val = div(v1, v2, scale);
@@ -101,7 +103,7 @@ public final class CurrencyUtils {
 	 *            被除数
 	 * @param v2
 	 *            除数
-	 * @return 两个参数的商
+	 * @return 两个参数的商v1/v2
 	 */
 	public static double div(double v1, double v2) {
 		return div(v1, v2, DEF_DIV_SCALE);
@@ -153,7 +155,7 @@ public final class CurrencyUtils {
 	}
 	
 	/**
-	 * 格式化
+	 * 格式化成固定小数位。
 	 * @param v 需要格式化的数字
 	 * @param scale 保留小数即几位
 	 * @return
@@ -174,7 +176,7 @@ public final class CurrencyUtils {
 		return "";
 	}
 	/**
-	 * 格式化
+	 * 格式化成固定小数位
 	 * @param str 需要格式化的数字
 	 * @param scale 保留小数即几位
 	 * @return
@@ -204,7 +206,12 @@ public final class CurrencyUtils {
 		df.applyPattern("0"+s);
 		return df.format(v*100)+"%";
 	}
-	
+
+	/**
+	 * 小时部位长度
+	 * @param d
+	 * @return
+     */
 	public static int getSize (Double d) {
 		String str = String.valueOf(d) ;
 		int length = 0 ;

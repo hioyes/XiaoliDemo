@@ -8,10 +8,10 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
 /**
- * @author xiaokx Email:hioyes@qq.com
- * @ClassName: HttpWrapper
- * @date 2014-11-6 下午8:17:55
- * @Description:常量、系统方法基类
+ *常量、系统方法基类
+ *  xiaokx
+ *  hioyes@qq.com
+ *  2014-11-6
  */
 public abstract class C {
 
@@ -20,7 +20,7 @@ public abstract class C {
      */
     public static Activity mCurrentActivity;
 
-    public static String LOG_PATH = Environment.getExternalStorageDirectory().getAbsolutePath()+"/lbanalytics/log/";//日志文件存放跟目录
+    public static String LOG_PATH = Environment.getExternalStorageDirectory().getAbsolutePath()+"/xiaoli/log/";//日志文件存放跟目录
 
 
     /**

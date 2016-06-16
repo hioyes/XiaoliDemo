@@ -13,10 +13,10 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author xiaokx Email:hioyes@qq.com
- * @ClassName:ThreadPoolUtils
- * @date 2015-12-21
- * @Description:操作工具类
+ * 线程池操作工具类
+ *  xiaokx
+ *  hioyes@qq.com
+ *  2014-11-6
  */
 public class ThreadPoolUtils {
 

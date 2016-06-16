@@ -13,10 +13,10 @@ import android.support.annotation.Nullable;
 
 
 /**
- * @author xiaokx Email:hioyes@qq.com
- * @ClassName:NetworkStateService
- * @date 2015-12-22
- * @Description:使用Service和BroadcastReceiver实时监听网络状态
+ * 使用Service和BroadcastReceiver实时监听网络状态
+ *  xiaokx
+ *  hioyes@qq.com
+ *  2014-11-6
  */
 public class NetworkStateService extends Service {
 

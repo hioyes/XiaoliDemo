@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 
 /**
- * @author xiaokx on 2016-6-1 16:23
- * @Email:hioyes@qq.com
+ * Activity转向工具类
+ *  xiaokx
+ *  hioyes@qq.com
+ *  2014-11-6
  */
 public class ForwardUtils {
 

@@ -26,7 +26,7 @@ public class GuideActivity extends BaseActivity {
     private int[] resImgIds;
     private ArrayList<ImageView> imageViews;
     private ViewPager mVpGuide;
-    private Button mBtnStart;
+    public Button mBtnStart;
     private LinearLayout mLlPoint;//圆点
 
     @Override

@@ -3,12 +3,14 @@ package com.xiaoli.library.net;
 import android.content.Context;
 import android.os.Handler;
 
+import java.io.File;
 import java.util.Map;
 
 /**
  * 网络请求接口
- * @author xiaokx on 2016-4-21 10:06
- * @Email:hioyes@qq.com
+ *  xiaokx
+ *  hioyes@qq.com
+ *  2014-11-6
  */
 public interface INetwork {
 
@@ -77,29 +79,25 @@ public interface INetwork {
     public String post(String url, Map<String, String> params, Handler handler, int taskid, Context context);
 
     /**
-     * 带参数的图片上传图片上传
+     * 不带参数的图片上传图片上传
      * @param url
-     * @param filePath
-     * @param fileName
-     * @param params
      * @param handler
      * @param taskid
      * @param context
      * @return 请求线程名称
      */
-    public String postImg(String url, String filePath, String fileName, Map<String, String> params, Handler handler, int taskid, Context context);
+    public String postImg(String url, final Map<String, File> files, Handler handler, int taskid, Context context);
 
 
     /**
-     * 带参数的图片上传图片上传(多个)
+     * 带参数的图片上传
      * @param url
-     * @param filePath
-     * @param fileName
      * @param params
+     * @param files
      * @param handler
      * @param taskid
      * @param context
-     * @return 请求线程名称
+     * @return
      */
-    public String postImg(String url, String[] filePath, String fileName, Map<String, String> params, Handler handler, int taskid, Context context);
+    public String postImg(final String url, final Map<String,String> params, final Map<String, File> files, final Handler handler, final int taskid, Context context);
 }

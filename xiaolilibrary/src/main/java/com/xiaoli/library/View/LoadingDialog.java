@@ -17,10 +17,10 @@ import com.xiaoli.library.R;
 
 
 /**
- * @author xiaokx Email:hioyes@qq.com
- * @ClassName:
- * @date 2015-11-10
- * @Description:网络加载小菊花
+ * 网络加载小菊花
+ *  xiaokx
+ *  hioyes@qq.com
+ *  2014-11-6
  */
 public class LoadingDialog extends ProgressDialog {
 

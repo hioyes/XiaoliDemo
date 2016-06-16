@@ -12,10 +12,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author xiaokx Email:hioyes@qq.com
- * @ClassName:CrashHandler
- * @date 2015-12-19
- * @Description:UncaughtException处理类,当程序发生Uncaught异常的时候,有该类来接管程序,并记录发送错误报告.
+ *UncaughtException处理类,当程序发生Uncaught异常的时候,有该类来接管程序,并记录发送错误报告.
+ *  xiaokx
+ *  hioyes@qq.com
+ *  2014-11-6
  */
 public class CrashHandler implements Thread.UncaughtExceptionHandler {
 
@@ -26,7 +26,9 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
     // 程序的Context对象
     private Context mContext;
 
-    //异常文件保存路径，例如：Environment.getExternalStorageDirectory() + "/arvin/log/"
+    /**
+     * 异常文件保存路径，例如：Environment.getExternalStorageDirectory() + "/xiaoli/log/"
+     */
     private String mDirectoryPath;
 
     // 用来存储设备信息和异常信息

@@ -12,10 +12,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author xiaokx Email:hioyes@qq.com
- * @ClassName:DbHelper
- * @date 2015-11-23
- * @Description:sqllite操作基类
+ * sqllite操作基类
+ *  xiaokx
+ *  hioyes@qq.com
+ *  2014-11-6
  */
 public class DbHelper<T> {
 

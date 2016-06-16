@@ -3,10 +3,10 @@ package com.xiaoli.library.utils;
 import java.io.UnsupportedEncodingException;
 
 /**
- * @author xiaokx Email:hioyes@qq.com
- * @ClassName: StringUtils
- * @date 2014-11-6 下午8:17:55
- * @Description:常用工具类
+ *常用工具类
+ *  xiaokx
+ *  hioyes@qq.com
+ *  2014-11-6
  */
 public class StringUtils {
 

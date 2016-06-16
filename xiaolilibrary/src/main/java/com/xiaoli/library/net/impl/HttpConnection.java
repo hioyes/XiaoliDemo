@@ -12,15 +12,16 @@ import com.xiaoli.library.utils.DateUtils;
 import com.xiaoli.library.utils.HttpUtils;
 import com.xiaoli.library.utils.StringUtils;
 import com.xiaoli.library.utils.ThreadPoolUtils;
-import com.xiaoli.library.utils.UploadUtils;
 
 import java.io.File;
 import java.util.Map;
 import java.util.UUID;
 
 /**
- * @author xiaokx on 2016-4-21 10:00
- * @Email:hioyes@qq.com
+ * HttpConnection网络请求与handler通信处理
+ *  xiaokx
+ *  hioyes@qq.com
+ *  2014-11-6
  */
 public class HttpConnection implements INetwork {
     @Override
@@ -160,18 +161,23 @@ public class HttpConnection implements INetwork {
         return thread.getName();
     }
 
+
     @Override
-    public String postImg(String url, String filePath, String fileName, Map<String, String> params, Handler handler,int taskid, Context context) {
+    public String postImg(String url, Map<String, File> files, Handler handler, int taskid, Context context) {
+        return this.postImg(url,null,files,handler,taskid,context);
+    }
+
+    @Override
+    public String postImg(String url, Map<String, String> params, Map<String, File> files, Handler handler, int taskid, Context context) {
         if(!checkNetWorking(context,handler))return "";
-        final File file = new File(filePath);
         final String doUrl = url;
-        final String doFileName = fileName;
         final Map<String, String> doParams = params;
+        final Map<String, File> _files = files;
         final Handler _handler = handler;
         final int _taskid = taskid;
         final Runnable runnable = new Runnable() {
             public void run() {
-                String result = UploadUtils.getInstance().doUploadFile(file,doFileName,doUrl,doParams);
+                String result = HttpUtils.postImg(doUrl,doParams,_files);
                 processResult(result, _taskid,_handler);
             }
         };
@@ -182,25 +188,5 @@ public class HttpConnection implements INetwork {
         return thread.getName();
     }
 
-    @Override
-    public String postImg(String url, String[] filePath, String fileName, Map<String, String> params, Handler handler, int taskid, Context context) {
-        if(!checkNetWorking(context,handler))return "";
-        final String[] doFilePath = filePath;
-        final String doUrl = url;
-        final String doFileName = fileName;
-        final Map<String, String> doParams = params;
-        final Handler _handler = handler;
-        final int _taskid = taskid;
-        final Runnable runnable = new Runnable() {
-            public void run() {
-                String result = UploadUtils.getInstance().doUploadFile(doFilePath,doFileName,doUrl,doParams);
-                processResult(result, _taskid,_handler);
-            }
-        };
-        Thread thread = new Thread(runnable);
-        thread.setName(UUID.randomUUID().toString());
-        thread.start();
-        ThreadPoolUtils.addMyThread(C.mCurrentActivity,thread);
-        return thread.getName();
-    }
+
 }

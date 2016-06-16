@@ -3,10 +3,10 @@ package com.xiaoli.library.utils;
 import java.security.MessageDigest;
 
 /**
- * @ClassName: MD5
- * @author xiaokx Email:hioyes@qq.com
- * @date 2014-11-6 下午8:17:55
- * @Description:MD5加密工具类
+ *MD5加密工具类
+ *  xiaokx
+ *  hioyes@qq.com
+ *  2014-11-6
  */
 public class MD5 {
 	public final static String getMD5(String s) {

@@ -28,10 +28,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @author xiaokx Email:hioyes@qq.com
- * @ClassName:
- * @date 2015-11-5
- * @Description: 文件工具类
+ * 文件工具类
+ *  xiaokx
+ *  hioyes@qq.com
+ *  2014-11-6
  */
 public class FileUtils {
 
@@ -381,10 +381,11 @@ public class FileUtils {
     }
 
     /**
-     * 删除日志,只保留7天的日志
-     * @param file
+     * 删除日志
+     * @param file 文件目录
+     * @param days 保留天数 7
      */
-    public static void deleteLog(File file){
+    public static void deleteLog(File file,int days){
         try{
             if(!file.exists())return;
             if (file.isFile()) {
@@ -416,7 +417,7 @@ public class FileUtils {
                         currFile.delete();
                         continue;
                     }
-                    String sevenDay = DateUtils.getBeforDate(7,"yyyy-MM-dd");
+                    String sevenDay = DateUtils.getBeforDate(days,"yyyy-MM-dd");
                     long lastDay = DateUtils.getDateline(sevenDay);
                     long fileDay = DateUtils.getDateline(fileName);
                     if(lastDay>fileDay){

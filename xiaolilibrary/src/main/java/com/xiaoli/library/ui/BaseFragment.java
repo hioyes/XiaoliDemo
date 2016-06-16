@@ -1,7 +1,5 @@
 package com.xiaoli.library.ui;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,10 +12,10 @@ import com.xiaoli.library.utils.ThreadPoolUtils;
 
 
 /**
- * @author xiaokx Email:hioyes@qq.com
- * @ClassName: BaseActivity
- * @date 2014-11-6 下午8:21:12
- * @Description:Fragment基类
+ * Fragment基类
+ *  xiaokx
+ *  hioyes@qq.com
+ *  2014-11-6
  */
 public abstract class BaseFragment extends Fragment {
 

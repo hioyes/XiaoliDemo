@@ -15,8 +15,9 @@ import com.xiaoli.library.R;
 
 /**
  * 自带删除功能的EditText
- * @author xiaokx on 2016-6-2 14:25
- * @Email:hioyes@qq.com
+ *  xiaokx
+ *  hioyes@qq.com
+ *  2014-11-6
  */
 public class ClearEditText extends EditText implements View.OnFocusChangeListener,
         TextWatcher {

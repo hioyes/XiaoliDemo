@@ -7,15 +7,15 @@ import android.os.Environment;
 
 
 /**
- * @author xiaokx Email:hioyes@qq.com
- * @ClassName:SqliteHelper
- * @date 2015-11-23
- * @Description:Sqlite帮助类，用他获取db
+ *Sqlite帮助类，用他获取db
+ *  xiaokx
+ *  hioyes@qq.com
+ *  2014-11-6
  */
 public class SqliteHelper extends SQLiteOpenHelper {
 
-    public static final String DB_PATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Android/data/lbanalytics/db/";// 数据库存储位置
-    private static final String DB_NAME = "analytics.db"; //数据库名称
+    public static final String DB_PATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Android/data/xiaoli/db/";// 数据库存储位置
+    private static final String DB_NAME = "xiaoli.db"; //数据库名称
     private static final int version = 4; //数据库版本
 
     public SqliteHelper(Context context) {

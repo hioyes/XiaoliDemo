@@ -5,10 +5,10 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 /**
- * @author xiaokx Email:hioyes@qq.com
- * @ClassName:InternetUtils
- * @date 2015-11-4
- * @Description:网络检查工具
+ *网络检查工具
+ *  xiaokx
+ *  hioyes@qq.com
+ *  2014-11-6
  */
 public class InternetUtils {
 

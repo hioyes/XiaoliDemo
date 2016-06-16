@@ -9,10 +9,10 @@ import javax.crypto.spec.IvParameterSpec;
 
 
 /**
- * @ClassName: DESUtils
- * @author xiaokx Email:hioyes@qq.com
- * @date 2014-11-6 下午8:17:55
- * @Description:DES加密工具类
+ * DES加密工具类
+ *  xiaokx
+ *  hioyes@qq.com
+ *  2014-11-6
  */
 public class DESUtils {
 	

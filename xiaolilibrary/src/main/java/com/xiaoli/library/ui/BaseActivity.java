@@ -1,25 +1,22 @@
 package com.xiaoli.library.ui;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 
 import com.xiaoli.library.C;
-import com.xiaoli.library.View.LoadingDialog;
 import com.xiaoli.library.net.CommonHandler;
 import com.xiaoli.library.net.HttpWrapper;
 import com.xiaoli.library.utils.ThreadPoolUtils;
 
 
 /**
- * @author xiaokx Email:hioyes@qq.com
- * @ClassName: BaseActivity
- * @date 2014-11-6 下午8:15:32
- * @Description:Activity基类
+ * Activity基类
+ *  xiaokx
+ *  hioyes@qq.com
+ *  2014-11-6
  */
 public abstract class BaseActivity extends Activity implements CommonHandler.HandlerWork,View.OnClickListener{
 

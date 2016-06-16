@@ -6,16 +6,18 @@ import java.util.Date;
 
 /**
  * 日期工具类
- * @author xiaokx
- * @date 2013-04-03
+ *  xiaokx
+ *  hioyes@qq.com
+ *  2014-11-6
  */
 public class DateUtils {
 
 	/**
 	 * 获取多少天之前日期
 	 * @param beforDay
-	 * @return
-	 */
+	 * @param pattern
+     * @return
+     */
 	public static String getBeforDate(int beforDay,String pattern){
 		if(pattern == null){
 			pattern = "yyyy-MM-dd";
@@ -71,7 +73,13 @@ public class DateUtils {
 		}
 		return dateString;
 	}
-	
+
+	/**
+	 * 把日期转换成字符串型
+	 * @param time
+	 * @param pattern
+     * @return
+     */
 	public static String toString(Long time,String pattern){
 		if(time>0){
 			if(time.toString().length()==10){
@@ -179,51 +187,56 @@ public class DateUtils {
 		 //  System.out.println(lastMonth[0] + "||" + lastMonth[1]);
 		   return currentMonth;
 		}
-		
-	
-	
+
+
+	/**
+	 * 获取当前时间戳(10位)
+	 * @return
+     */
 	public static int getDateline(){
 		
 		return (int)(System.currentTimeMillis()/1000);
 	}
-	
 
+
+	/**
+	 * 获取当前时间戳(10位)
+	 * @return
+	 */
 	public static long getDatelineLong(){
 		
 		return System.currentTimeMillis()/1000;
 	}
-	
+
+	/**
+	 * 将指定日期转换成13位时间戳
+	 * @param date 日期
+	 * @param pattern 日期格式
+     * @return
+     */
 	public static long getDatelineLong(String date,String pattern){
 		return toDate(date, pattern).getTime();
 	}
-	
+
+	/**
+	 * 将指定日期转换成10位时间戳
+	 * @param date
+	 * @return
+     */
 	public static int getDateline(String date){
 		return (int)(toDate(date, "yyyy-MM-dd").getTime()/1000);
 	}
+
+	/**
+	 * 将指定日期转换成10位时间戳
+	 * @param date
+	 * @param pattern
+     * @return
+     */
 	public static int getDateline(String date,String pattern){
 		return (int)(toDate(date, pattern).getTime()/1000);
 	}
-	
-	/**
-	 * 获取时间戳  日期范围：2011-09-01 08:00:00到当前  时间范围为8-23点
-	 * @return
-	 */
-	public static long getRandomTimeMillis(){
-		long s = DateUtils.toDate("2011-09-01 08:00:00", "yyyy-MM-dd HH:mm:ss").getTime();
-		long e = System.currentTimeMillis();
-		for (int i = 0; i < 100; i++) {
-			long t = (long)(Math.random()*(e-s));
-			Long r = s+t;
-			String str = DateUtils.toString(r, "HH");
-			int h = Integer.valueOf(str);
-			if(h>8 && h<23){
-//				System.out.println(DateUtil.toString(r, "yyyy-MM-dd HH:mm:ss"));
-				return r.longValue();
-			}
-		}
-		long day = (long)(10*Math.random());
-		return e-day*24*60*60*1000;
-	}
+
 	/**
 	 * 检查当前时间是否包含在区间内
 	 * @param startTime
@@ -257,19 +270,5 @@ public class DateUtils {
 		else if(curr.longValue()>endTime.longValue())
 			return 3;
 		return 0;
-	}
-	/**
-	 * 获得当前日期N个月之前或之后的时间戳
-	 *
-	 * @author hqh
-	 * createTime:2013-9-11下午7:09:54
-	 * e-mail:hqh1689@163.com
-	 */
-	public static Long getTime(int month){
-		long time=0L;
-		Calendar calendar = Calendar.getInstance();
-		calendar.add(Calendar.MONTH, month);   
-		time = calendar.getTimeInMillis();
-		return time;
 	}
 }
