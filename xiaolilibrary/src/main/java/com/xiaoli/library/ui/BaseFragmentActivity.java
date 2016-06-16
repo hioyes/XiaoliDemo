@@ -68,6 +68,7 @@ public abstract class BaseFragmentActivity extends FragmentActivity implements C
     protected void onResume() {
         super.onResume();
         C.mCurrentActivity = this;
+        CommonHandler.getInstance().setHandlerWork(this);
     }
 
     public void replaceFragment(int containerViewId, Fragment fragment){

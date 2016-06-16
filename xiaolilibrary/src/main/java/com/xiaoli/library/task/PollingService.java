@@ -20,7 +20,7 @@ import com.xiaoli.library.utils.DateUtils;
  */
 public class PollingService extends Service {
 
-    public static final String ACTION = "com.base.task.PollingService";
+    public static final String ACTION = "com.xiaoli.library.task.PollingService";
 
     /**
      * 通知栏icon
@@ -76,7 +76,6 @@ public class PollingService extends Service {
     class PollingThread extends Thread {
         @Override
         public void run() {
-            String fileContent = DateUtils.toString(System.currentTimeMillis(),"yyyy-MM-dd HH:mm:ss")+"->start PollingThread";
             updateTask();
         }
     }
