@@ -1,11 +1,17 @@
 package com.xiaoli.library.ui;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
+import android.view.View;
 
 import com.xiaoli.library.C;
+import com.xiaoli.library.net.CommonHandler;
+import com.xiaoli.library.net.HttpWrapper;
 import com.xiaoli.library.utils.ThreadPoolUtils;
 
 /**
@@ -14,7 +20,18 @@ import com.xiaoli.library.utils.ThreadPoolUtils;
  *  hioyes@qq.com
  *  2014-11-6
  */
-public abstract class BaseFragmentActivity extends FragmentActivity{
+public abstract class BaseFragmentActivity extends FragmentActivity implements CommonHandler.HandlerWork,View.OnClickListener{
+
+    protected HttpWrapper mHttpWrapper = new HttpWrapper().getInstance();
+    protected Handler mHandler = CommonHandler.getInstance().getHandler();
+    @Override
+    public void handleMessageImpl(Message msg) {
+    }
+
+    /**
+     * 页面标签
+     */
+    protected String TAG = getClass().getSimpleName();
 
 
     /**
@@ -69,5 +86,10 @@ public abstract class BaseFragmentActivity extends FragmentActivity{
     public void onBackPressed() {
         super.onBackPressed();
         ThreadPoolUtils.destoryMyThread(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

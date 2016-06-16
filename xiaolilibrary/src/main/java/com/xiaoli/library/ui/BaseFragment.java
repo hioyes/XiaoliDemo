@@ -1,6 +1,8 @@
 package com.xiaoli.library.ui;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.xiaoli.library.C;
+import com.xiaoli.library.net.HttpWrapper;
 import com.xiaoli.library.utils.ThreadPoolUtils;
 
 
@@ -17,7 +20,24 @@ import com.xiaoli.library.utils.ThreadPoolUtils;
  *  hioyes@qq.com
  *  2014-11-6
  */
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment implements View.OnClickListener{
+
+    protected HttpWrapper mHttpWrapper = new HttpWrapper().getInstance();
+    protected Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            handleMessageImpl(msg);
+        }
+    };
+    public void handleMessageImpl(Message msg) {
+
+    }
+
+    /**
+     * 页面标签
+     */
+    protected String TAG = getClass().getSimpleName();
+
 
     protected View mView;
 
@@ -70,5 +90,10 @@ public abstract class BaseFragment extends Fragment {
         super.onDestroy();
         ThreadPoolUtils.destoryMyThread(getActivity());
         C.release(getActivity(), 0);
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }
