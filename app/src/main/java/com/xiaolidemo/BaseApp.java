@@ -4,7 +4,7 @@ import android.app.Application;
 import android.os.Environment;
 
 import com.xiaoli.library.C;
-import com.xiaoli.library.utils.ThreadPoolUtils;
+import com.xiaoli.library.utils.CrashHandler;
 
 /**
  * 应用全局对象
@@ -20,6 +20,7 @@ public class BaseApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        CrashHandler.getInstance().init(getApplicationContext(), C.ROOT_CATALOG+"log/");
         C.init("com.xiaolidemo", Environment.getExternalStorageDirectory().getAbsolutePath()+"/xiaolidemo/",true);
         C.NONE_CHEECK_VERSION.add("SplashActivity");
         C.NONE_CHEECK_VERSION.add("GuideActivity");

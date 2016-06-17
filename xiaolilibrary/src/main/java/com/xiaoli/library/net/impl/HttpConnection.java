@@ -117,7 +117,7 @@ public class HttpConnection implements INetwork {
                 if(C.WRITE_LOG) {
                     String fileContent = DateUtils.toString(System.currentTimeMillis(), "yyyy-MM-dd HH:mm:ss") + " ---->";
                     fileContent += "taskid=" + _taskid + "\r\n";
-                    if (!doParams.isEmpty())
+                    if (doParams!=null && !doParams.isEmpty())
                         fileContent += "post params->" + doParams.toString() + "\r\n";
                     fileContent += "post result->" + result + "\r\n";
                     LogThread logThread = new LogThread("api" + DateUtils.toString(System.currentTimeMillis(), "yyyy-MM-dd") + ".txt", fileContent);
@@ -156,7 +156,7 @@ public class HttpConnection implements INetwork {
                 if(C.WRITE_LOG) {
                     String fileContent = DateUtils.toString(System.currentTimeMillis(), "yyyy-MM-dd HH:mm:ss") + " ---->";
                     fileContent += "taskid=" + _taskid + "\r\n";
-                    if (!doParams.isEmpty())
+                    if (doParams!=null && !doParams.isEmpty())
                         fileContent += "post params->" + doParams.toString() + "\r\n";
                     result = result == null ? "返回空数据" : result;
                     fileContent += "post result->" + result + "\r\n";
