@@ -2,5 +2,7 @@
 <resources>
     <color name="transparent">#00000000</color><!--透明-->
     <color name="red">#F4444A</color>
+    <color name="line">#D9D9D9</color>
+    <color name="mainBlue">#178ce7</color>//主题蓝
 
 </resources>

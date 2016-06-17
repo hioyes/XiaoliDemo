@@ -31,6 +31,7 @@ import java.util.Map;
  */
 public class HttpUtils {
 
+    private static String TAG = "HttpUtils";
     private static StringBuilder sb2;
     private static final int readTimeOut = 10 * 1000; // 读取超时
     private static final int connectTimeout = 10 * 1000; // 超时时间
@@ -71,8 +72,8 @@ public class HttpUtils {
      */
     public static String sendGet(String url, Map<String, String> params, int timeout) {
         String param = paramsConvertString(params);
-        Log.e("apiGetUrl->", url);
-        Log.e("apiGetParams->", param);
+        Log.e(TAG,"apiGetUrl->"+url);
+        Log.e(TAG,"apiGetParams->"+ param);
         String result = "";
         BufferedReader in = null;
         try {
@@ -151,8 +152,8 @@ public class HttpUtils {
      */
     public static String sendPost(String url, Map<String, String> params, int timeout) {
         String param = paramsConvertString(params);
-        Log.e("apiPostUrl->", url);
-        Log.e("apiPostParams->", param);
+        Log.e(TAG,"apiPostUrl->"+url);
+        Log.e(TAG,"apiPostParams->"+param);
         PrintWriter out = null;
         BufferedReader in = null;
         String result = "";

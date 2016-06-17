@@ -10,9 +10,14 @@ import android.util.Log;
 import android.view.View;
 
 import com.xiaoli.library.C;
+import com.xiaoli.library.model.Update;
 import com.xiaoli.library.net.CommonHandler;
 import com.xiaoli.library.net.HttpWrapper;
+import com.xiaoli.library.task.PollingService;
+import com.xiaoli.library.utils.GsonUtils;
+import com.xiaoli.library.utils.PollingUtils;
 import com.xiaoli.library.utils.ThreadPoolUtils;
+import com.xiaoli.library.utils.UpdateManager;
 
 /**
  * FragmentActivity基类
@@ -26,6 +31,14 @@ public abstract class BaseFragmentActivity extends FragmentActivity implements C
     protected Handler mHandler = CommonHandler.getInstance().getHandler();
     @Override
     public void handleMessageImpl(Message msg) {
+        switch (msg.what) {
+            case C.CHECK_UPDATE_TASK://升级信息处理
+                Update respUpdate = GsonUtils.toObject(msg.obj.toString(), Update.class);
+                if (respUpdate == null) break;
+                UpdateManager updateManager = UpdateManager.getInstance();
+                updateManager.checkIsNeedUpdate(respUpdate);
+                break;
+        }
     }
 
     /**
@@ -54,6 +67,12 @@ public abstract class BaseFragmentActivity extends FragmentActivity implements C
      */
     protected abstract void initData();
 
+    public void replaceFragment(int containerViewId, Fragment fragment){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(containerViewId,fragment);
+        transaction.commitAllowingStateLoss();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,18 +88,19 @@ public abstract class BaseFragmentActivity extends FragmentActivity implements C
         super.onResume();
         C.mCurrentActivity = this;
         CommonHandler.getInstance().setHandlerWork(this);
-    }
-
-    public void replaceFragment(int containerViewId, Fragment fragment){
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(containerViewId,fragment);
-        transaction.commitAllowingStateLoss();
+        if(!C.NONE_CHEECK_VERSION.contains(C.mCurrentActivity.getPackageName()) && C.CHECK_VERSION_URL!=null) {
+            PollingUtils.startPollingService(C.mCurrentActivity, 5, PollingService.class, PollingService.ACTION);
+        }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         C.release(this,0);
+        if(!C.NONE_CHEECK_VERSION.contains(C.mCurrentActivity.getPackageName()) && C.CHECK_VERSION_URL!=null) {
+            PollingUtils.stopPollingService(C.mCurrentActivity, PollingService.class, PollingService.ACTION);
+            C.IS_CHECK_VERSION = true;
+        }
     }
 
     @Override

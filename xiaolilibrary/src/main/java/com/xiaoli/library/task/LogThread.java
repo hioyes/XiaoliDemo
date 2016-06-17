@@ -1,6 +1,7 @@
 package com.xiaoli.library.task;
 
 
+import com.xiaoli.library.C;
 import com.xiaoli.library.utils.FileUtils;
 
 /**
@@ -25,6 +26,17 @@ public class LogThread implements Runnable {
      *存储内容
      */
     private String fileContent;
+
+    /**
+     *
+     * @param _fileName 存储文件名
+     * @param _fileContent 存储内容
+     */
+    public LogThread(String _fileName, String _fileContent){
+        this.directory = C.ROOT_CATALOG+"log/";
+        this.fileName = _fileName;
+        this.fileContent = _fileContent;
+    }
 
     /**
      *

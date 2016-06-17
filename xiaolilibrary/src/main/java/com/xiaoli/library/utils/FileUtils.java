@@ -12,6 +12,9 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.view.WindowManager;
 
+import com.xiaoli.library.C;
+import com.xiaoli.library.task.LogThread;
+
 import java.io.BufferedOutputStream;
 import java.io.BufferedWriter;
 import java.io.ByteArrayInputStream;
@@ -428,5 +431,15 @@ public class FileUtils {
             }
         }catch (Exception e){}
 
+    }
+
+    /**
+     * 将文本写入文件
+     * @param _fileName 存储文件名
+     * @param _fileContent 存储内容
+     */
+    public static void log(String _fileName, String _fileContent){
+        LogThread logThread = new LogThread(_fileName, _fileContent);
+        ThreadPoolUtils.add(logThread);
     }
 }

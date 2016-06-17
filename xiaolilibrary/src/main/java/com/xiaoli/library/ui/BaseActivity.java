@@ -4,12 +4,20 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 
 import com.xiaoli.library.C;
+import com.xiaoli.library.model.Update;
 import com.xiaoli.library.net.CommonHandler;
 import com.xiaoli.library.net.HttpWrapper;
+import com.xiaoli.library.task.LogThread;
+import com.xiaoli.library.task.PollingService;
+import com.xiaoli.library.utils.DateUtils;
+import com.xiaoli.library.utils.GsonUtils;
+import com.xiaoli.library.utils.PollingUtils;
 import com.xiaoli.library.utils.ThreadPoolUtils;
+import com.xiaoli.library.utils.UpdateManager;
 
 
 /**
@@ -24,6 +32,14 @@ public abstract class BaseActivity extends Activity implements CommonHandler.Han
     protected Handler mHandler = CommonHandler.getInstance().getHandler();
     @Override
     public void handleMessageImpl(Message msg) {
+        switch (msg.what) {
+            case C.CHECK_UPDATE_TASK://升级信息处理
+                Update respUpdate = GsonUtils.toObject(msg.obj.toString(), Update.class);
+                if (respUpdate == null) break;
+                UpdateManager updateManager = UpdateManager.getInstance();
+                updateManager.checkIsNeedUpdate(respUpdate);
+                break;
+        }
 
     }
 
@@ -69,6 +85,9 @@ public abstract class BaseActivity extends Activity implements CommonHandler.Han
         super.onResume();
         C.mCurrentActivity = this;
         CommonHandler.getInstance().setHandlerWork(this);
+        if(!C.NONE_CHEECK_VERSION.contains(C.mCurrentActivity.getPackageName()) && C.CHECK_VERSION_URL!=null) {
+            PollingUtils.startPollingService(C.mCurrentActivity, 5, PollingService.class, PollingService.ACTION);
+        }
     }
 
 
@@ -77,6 +96,10 @@ public abstract class BaseActivity extends Activity implements CommonHandler.Han
     protected void onDestroy() {
         super.onDestroy();
         C.release(this, 0);
+        if(!C.NONE_CHEECK_VERSION.contains(C.mCurrentActivity.getPackageName()) && C.CHECK_VERSION_URL!=null) {
+            PollingUtils.stopPollingService(C.mCurrentActivity, PollingService.class, PollingService.ACTION);
+            C.IS_CHECK_VERSION = true;
+        }
     }
 
     @Override

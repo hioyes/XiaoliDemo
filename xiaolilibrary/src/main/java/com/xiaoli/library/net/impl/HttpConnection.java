@@ -8,6 +8,7 @@ import com.xiaoli.library.C;
 import com.xiaoli.library.net.CommonHandler;
 import com.xiaoli.library.net.INetwork;
 import com.xiaoli.library.net.InternetUtils;
+import com.xiaoli.library.task.LogThread;
 import com.xiaoli.library.utils.DateUtils;
 import com.xiaoli.library.utils.HttpUtils;
 import com.xiaoli.library.utils.StringUtils;
@@ -65,38 +66,32 @@ public class HttpConnection implements INetwork {
     @Override
     public void processResult(String result, int taskid, Handler handler) {
         try {
-            String fileContent = result;
             if (StringUtils.isNullOrEmpty(result)) {
                 Message msg = handler.obtainMessage();
                 msg.what = taskid;
                 msg.obj = "http wrapper check data is null";
                 handler.sendMessage(msg);
-                fileContent = msg.obj.toString();
             } else if (result.equals(HttpUtils.TIME_OUT)) {
                 Message msg = handler.obtainMessage();
                 msg.what = C.NET_TIME_OUT;
                 msg.obj = "http wrapper check data is null->TIME_OUT";
                 handler.sendMessage(msg);
-                fileContent = msg.obj.toString();
             } else if (result.equals(HttpUtils.FILE_NOT_FOUND)) {
                 Message msg = handler.obtainMessage();
                 msg.what = C.NET_FILE_NOT_FOUND;
                 msg.obj = "http wrapper check data is null->FILE_NOT_FOUND";
                 handler.sendMessage(msg);
-                fileContent = msg.obj.toString();
             } else if (result.equals(HttpUtils.SERVER_NOT_FOUND)) {
                 Message msg = handler.obtainMessage();
                 msg.what = C.NET_FILE_NOT_FOUND;
                 msg.obj = "http wrapper check data is null->SERVER_NOT_FOUND";
                 handler.sendMessage(msg);
-                fileContent = msg.obj.toString();
             } else {
                 Message msg = handler.obtainMessage();
                 msg.what = taskid;
                 msg.obj = result;
                 handler.sendMessage(msg);
             }
-            fileContent = DateUtils.toString(System.currentTimeMillis(),"yyyy-MM-dd HH:mm:ss")+" ---->[" + taskid + "]is result=" + fileContent + "\r\n";
 
         }catch (Exception e){
             e.printStackTrace();
@@ -119,6 +114,15 @@ public class HttpConnection implements INetwork {
             public void run() {
                 String result = HttpUtils.sendGet(doUrl, doParams);
                 processResult(result,_taskid,_handler);
+                if(C.WRITE_LOG) {
+                    String fileContent = DateUtils.toString(System.currentTimeMillis(), "yyyy-MM-dd HH:mm:ss") + " ---->";
+                    fileContent += "taskid=" + _taskid + "\r\n";
+                    if (!doParams.isEmpty())
+                        fileContent += "post params->" + doParams.toString() + "\r\n";
+                    fileContent += "post result->" + result + "\r\n";
+                    LogThread logThread = new LogThread("api" + DateUtils.toString(System.currentTimeMillis(), "yyyy-MM-dd") + ".txt", fileContent);
+                    ThreadPoolUtils.add(logThread);
+                }
             }
         };
         Thread thread = new Thread(runnable);
@@ -147,11 +151,18 @@ public class HttpConnection implements INetwork {
         final int _taskid = taskid;
         final Runnable runnable = new Runnable() {
             public void run() {
-                String fileContent = DateUtils.toString(System.currentTimeMillis(),"yyyy-MM-dd HH:mm:ss")+" ---->";
-                fileContent += "taskid="+_taskid+"\r\n";
-                if(!doParams.isEmpty())fileContent += "post params->"+doParams.toString()+"\r\n";
                 String result = HttpUtils.sendPost(doUrl, doParams);
                 processResult(result, _taskid,_handler);
+                if(C.WRITE_LOG) {
+                    String fileContent = DateUtils.toString(System.currentTimeMillis(), "yyyy-MM-dd HH:mm:ss") + " ---->";
+                    fileContent += "taskid=" + _taskid + "\r\n";
+                    if (!doParams.isEmpty())
+                        fileContent += "post params->" + doParams.toString() + "\r\n";
+                    result = result == null ? "返回空数据" : result;
+                    fileContent += "post result->" + result + "\r\n";
+                    LogThread logThread = new LogThread("api" + DateUtils.toString(System.currentTimeMillis(), "yyyy-MM-dd") + ".txt", fileContent);
+                    ThreadPoolUtils.add(logThread);
+                }
             }
         };
         Thread thread = new Thread(runnable);
@@ -179,6 +190,16 @@ public class HttpConnection implements INetwork {
             public void run() {
                 String result = HttpUtils.postImg(doUrl,doParams,_files);
                 processResult(result, _taskid,_handler);
+                if(C.WRITE_LOG) {
+                    String fileContent = DateUtils.toString(System.currentTimeMillis(), "yyyy-MM-dd HH:mm:ss") + " ---->";
+                    fileContent += "taskid=" + _taskid + "\r\n";
+                    if (!doParams.isEmpty())
+                        fileContent += "post params->" + doParams.toString() + "\r\n";
+                    result = result == null ? "返回空数据" : result;
+                    fileContent += "post result->" + result + "\r\n";
+                    LogThread logThread = new LogThread("api" + DateUtils.toString(System.currentTimeMillis(), "yyyy-MM-dd") + ".txt", fileContent);
+                    ThreadPoolUtils.add(logThread);
+                }
             }
         };
         Thread thread = new Thread(runnable);

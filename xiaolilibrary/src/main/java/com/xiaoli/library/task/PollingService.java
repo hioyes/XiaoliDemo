@@ -6,20 +6,26 @@ import android.app.Service;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.IBinder;
+import android.os.Message;
 import android.util.Log;
 
 import com.xiaoli.library.C;
 import com.xiaoli.library.R;
+import com.xiaoli.library.model.Update;
+import com.xiaoli.library.net.CommonHandler;
 import com.xiaoli.library.utils.DateUtils;
+import com.xiaoli.library.utils.GsonUtils;
+import com.xiaoli.library.utils.HttpUtils;
 
 /**
  * 轮询service
- *  xiaokx
- *  hioyes@qq.com
- *  2014-11-6
+ * xiaokx
+ * hioyes@qq.com
+ * 2014-11-6
  */
 public class PollingService extends Service {
 
+    private String TAG = "PollingService";
     public static final String ACTION = "com.xiaoli.library.task.PollingService";
 
     /**
@@ -38,21 +44,22 @@ public class PollingService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.e("service","onCreate");
+        Log.e(TAG, "onCreate");
         initNotifiManager();
     }
 
     @Override
     public void onStart(Intent intent, int startId) {
         super.onStart(intent, startId);
-        Log.e("service","onStart");
-        new PollingThread().start();
+        Log.e(TAG, "onStart");
+        if (C.PACKAGE_NAME != null && C.CHECK_VERSION_URL != null)
+            new PollingThread().start();
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.e("service","onDestroy");
+        Log.e(TAG, "onDestroy");
     }
 
     private void initNotifiManager() {
@@ -65,10 +72,12 @@ public class PollingService extends Service {
         mNotification.defaults |= Notification.DEFAULT_SOUND;
         mNotification.flags = Notification.FLAG_AUTO_CANCEL;
     }
+
     //弹出Notification
     private void showNotification() {
-        Log.e("service","showNotification");
+        Log.e("service", "showNotification");
     }
+
     /**
      * Polling thread
      * 模拟向Server轮询的异步线程
@@ -80,7 +89,28 @@ public class PollingService extends Service {
         }
     }
 
-    private void updateTask(){
+    private void updateTask() {
+        if (!C.IS_CHECK_VERSION) {
+            return;
+        }
+        if (C.mCurrentActivity == null) return;
+        String simpleName = C.mCurrentActivity.getClass().getSimpleName();
+        if (C.NONE_CHEECK_VERSION.contains(simpleName)) return;
+        C.IS_CHECK_VERSION = false;
+        String result = HttpUtils.sendGet(C.CHECK_VERSION_URL, null);
+        Update respUpdate = GsonUtils.toObject(result, Update.class);
+        if (respUpdate == null) {
+            C.IS_CHECK_VERSION = true;
+            return;
+        }
+        if (respUpdate.getVerCode() > getLocalVerCode()) {//服务器code>当前code
+            Message msg = CommonHandler.getInstance().getHandler().obtainMessage();
+            msg.what = C.CHECK_UPDATE_TASK;
+            msg.obj = result;
+            CommonHandler.getInstance().getHandler().sendMessage(msg);
+        } else {
+            C.IS_CHECK_VERSION = true;
+        }
 
     }
 
@@ -92,7 +122,7 @@ public class PollingService extends Service {
     private int getLocalVerCode() {
         int verCode = -1;
         try {
-            verCode = C.mCurrentActivity.getPackageManager().getPackageInfo("com.lubaocar.analytics", 0).versionCode;
+            verCode = C.mCurrentActivity.getPackageManager().getPackageInfo(C.PACKAGE_NAME, 0).versionCode;
         } catch (PackageManager.NameNotFoundException e) {
             android.os.Process.killProcess(android.os.Process.myPid());
         } catch (RuntimeException e) {

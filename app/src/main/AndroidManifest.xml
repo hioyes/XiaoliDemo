@@ -2,11 +2,19 @@
     package="com.xiaolidemo">
 
     <application
+        android:name=".BaseApp"
         android:allowBackup="true"
         android:icon="@mipmap/logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <service android:name="com.xiaoli.library.task.PollingService">
+
+        </service>
+        <activity android:name="com.xiaoli.library.ui.NullActivity"
+            android:screenOrientation="portrait">
+        </activity>
 
         <activity android:name=".ui.common.SplashActivity">
             <intent-filter>
