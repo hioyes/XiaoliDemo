@@ -66,7 +66,7 @@ public class PromptUtils {
      *            提示内容
      */
     public synchronized static void showToast(String tipStr) {
-        if (StringUtils.isNullOrEmpty(tipStr))return ;
+        if (StringUtils.isEmpty(tipStr))return ;
         if(toast==null){
             toast = Toast.makeText(C.mCurrentActivity, tipStr, Toast.LENGTH_SHORT);
         }else{

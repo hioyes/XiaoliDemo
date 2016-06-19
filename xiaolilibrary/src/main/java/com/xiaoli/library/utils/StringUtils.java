@@ -27,7 +27,7 @@ public class StringUtils {
      * @param str
      * @return
      */
-    public static boolean isNullOrEmpty(String str) {
+    public static boolean isEmpty(String str) {
         if (null == str || "".equals(str)) {
             return true;
         } else {
@@ -105,7 +105,7 @@ public class StringUtils {
      * @return 验证是否为空后的字符串
      */
     public static String getString(String str) {
-        return !isNullOrEmpty(str) ? str : "";
+        return !isEmpty(str) ? str : "";
     }
 
     /**
@@ -115,7 +115,7 @@ public class StringUtils {
      * @return
      */
     public static boolean checkIsLetter(String fstrData) {
-        if (isNullOrEmpty(fstrData)) return false;
+        if (isEmpty(fstrData)) return false;
         char c = fstrData.charAt(0);
         if (((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))) {
             return true;

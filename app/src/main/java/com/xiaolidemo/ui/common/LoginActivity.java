@@ -92,7 +92,7 @@ public class LoginActivity extends BaseActivity {
         mEtPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus && !StringUtils.isNullOrEmpty(mEtPassword.getText().toString())) {
+                if (hasFocus && !StringUtils.isEmpty(mEtPassword.getText().toString())) {
                     mIbClearPwd.setVisibility(View.VISIBLE);
                 } else {
                     mIbClearPwd.setVisibility(View.INVISIBLE);

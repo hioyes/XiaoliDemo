@@ -66,7 +66,7 @@ public class HttpConnection implements INetwork {
     @Override
     public void processResult(String result, int taskid, Handler handler) {
         try {
-            if (StringUtils.isNullOrEmpty(result)) {
+            if (StringUtils.isEmpty(result)) {
                 Message msg = handler.obtainMessage();
                 msg.what = taskid;
                 msg.obj = "http wrapper check data is null";

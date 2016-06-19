@@ -39,6 +39,17 @@ import java.util.regex.Pattern;
 public class FileUtils {
 
     /**
+     * 创建目录
+     * @param directory
+     */
+    public static void createDirectory(String directory){
+        File dir = new File(directory);
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+    }
+
+    /**
      * @param context
      * @param uri
      * @return 获取图片的真是路径

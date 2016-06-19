@@ -1,10 +1,20 @@
 package com.xiaolidemo.ui;
 
+import android.os.Environment;
 import android.os.Message;
+import android.util.Log;
 
 import com.xiaoli.library.ui.BaseActivity;
+import com.xiaoli.library.utils.FileUtils;
+import com.xiaoli.library.utils.ZipUtils;
 import com.xiaolidemo.R;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -34,6 +44,75 @@ public class DemoActivity extends BaseActivity {
     @Override
     protected void initData() {
 
+        Log.e(TAG,Environment.getExternalStorageDirectory().toString());
+
+        writeDb();
+
+
+    }
+
+    /**
+     * 下载静态库并解压
+     */
+    private void writeDb(){
+        new Thread() {
+            @Override
+            public void run() {
+                try {
+                    String fileUrl = "http://app.lubaocar.com/CarModel.zip";
+                    String saveDirectory = Environment.getExternalStorageDirectory()+"/db/";
+                    FileUtils.createDirectory(saveDirectory);
+                    String fileName = fileUrl.substring(fileUrl.lastIndexOf("/"), fileUrl.length());
+                    //创建按一个URL实例
+                    URL url = new URL(fileUrl);
+                    //创建一个HttpURLConnection的链接对象
+                    HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
+                    //获取所下载文件的InputStream对象
+                    InputStream inputStream = httpConn.getInputStream();
+                    int length = httpConn.getContentLength();
+                    FileOutputStream fileOutputStream = null;
+                    if (inputStream != null) {
+                        File file = new File(saveDirectory, fileName);
+                        fileOutputStream = new FileOutputStream(file);
+
+                        byte[] buf = new byte[1024 * 128];
+                        int ch = -1;
+                        int count = 0;
+                        while ((ch = inputStream.read(buf)) != -1) {
+                            count += ch;
+                            fileOutputStream.write(buf, 0, ch);
+                            Message msg = new Message();
+                            msg.what = 1;
+                            msg.arg1 = (int) (count * 100 / length);
+                            if (length > 0) {
+                            }
+                        }
+
+                    }
+                    fileOutputStream.flush();
+                    if (fileOutputStream != null) {
+                        fileOutputStream.close();
+                    }
+                    try
+                    {
+                        //解压缩
+                        String upzipDirectory = Environment.getExternalStorageDirectory()+"/db2/";
+                        FileUtils.createDirectory(upzipDirectory);
+                        ZipUtils.UnZipFolder(saveDirectory+fileName,upzipDirectory);
+
+                        //压缩
+                        String zipDirectory = Environment.getExternalStorageDirectory()+"/db3/";
+                        FileUtils.createDirectory(zipDirectory);
+                        ZipUtils.ZipFolder(upzipDirectory,zipDirectory+"db4.zip");
+                    }catch (Exception e){
+                        Log.e(TAG,"eeeeeeeeeeeeeeeeeeeeeeeee-->"+e.getMessage());
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }.start();
     }
 
     @Override
