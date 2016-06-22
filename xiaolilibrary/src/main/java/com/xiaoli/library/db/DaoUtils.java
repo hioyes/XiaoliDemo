@@ -4,6 +4,8 @@ import android.database.Cursor;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -105,6 +107,31 @@ public class DaoUtils {
     }
 
     /**
+     * 检查字段是否为基本类型
+     * @param field
+     * @return
+     */
+    public static boolean checkBasicType(Field field){
+        String gt = field.getGenericType().toString();
+        List<String> list = new ArrayList<String>();
+        list.add("class java.lang.String");
+        list.add("class java.lang.Integer");
+        list.add("class java.lang.Long");
+        list.add("class java.lang.Double");
+        list.add("class java.lang.Boolean");
+        list.add("class java.util.Date");
+        list.add("class java.lang.Short");
+        list.add("int");
+        list.add("double");
+        list.add("long");
+        list.add("double");
+        list.add("short");
+        list.add("boolean");
+        if(list.contains(gt))return true;
+        return false;
+    }
+
+    /**
      * vo转成map
      *
      * @param vo
@@ -115,6 +142,9 @@ public class DaoUtils {
         Field[] fields = vo.getClass().getDeclaredFields();
         for (Field field : fields) {
             field.setAccessible(true);
+            if(!checkBasicType(field)){
+                continue;
+            }
             String name = field.getName();
             Object obj = null;
             try {

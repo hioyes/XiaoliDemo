@@ -24,7 +24,17 @@ public class DbHelper<T> {
 
     public DbHelper(Context context) {
         sqliteHelper = new SqliteHelper(context);
+        db = sqliteHelper.getWritableDatabase();
+    }
 
+    /**
+     * 构建db工具类
+     * @param context
+     * @param dbPath 数据库保存目录,必须斜杠结尾
+     * @param dbName 数据库名称
+     */
+    public DbHelper(Context context,String dbPath,String dbName){
+        sqliteHelper = new SqliteHelper(context,dbPath,dbName);
         db = sqliteHelper.getWritableDatabase();
     }
 

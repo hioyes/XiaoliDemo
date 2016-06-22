@@ -6,8 +6,13 @@ import android.util.Log;
 
 import com.xiaoli.library.ui.BaseActivity;
 import com.xiaoli.library.utils.FileUtils;
+import com.xiaoli.library.utils.PromptUtils;
 import com.xiaoli.library.utils.ZipUtils;
 import com.xiaolidemo.R;
+import com.xiaolidemo.model.Branch;
+import com.xiaolidemo.model.Test;
+import com.xiaolidemo.services.BranchService;
+import com.xiaolidemo.services.TestService;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -16,6 +21,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * demo
@@ -49,6 +55,33 @@ public class DemoActivity extends BaseActivity {
         writeDb();
 
 
+
+    }
+
+    private void testLetectDb(){
+        Test test = new Test();
+        test.setName(System.currentTimeMillis()+"");
+        TestService.getInstance(this).insert(test);
+        List<Test> list = TestService.getInstance(this).list();
+        String str = "";
+        for (Test test1 : list){
+            str += test1.getName();
+            str += "\r\n";
+        }
+        PromptUtils.showToast(str);
+    }
+
+    /**
+     * 测试读取CarModel库
+     */
+    private void testCarModelDb(){
+        List<Branch> list = BranchService.getInstance(this).list();
+        String str = "";
+        for (Branch branch : list){
+            str += branch.getBranchName();
+            str += "\r\n";
+        }
+        PromptUtils.showToast(str);
     }
 
     /**
@@ -104,6 +137,7 @@ public class DemoActivity extends BaseActivity {
                         String zipDirectory = Environment.getExternalStorageDirectory()+"/db3/";
                         FileUtils.createDirectory(zipDirectory);
                         ZipUtils.ZipFolder(upzipDirectory,zipDirectory+"db4.zip");
+                        testLetectDb();
                     }catch (Exception e){
                         Log.e(TAG,"eeeeeeeeeeeeeeeeeeeeeeeee-->"+e.getMessage());
                     }

@@ -16,10 +16,14 @@ public class SqliteHelper extends SQLiteOpenHelper {
 
     public static final String DB_PATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Android/data/xiaoli/db/";// 数据库存储位置
     private static final String DB_NAME = "xiaoli.db"; //数据库名称
-    private static final int version = 4; //数据库版本
+    private static final int version = 1; //数据库版本
 
     public SqliteHelper(Context context) {
         super(context, DB_PATH + DB_NAME, null, version);
+    }
+
+    public SqliteHelper(Context context,String dbPath,String dbName){
+        super(context, dbPath + dbName, null, version);
     }
 
     @Override
