@@ -3,6 +3,7 @@ package com.xiaolidemo.ui;
 import android.os.Environment;
 import android.os.Message;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.xiaoli.library.ui.BaseActivity;
 import com.xiaoli.library.utils.FileUtils;
@@ -33,6 +34,8 @@ public class DemoActivity extends BaseActivity {
 
     private ArrayList<String> mArrayList = new ArrayList<String>();
 
+    private TextView mTvDemo;
+
     @Override
     protected int getLayoutResId() {
         return R.layout.demo;
@@ -40,6 +43,7 @@ public class DemoActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        mTvDemo = (TextView)findViewById(R.id.mTvDemo);
     }
 
     @Override
@@ -60,15 +64,18 @@ public class DemoActivity extends BaseActivity {
 
     private void testLetectDb(){
         Test test = new Test();
-        test.setName(System.currentTimeMillis()+"");
+        test.setVin(System.currentTimeMillis()+"");
         TestService.getInstance(this).insert(test);
         List<Test> list = TestService.getInstance(this).list();
         String str = "";
         for (Test test1 : list){
-            str += test1.getName();
+            str += test1.getVin();
             str += "\r\n";
         }
-        PromptUtils.showToast(str);
+        Message message = mHandler.obtainMessage();
+        message.what = 12333;
+        message.obj = str;
+        mHandler.sendMessage(message);
     }
 
     /**
@@ -81,7 +88,10 @@ public class DemoActivity extends BaseActivity {
             str += branch.getBranchName();
             str += "\r\n";
         }
-        PromptUtils.showToast(str);
+        Message message = mHandler.obtainMessage();
+        message.what = 12334;
+        message.obj = str;
+        mHandler.sendMessage(message);
     }
 
     /**
@@ -91,59 +101,61 @@ public class DemoActivity extends BaseActivity {
         new Thread() {
             @Override
             public void run() {
-                try {
-                    String fileUrl = "http://app.lubaocar.com/CarModel.zip";
-                    String saveDirectory = Environment.getExternalStorageDirectory()+"/db/";
-                    FileUtils.createDirectory(saveDirectory);
-                    String fileName = fileUrl.substring(fileUrl.lastIndexOf("/"), fileUrl.length());
-                    //创建按一个URL实例
-                    URL url = new URL(fileUrl);
-                    //创建一个HttpURLConnection的链接对象
-                    HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
-                    //获取所下载文件的InputStream对象
-                    InputStream inputStream = httpConn.getInputStream();
-                    int length = httpConn.getContentLength();
-                    FileOutputStream fileOutputStream = null;
-                    if (inputStream != null) {
-                        File file = new File(saveDirectory, fileName);
-                        fileOutputStream = new FileOutputStream(file);
-
-                        byte[] buf = new byte[1024 * 128];
-                        int ch = -1;
-                        int count = 0;
-                        while ((ch = inputStream.read(buf)) != -1) {
-                            count += ch;
-                            fileOutputStream.write(buf, 0, ch);
-                            Message msg = new Message();
-                            msg.what = 1;
-                            msg.arg1 = (int) (count * 100 / length);
-                            if (length > 0) {
-                            }
-                        }
-
-                    }
-                    fileOutputStream.flush();
-                    if (fileOutputStream != null) {
-                        fileOutputStream.close();
-                    }
-                    try
-                    {
-                        //解压缩
-                        String upzipDirectory = Environment.getExternalStorageDirectory()+"/db2/";
-                        FileUtils.createDirectory(upzipDirectory);
-                        ZipUtils.UnZipFolder(saveDirectory+fileName,upzipDirectory);
-
-                        //压缩
-                        String zipDirectory = Environment.getExternalStorageDirectory()+"/db3/";
-                        FileUtils.createDirectory(zipDirectory);
-                        ZipUtils.ZipFolder(upzipDirectory,zipDirectory+"db4.zip");
-                        testLetectDb();
-                    }catch (Exception e){
-                        Log.e(TAG,"eeeeeeeeeeeeeeeeeeeeeeeee-->"+e.getMessage());
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                testLetectDb();
+                testCarModelDb();
+//                try {
+//                    String fileUrl = "http://app.lubaocar.com/carmodel.zip";
+//                    String saveDirectory = Environment.getExternalStorageDirectory()+"/db/";
+//                    FileUtils.createDirectory(saveDirectory);
+//                    String fileName = fileUrl.substring(fileUrl.lastIndexOf("/"), fileUrl.length());
+//                    //创建按一个URL实例
+//                    URL url = new URL(fileUrl);
+//                    //创建一个HttpURLConnection的链接对象
+//                    HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
+//                    //获取所下载文件的InputStream对象
+//                    InputStream inputStream = httpConn.getInputStream();
+//                    int length = httpConn.getContentLength();
+//                    FileOutputStream fileOutputStream = null;
+//                    if (inputStream != null) {
+//                        File file = new File(saveDirectory, fileName);
+//                        fileOutputStream = new FileOutputStream(file);
+//
+//                        byte[] buf = new byte[1024 * 128];
+//                        int ch = -1;
+//                        int count = 0;
+//                        while ((ch = inputStream.read(buf)) != -1) {
+//                            count += ch;
+//                            fileOutputStream.write(buf, 0, ch);
+//                            Message msg = new Message();
+//                            msg.what = 1;
+//                            msg.arg1 = (int) (count * 100 / length);
+//                            if (length > 0) {
+//                            }
+//                        }
+//
+//                    }
+//                    fileOutputStream.flush();
+//                    if (fileOutputStream != null) {
+//                        fileOutputStream.close();
+//                    }
+//                    try
+//                    {
+//                        //解压缩
+//                        String upzipDirectory = Environment.getExternalStorageDirectory()+"/db2/";
+//                        FileUtils.createDirectory(upzipDirectory);
+//                        ZipUtils.UnZipFolder(saveDirectory+fileName,upzipDirectory);
+//
+//                        //压缩
+//                        String zipDirectory = Environment.getExternalStorageDirectory()+"/db3/";
+//                        FileUtils.createDirectory(zipDirectory);
+//                        ZipUtils.ZipFolder(upzipDirectory,zipDirectory+"db4.zip");
+//                        Log.e(TAG,"finish--===========================================>");
+//                    }catch (Exception e){
+//                        Log.e(TAG,"eeeeeeeeeeeeeeeeeeeeeeeee-->"+e.getMessage());
+//                    }
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
             }
 
         }.start();
@@ -152,6 +164,16 @@ public class DemoActivity extends BaseActivity {
     @Override
     public void handleMessageImpl(Message msg) {
         super.handleMessageImpl(msg);
+        switch (msg.what){
+            case 12333:
+//                PromptUtils.showToast(msg.obj.toString());
+                mTvDemo.setText(mTvDemo.getText()+"\r\n"+msg.obj.toString());
+                break;
+            case 12334:
+//                PromptUtils.showToast(msg.obj.toString());
+                mTvDemo.setText(mTvDemo.getText()+"\r\n"+msg.obj.toString());
+                break;
+        }
     }
 
     private ArrayList<String> getData() {

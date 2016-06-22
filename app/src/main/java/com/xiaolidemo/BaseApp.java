@@ -56,37 +56,9 @@ public class BaseApp extends Application {
                 if (!dir.exists()) {
                     dir.mkdirs();
                 }
-                copyDdFile("lbdetect.db", Config.DB_PATH, R.raw.lbdetect, getApplicationContext());
+                FileUtils.copyDdFile("lbdetect.db", Config.DB_PATH, R.raw.lbdetect, getApplicationContext());
+                FileUtils.copyDdFile("carmodel.db", Config.DB_PATH, R.raw.carmodel, getApplicationContext());
             }
         }).start();
-    }
-
-    /**
-     * 将资源文件复制到sd卡
-     * @param targetFileName
-     * @param targetPath
-     * @param sourceId
-     * @param context
-     */
-    public static void copyDdFile(String targetFileName, String targetPath, int sourceId,Context context) {
-        try {
-            File dir = new File(targetPath);
-            if (!dir.exists()) {
-                dir.mkdirs();
-            }
-            if (!(new File(targetPath+targetFileName)).exists()) {
-                InputStream is = context.getResources().openRawResource(sourceId);
-                FileOutputStream fos = new FileOutputStream(targetPath+targetFileName);
-                byte[] buffer = new byte[8192];
-                int count = 0;
-                while ((count = is.read(buffer)) > 0) {
-                    fos.write(buffer, 0, count);
-                }
-                fos.close();
-                is.close();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }

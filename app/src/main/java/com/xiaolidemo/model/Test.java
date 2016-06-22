@@ -7,25 +7,25 @@ package com.xiaolidemo.model;
  * 2016-6-22
  */
 public class Test {
-    private int testId;
+    private int carId;
 
-    public int getTestId() {
-        return testId;
+    public int getCarId() {
+        return carId;
     }
 
-    public void setTestId(int testId) {
-        this.testId = testId;
+    public void setCarId(int carId) {
+        this.carId = carId;
     }
 
-    public String getName() {
-        return name;
+    public String getVin() {
+        return vin;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setVin(String vin) {
+        this.vin = vin;
     }
 
-    private String name;
+    private String vin;
 
 
 

@@ -2,10 +2,7 @@ package com.xiaolidemo.services;
 
 import android.content.Context;
 
-import com.xiaoli.library.db.DbHelper;
-import com.xiaolidemo.Config;
 import com.xiaolidemo.model.Branch;
-import com.xiaolidemo.model.Test;
 
 import java.util.List;
 
@@ -15,26 +12,16 @@ import java.util.List;
  * hioyes@qq.com
  * 2016-6-22
  */
-public class BranchService {
+public class BranchService extends CarModelService{
 
-    private static String dbPath = Config.DB_PATH;
-    private static String dbName = "CarModel.db";
-
-    /**
-     * DbHelper对象
-     */
-    private static DbHelper<Branch> dbHelper;
+    public BranchService(Context context) {
+        super(context);
+    }
 
     /**
      * 分公司持久对象
      */
     private static BranchService mInstance;
-
-    private BranchService(Context context){
-        dbHelper = new DbHelper(context,dbPath,dbName);
-    }
-
-
 
     public static BranchService getInstance(Context context){
         if (mInstance == null) {
@@ -46,6 +33,9 @@ public class BranchService {
         return mInstance;
 
     }
+
+
+
 
     /**
      * 获取所有分公司

@@ -2,8 +2,6 @@ package com.xiaolidemo.services;
 
 import android.content.Context;
 
-import com.xiaoli.library.db.DbHelper;
-import com.xiaolidemo.Config;
 import com.xiaolidemo.model.Test;
 
 import java.util.List;
@@ -14,24 +12,16 @@ import java.util.List;
  * hioyes@qq.com
  * 2016-6-22
  */
-public class TestService {
+public class TestService extends DetectService {
 
-    private static String dbPath = Config.DB_PATH;
-    private static String dbName = "lbdetect.db";
-
-    /**
-     * DbHelper对象
-     */
-    private static DbHelper<Test> dbHelper;
+    public TestService(Context context){
+        super(context);
+    }
 
     /**
      * 分公司持久对象
      */
     private static TestService mInstance;
-
-    private TestService(Context context){
-        dbHelper = new DbHelper(context,dbPath,dbName);
-    }
 
 
     public static TestService getInstance(Context context){
@@ -50,7 +40,7 @@ public class TestService {
      * @param test
      */
     public void insert(Test test){
-        dbHelper.insert("test",test);
+        dbHelper.insert("carInfo",test);
     }
 
     /**
@@ -58,7 +48,7 @@ public class TestService {
      * @return
      */
     public List<Test> list(){
-        List<Test> list = dbHelper.queryForList("select * from test",Test.class);
+        List<Test> list = dbHelper.queryForList("select * from carInfo",Test.class);
         return list;
     }
 
