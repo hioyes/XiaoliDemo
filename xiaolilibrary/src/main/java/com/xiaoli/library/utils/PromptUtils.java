@@ -29,7 +29,7 @@ public class PromptUtils {
 
     /**
      * 自定义信息提示
-     * @param msg
+     * param msg
      */
     public synchronized  static void showMessage(final String msg){
         myDialog = new MyDialog(C.mCurrentActivity, R.layout.dlg_common_info,R.style.MyDialog);
@@ -46,7 +46,7 @@ public class PromptUtils {
 
     /**
      *信息提示
-     * @param tip
+     * param tip
      */
     public synchronized static void showToast(int tip) {
         if(toast==null){
@@ -62,7 +62,7 @@ public class PromptUtils {
 
     /**
      *信息提示
-     * @param tipStr
+     * param tipStr
      *            提示内容
      */
     public synchronized static void showToast(String tipStr) {
@@ -104,7 +104,7 @@ public class PromptUtils {
     /**
      * 自定义文本内入，例如：
      *
-     * @param view
+     * param view
      */
     public synchronized static void showToast(View view) {
         if(toast==null){
@@ -120,10 +120,10 @@ public class PromptUtils {
 
     /**
      *
-     * @param activity
-     * @param titleStr
+     * param activity
+     * param titleStr
      *            提示标签
-     * @param messageStr
+     * param messageStr
      *            提示内容
      */
     public static void showDialog(final Activity activity, String titleStr,

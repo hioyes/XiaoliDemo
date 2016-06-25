@@ -16,10 +16,10 @@ public class PollingUtils {
 
     /**
      * 开启轮询服务
-     * @param context 上下文
-     * @param seconds 轮询间隔（秒）
-     * @param cls 目标Service
-     * @param action 动作
+     * param context 上下文
+     * param seconds 轮询间隔（秒）
+     * param cls 目标Service
+     * param action 动作
      */
     public static void startPollingService(Context context, int seconds, Class<?> cls,String action) {
         String fileContent = DateUtils.toString(System.currentTimeMillis(),"yyyy-MM-dd HH:mm:ss")+"->startPollingService";
@@ -41,9 +41,9 @@ public class PollingUtils {
 
     /**
      * 停止轮询服务
-     * @param context 上下文
-     * @param cls 目标Service
-     * @param action 动作
+     * param context 上下文
+     * param cls 目标Service
+     * param action 动作
      */
     public static void stopPollingService(Context context, Class<?> cls,String action) {
         String fileContent = DateUtils.toString(System.currentTimeMillis(),"yyyy-MM-dd HH:mm:ss")+"->stopPollingService";

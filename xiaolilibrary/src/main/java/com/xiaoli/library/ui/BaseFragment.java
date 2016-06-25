@@ -62,9 +62,15 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
      */
     protected abstract void initData();
 
+    /**
+     * 在setContentView之前执行
+     */
+    protected void viewBefore(){}
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        viewBefore();
         if (mView == null)
             mView = inflater.inflate(getLayoutResId(), container, false);
         initView();

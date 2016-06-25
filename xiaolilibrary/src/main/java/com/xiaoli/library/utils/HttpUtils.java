@@ -54,9 +54,9 @@ public class HttpUtils {
     /**
      * 向指定URL发送GET方法的请求
      *
-     * @param url    发送请求的URL
-     * @param params 请求参数，请求参数应该是 name1=value1&name2=value2 的形式。
-     * @return URL 所代表远程资源的响应结果
+     * param url    发送请求的URL
+     * param params 请求参数，请求参数应该是 name1=value1&name2=value2 的形式。
+     * return URL 所代表远程资源的响应结果
      */
     public static String sendGet(String url, Map<String, String> params) {
         return sendGet(url, params, 0);
@@ -65,10 +65,10 @@ public class HttpUtils {
     /**
      * 指定URL发送GET方法的请求
      *
-     * @param url
-     * @param params
-     * @param timeout
-     * @return
+     * param url
+     * param params
+     * param timeout
+     * return
      */
     public static String sendGet(String url, Map<String, String> params, int timeout) {
         String param = paramsConvertString(params);
@@ -134,9 +134,9 @@ public class HttpUtils {
     /**
      * 向指定 URL 发送POST方法的请求
      *
-     * @param url    发送请求的 URL
-     * @param params 请求参数，请求参数应该是 name1=value1&name2=value2 的形式。
-     * @return 所代表远程资源的响应结果
+     * param url    发送请求的 URL
+     * param params 请求参数，请求参数应该是 name1=value1&name2=value2 的形式。
+     * return 所代表远程资源的响应结果
      */
     public static String sendPost(String url, Map<String, String> params) {
         return sendPost(url, params, 0);
@@ -145,10 +145,10 @@ public class HttpUtils {
     /**
      * 向指定 URL 发送POST方法的请求
      *
-     * @param url
-     * @param params
-     * @param timeout
-     * @return
+     * param url
+     * param params
+     * param timeout
+     * return
      */
     public static String sendPost(String url, Map<String, String> params, int timeout) {
         String param = paramsConvertString(params);
@@ -228,10 +228,10 @@ public class HttpUtils {
     /**
      * 通过拼接的方式构造请求内容，实现参数传输以及文件传输
      *
-     * @param actionUrl
-     * @param params
-     * @param files
-     * @return
+     * param actionUrl
+     * param params
+     * param files
+     * return
      * @throws IOException
      */
     public static String postImg(String actionUrl, Map<String, String> params, Map<String, File> files) {
@@ -350,8 +350,8 @@ public class HttpUtils {
     /**
      * 将Map中的参数转成字符串形式
      *
-     * @param params
-     * @return
+     * param params
+     * return
      */
     public static String paramsConvertString(Map<String, String> params) {
         if (params == null) return "";

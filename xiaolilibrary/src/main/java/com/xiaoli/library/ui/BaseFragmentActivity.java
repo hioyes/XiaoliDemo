@@ -67,6 +67,11 @@ public abstract class BaseFragmentActivity extends FragmentActivity implements C
      */
     protected abstract void initData();
 
+    /**
+     * 在setContentView之前执行
+     */
+    protected void viewBefore(){}
+
     public void replaceFragment(int containerViewId, Fragment fragment){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(containerViewId,fragment);
@@ -77,6 +82,7 @@ public abstract class BaseFragmentActivity extends FragmentActivity implements C
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         C.mCurrentActivity = this;
+        viewBefore();
         setContentView(getLayoutResId());
         initView();
         initListener();

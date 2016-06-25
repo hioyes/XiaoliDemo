@@ -14,9 +14,9 @@ public class DateUtils {
 
 	/**
 	 * 获取多少天之前日期
-	 * @param beforDay
-	 * @param pattern
-     * @return
+	 * param beforDay
+	 * param pattern
+     * return
      */
 	public static String getBeforDate(int beforDay,String pattern){
 		if(pattern == null){
@@ -30,9 +30,9 @@ public class DateUtils {
 
 	/**
 	 * 将一个字符串转换成日期格式
-	 * @param date
-	 * @param pattern
-	 * @return
+	 * param date
+	 * param pattern
+	 * return
 	 */
 	public static Date toDate(String date, String pattern) {
 		if((""+date).equals("")){
@@ -53,9 +53,9 @@ public class DateUtils {
 	
 	/**
 	 * 把日期转换成字符串型
-	 * @param date
-	 * @param pattern
-	 * @return
+	 * param date
+	 * param pattern
+	 * return
 	 */
 	public static String toString(Date date, String pattern){
 		if(date == null){
@@ -76,9 +76,9 @@ public class DateUtils {
 
 	/**
 	 * 把日期转换成字符串型
-	 * @param time
-	 * @param pattern
-     * @return
+	 * param time
+	 * param pattern
+     * return
      */
 	public static String toString(Long time,String pattern){
 		if(time>0){
@@ -96,7 +96,7 @@ public class DateUtils {
 	
 	/**
 	 * 获取上个月的开始结束时间
-	 * @return
+	 * return
 	 */
 	public static String[] getLastMonth() {
 		   // 取得系统当前时间
@@ -146,7 +146,7 @@ public class DateUtils {
 	
 	/**
 	 * 获取当月的开始结束时间
-	 * @return
+	 * return
 	 */
 	public static String[] getCurrentMonth() {
 		   // 取得系统当前时间
@@ -191,7 +191,7 @@ public class DateUtils {
 
 	/**
 	 * 获取当前时间戳(10位)
-	 * @return
+	 * return
      */
 	public static int getDateline(){
 		
@@ -201,7 +201,7 @@ public class DateUtils {
 
 	/**
 	 * 获取当前时间戳(10位)
-	 * @return
+	 * return
 	 */
 	public static long getDatelineLong(){
 		
@@ -210,9 +210,9 @@ public class DateUtils {
 
 	/**
 	 * 将指定日期转换成13位时间戳
-	 * @param date 日期
-	 * @param pattern 日期格式
-     * @return
+	 * param date 日期
+	 * param pattern 日期格式
+     * return
      */
 	public static long getDatelineLong(String date,String pattern){
 		return toDate(date, pattern).getTime();
@@ -220,8 +220,8 @@ public class DateUtils {
 
 	/**
 	 * 将指定日期转换成10位时间戳
-	 * @param date
-	 * @return
+	 * param date
+	 * return
      */
 	public static int getDateline(String date){
 		return (int)(toDate(date, "yyyy-MM-dd").getTime()/1000);
@@ -229,9 +229,9 @@ public class DateUtils {
 
 	/**
 	 * 将指定日期转换成10位时间戳
-	 * @param date
-	 * @param pattern
-     * @return
+	 * param date
+	 * param pattern
+     * return
      */
 	public static int getDateline(String date,String pattern){
 		return (int)(toDate(date, pattern).getTime()/1000);
@@ -239,9 +239,9 @@ public class DateUtils {
 
 	/**
 	 * 检查当前时间是否包含在区间内
-	 * @param startTime
-	 * @param endTime
-	 * @return
+	 * param startTime
+	 * param endTime
+	 * return
 	 */
 	public static boolean containsCurrTime(Long startTime,Long endTime){
 		if(startTime==null || endTime==null){
@@ -254,9 +254,9 @@ public class DateUtils {
 	}
 	/**
 	 * 检查当前时间是否包含在区间内
-	 * @param startTime
-	 * @param endTime
-	 * @return 0 时间区间错误  1 在区间内 2 当前时间小于开始区间值 3 当前时间大于结束区间值
+	 * param startTime
+	 * param endTime
+	 * return 0 时间区间错误  1 在区间内 2 当前时间小于开始区间值 3 当前时间大于结束区间值
 	 */
 	public static int CurrTimeStatus(Long startTime,Long endTime){
 		if(startTime==null || endTime==null){

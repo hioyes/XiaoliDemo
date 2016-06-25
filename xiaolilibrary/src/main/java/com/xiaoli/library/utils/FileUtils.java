@@ -40,7 +40,7 @@ public class FileUtils {
 
     /**
      * 创建目录
-     * @param directory
+     * param directory
      */
     public static void createDirectory(String directory){
         File dir = new File(directory);
@@ -50,9 +50,9 @@ public class FileUtils {
     }
 
     /**
-     * @param context
-     * @param uri
-     * @return 获取图片的真是路径
+     * param context
+     * param uri
+     * return 获取图片的真是路径
      */
     public static String getRealFilePath( final Context context, final Uri uri ) {
         if ( null == uri ) return null;
@@ -80,8 +80,8 @@ public class FileUtils {
 
     /**
      * 本地(SD卡)图片转换成Bitmap
-     * @param filePath
-     * @return
+     * param filePath
+     * return
      */
     public static Bitmap getDiskBitmap(String filePath)
     {
@@ -102,9 +102,9 @@ public class FileUtils {
 
     /**
      * 根据sd卡路径得到压缩图片
-     * @param activity
-     * @param filePath
-     * @return Bitmap
+     * param activity
+     * param filePath
+     * return Bitmap
      */
     public static Bitmap getSmallBitmap(Activity activity,String filePath){
         final BitmapFactory.Options options = new BitmapFactory.Options();
@@ -129,8 +129,8 @@ public class FileUtils {
 
     /**
      * 根据sd卡路径得到压缩图片
-     * @param filePath
-     * @return File
+     * param filePath
+     * return File
      */
     public static File getSmallFile(Activity context,String filePath) {
 
@@ -199,9 +199,9 @@ public class FileUtils {
     }
     /**
      * 图片旋转
-     * @param bitmap
-     * @param rotate
-     * @return
+     * param bitmap
+     * param rotate
+     * return
      */
     private static Bitmap rotateBitmap(Bitmap bitmap, int rotate){
         if(bitmap == null)
@@ -218,10 +218,10 @@ public class FileUtils {
 
     /**
      * 在同比例计算
-     * @param options
-     * @param reqWidth
-     * @param reqHeight
-     * @return
+     * param options
+     * param reqWidth
+     * param reqHeight
+     * return
      */
     private static int calculateInSampleSize(BitmapFactory.Options options,
                                              int reqWidth, int reqHeight) {
@@ -242,10 +242,10 @@ public class FileUtils {
 
     /**
      * 将资源文件复制到sd卡
-     * @param targetFileName
-     * @param targetPath
-     * @param sourceId
-     * @param context
+     * param targetFileName
+     * param targetPath
+     * param sourceId
+     * param context
      */
     public static void copyDdFile(String targetFileName, String targetPath, int sourceId,Context context) {
         try {
@@ -272,8 +272,8 @@ public class FileUtils {
     /**
      * 把内容写入文件
      *
-     * @param filePath
-     * @param fileContent
+     * param filePath
+     * param fileContent
      */
     public static void write(String filePath, String fileContent) {
 
@@ -291,10 +291,10 @@ public class FileUtils {
 
     /**
      * 重置文件名称，避免文件过大
-     * @param directory 文件目录 E:\\test\\
-     * @param fileName 文件名称 user.txt
-     * @param fileSize 每个文件存在字节大小
-     * @return
+     * param directory 文件目录 E:\\test\\
+     * param fileName 文件名称 user.txt
+     * param fileSize 每个文件存在字节大小
+     * return
      */
     public static String resetFileName(String directory,String fileName,int fileSize){
         File file = new File(directory+fileName);
@@ -310,9 +310,9 @@ public class FileUtils {
 
     /**
      * 把内容以UTF-8编码叠加写入文件
-     * @param directory E:\\test\\
-     * @param fileName user.txt
-     * @param fileContent 测试
+     * param directory E:\\test\\
+     * param fileName user.txt
+     * param fileContent 测试
      */
     public static void writeAppend(String directory,String fileName, String fileContent) {
         File dir = new File(directory);
@@ -344,11 +344,11 @@ public class FileUtils {
 
     /**
      * 按指定大小压缩图片
-     * @param bitmap
-     * @param width
-     * @param height
-     * @param fileSize 文件压缩大小(kb)
-     * @return
+     * param bitmap
+     * param width
+     * param height
+     * param fileSize 文件压缩大小(kb)
+     * return
      */
     public static Bitmap compressImage(Bitmap bitmap, int width, int height,int fileSize){
         int w = bitmap.getWidth();
@@ -366,9 +366,9 @@ public class FileUtils {
 
     /**
      * 图片压缩:质量压缩方法
-     * @param image
-     * @param fileSize 文件压缩大小(kb)
-     * @return
+     * param image
+     * param fileSize 文件压缩大小(kb)
+     * return
      */
     public static Bitmap compressImage(Bitmap image,int fileSize) {
         try {
@@ -395,9 +395,19 @@ public class FileUtils {
     }
 
     /**
+     * 删除文件或者目录
+     * param path
+     */
+    public static void delete(String path){
+        File file = new File(path);
+        if(!file.exists())return;
+        file.delete();
+    }
+
+    /**
      * 删除日志
-     * @param file 文件目录
-     * @param days 保留天数 7
+     * param file 文件目录
+     * param days 保留天数 7
      */
     public static void deleteLog(File file,int days){
         try{
@@ -446,8 +456,8 @@ public class FileUtils {
 
     /**
      * 将文本写入文件
-     * @param _fileName 存储文件名
-     * @param _fileContent 存储内容
+     * param _fileName 存储文件名
+     * param _fileContent 存储内容
      */
     public static void log(String _fileName, String _fileContent){
         LogThread logThread = new LogThread(_fileName, _fileContent);

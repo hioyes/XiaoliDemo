@@ -21,9 +21,9 @@ public abstract class C {
 
     /**
      * app初始化参数
-     * @param packageName 包
-     * @param root_catalog 存储根目录
-     * @param allowWriteLog 是否开启记录日志
+     * param packageName 包
+     * param root_catalog 存储根目录
+     * param allowWriteLog 是否开启记录日志
      */
     public static void init(String packageName,String root_catalog,boolean allowWriteLog){
         PACKAGE_NAME = packageName;

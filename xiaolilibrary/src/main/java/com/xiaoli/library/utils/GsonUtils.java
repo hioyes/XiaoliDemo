@@ -17,7 +17,7 @@ public class GsonUtils {
 
     /**
      *获取Gson对象
-     * @return
+     * return
      */
     public Gson getInstance() {
         if (gson == null) gson = new Gson();
@@ -26,10 +26,10 @@ public class GsonUtils {
 
     /**
      * 返回一个对象
-     * @param json
-     * @param clazz
-     * @param <T>
-     * @return
+     * param json
+     * param clazz
+     * param <T>
+     * return
      */
     public static <T> T toObject(String json, Class clazz) {
         try {
@@ -42,10 +42,10 @@ public class GsonUtils {
 
     /**
      * 返回一个对象
-     * @param json
-     * @param type
-     * @param <T>
-     * @return
+     * param json
+     * param type
+     * param <T>
+     * return
      */
     public static <T> T toObject(String json,Type type){
         try {
@@ -59,8 +59,8 @@ public class GsonUtils {
     /**
      * 将Map参数转成json格式传输
      *
-     * @param map
-     * @return
+     * param map
+     * return
      */
     public static String toJson(Map map) {
         return new GsonUtils().getInstance().toJson(map);
@@ -70,9 +70,9 @@ public class GsonUtils {
      * 把json字符串变成集合
      * params: new TypeToken<List<yourbean>>(){}.getType(),
      *
-     * @param json
-     * @param type  new TypeToken<List<yourbean>>(){}.getType()
-     * @return
+     * param json
+     * param type  new TypeToken<List<yourbean>>(){}.getType()
+     * return
      */
     public static List<?> toList(String json, Type type) {
         Gson gson = new Gson();
@@ -83,8 +83,8 @@ public class GsonUtils {
 
     /**
      * 将Object转成Json
-     * @param obj
-     * @return
+     * param obj
+     * return
      */
     public static String toJson(Object obj){
         Gson gson = new Gson();

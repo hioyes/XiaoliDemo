@@ -34,8 +34,8 @@ public class SharedPreferencesUtils {
 
     /**
      * 保存字符串
-     * @param key 要保存的名称
-     * @param value 保存的值
+     * param key 要保存的名称
+     * param value 保存的值
      */
     public void saveString(String key,String value){
         saveEditor.putString(key,value).commit();
@@ -43,16 +43,16 @@ public class SharedPreferencesUtils {
 
     /**
      * 保存Boolean值
-     * @param key 要保存的名称
-     * @param value 保存的值
+     * param key 要保存的名称
+     * param value 保存的值
      */
     public void saveBoolean(String key,boolean value){
         saveEditor.putBoolean(key,value).commit();
     }
     /**
      * 保存int值
-     * @param key 要保存的名称
-     * @param value 保存的值
+     * param key 要保存的名称
+     * param value 保存的值
      */
     public void saveInteger(String key,int value){
         saveEditor.putInt(key,value).commit();
@@ -60,18 +60,18 @@ public class SharedPreferencesUtils {
 
     /**
      * 获取int值
-     * @param key 名称
-     * @param defValue 默认值
-     * @return
+     * param key 名称
+     * param defValue 默认值
+     * return
      */
     public int getInteger(String key,int defValue){
         return saveInfo.getInt(key, defValue);
     }
     /**
      * 获取Boolean值
-     * @param key 名称
-     * @param defValue 默认值
-     * @return
+     * param key 名称
+     * param defValue 默认值
+     * return
      */
     public boolean getBoolean(String key,boolean defValue){
         return saveInfo.getBoolean(key, defValue);
@@ -79,9 +79,9 @@ public class SharedPreferencesUtils {
 
     /**
      * 获取字符串
-     * @param key 名称
-     * @param defValue 默认值
-     * @return
+     * param key 名称
+     * param defValue 默认值
+     * return
      */
     public String getString(String key,String defValue){
         return saveInfo.getString(key, defValue);
@@ -89,7 +89,7 @@ public class SharedPreferencesUtils {
 
     /**
      * 删除
-     * @param key
+     * param key
      */
     public void delete(String key){
         saveEditor.remove(key).commit();

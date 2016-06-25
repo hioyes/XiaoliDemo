@@ -69,11 +69,17 @@ public abstract class BaseActivity extends Activity implements CommonHandler.Han
      */
     protected abstract void initData();
 
+    /**
+     * 在setContentView之前执行
+     */
+    protected void viewBefore(){}
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         C.mCurrentActivity = this;
+        viewBefore();
         setContentView(getLayoutResId());
         initView();
         initListener();

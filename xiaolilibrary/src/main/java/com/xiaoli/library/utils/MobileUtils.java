@@ -39,9 +39,9 @@ public class MobileUtils {
 
 	/**
 	 * 调用系统界面，给指定的号码拨打电话
-	 * @param activity
-	 * @param number 电话号码
-     * @return 0为成功，1 没有拨打电话的权限
+	 * param activity
+	 * param number 电话号码
+     * return 0为成功，1 没有拨打电话的权限
      */
 	public static int call(Activity activity, String number) {
 		Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number));
@@ -57,7 +57,7 @@ public class MobileUtils {
 
 	/**
 	 * 获取系统版本号
-	 * @return
+	 * return
      */
 	public static int getSystemVersionCode() {
 		try {
@@ -70,7 +70,7 @@ public class MobileUtils {
 
 	/**
 	 * 处理6.0系统-照片，媒体，文件访问权限
-	 * @param activity
+	 * param activity
      */
 	public static void processFileAndAlbumPermission(Activity activity){
 		int hasWriteContactsPermission = ContextCompat.checkSelfPermission(C.mCurrentActivity.getApplication(), Manifest.permission.WRITE_EXTERNAL_STORAGE);

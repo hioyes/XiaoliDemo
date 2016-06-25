@@ -13,8 +13,8 @@ public class StringUtils {
     /**
      * 如果为null返回空字符串，适用于文本显示的处理
      *
-     * @param str
-     * @return
+     * param str
+     * return
      */
     public static String toString(String str) {
         if (str == null) return "";
@@ -24,8 +24,8 @@ public class StringUtils {
     /**
      * 验证字符串是否为空
      *
-     * @param str
-     * @return
+     * param str
+     * return
      */
     public static boolean isEmpty(String str) {
         if (null == str || "".equals(str)) {
@@ -38,8 +38,8 @@ public class StringUtils {
     /**
      * 字符串转成浮点，错误值返回0
      *
-     * @param str
-     * @return
+     * param str
+     * return
      */
     public static double todouble(String str) {
         if (str == null || "".equals(str)) return 0;
@@ -54,8 +54,8 @@ public class StringUtils {
     /**
      * 字符串转成浮点，错误值返回Null
      *
-     * @param str
-     * @return
+     * param str
+     * return
      */
     public static Double toDouble(String str) {
         if (str == null || "".equals(str)) return null;
@@ -70,8 +70,8 @@ public class StringUtils {
     /**
      * 字符串转成Integer,非数字返回Null
      *
-     * @param str
-     * @return
+     * param str
+     * return
      */
     public static Integer toInteger(String str) {
         if (str == null || "".equals(str)) return null;
@@ -86,8 +86,8 @@ public class StringUtils {
     /**
      * 字符串转成Long,非数字返回Null
      *
-     * @param str
-     * @return
+     * param str
+     * return
      */
     public static Long toLong(String str) {
         if (str == null || "".equals(str)) return null;
@@ -101,8 +101,8 @@ public class StringUtils {
 
 
     /**
-     * @param str 参数string
-     * @return 验证是否为空后的字符串
+     * param str 参数string
+     * return 验证是否为空后的字符串
      */
     public static String getString(String str) {
         return !isEmpty(str) ? str : "";
@@ -111,8 +111,8 @@ public class StringUtils {
     /**
      * 判断 字符串首字符 是否为 字母
      *
-     * @param fstrData
-     * @return
+     * param fstrData
+     * return
      */
     public static boolean checkIsLetter(String fstrData) {
         if (isEmpty(fstrData)) return false;
@@ -127,9 +127,9 @@ public class StringUtils {
     /**
      * 改变 字符串的编码格式
      *
-     * @param data
-     * @param charset
-     * @return
+     * param data
+     * param charset
+     * return
      */
     public static String changeCharset(final byte[] data, final String charset) {
         try {

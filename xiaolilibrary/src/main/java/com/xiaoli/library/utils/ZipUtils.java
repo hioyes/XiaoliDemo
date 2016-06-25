@@ -22,9 +22,9 @@ public class ZipUtils {
 
     /**
      * 解压zip文件
-     * @param zipFilePath  文件路径 /storage/emulated/0/zip/my.zip
-     * @param outFileDirectory  解压输出目录 /storage/emulated/0/upzip/
-     * @throws Exception
+     * param zipFilePath  文件路径 /storage/emulated/0/zip/my.zip
+     * param outFileDirectory  解压输出目录 /storage/emulated/0/upzip/
+     * throws Exception
      */
     public static void UnZipFolder(String zipFilePath, String outFileDirectory) throws Exception {
         ZipInputStream inZip = new ZipInputStream(new FileInputStream(zipFilePath));
@@ -59,9 +59,9 @@ public class ZipUtils {
 
     /**
      * 将文件夹添加到压缩文件中
-     * @param srcFileDirectory   需要压缩的文件目录 /storage/emulated/0/my/
-     * @param zipFilePath   压缩文件输出路径 /storage/emulated/0/zip/my.zip
-     * @throws Exception
+     * param srcFileDirectory   需要压缩的文件目录 /storage/emulated/0/my/
+     * param zipFilePath   压缩文件输出路径 /storage/emulated/0/zip/my.zip
+     * throws Exception
      */
     public static void ZipFolder(String srcFileDirectory, String zipFilePath)throws Exception {
         //create ZIP
@@ -77,10 +77,10 @@ public class ZipUtils {
 
     /**
      * 压缩文件
-     * @param folderDirectory 需要压缩的目录
-     * @param fileName
-     * @param zipOutputSteam 压缩输出流
-     * @throws Exception
+     * param folderDirectory 需要压缩的目录
+     * param fileName
+     * param zipOutputSteam 压缩输出流
+     * throws Exception
      */
     private static void ZipFiles(String folderDirectory, String fileName, ZipOutputStream zipOutputSteam)throws Exception{
         if(zipOutputSteam == null)
@@ -114,11 +114,11 @@ public class ZipUtils {
 
     /**
      * 返回zip包中的文件或文件夹列表
-     * @param zipFilePath     需要解析的zip文件 /storage/emulated/0/zip/my.zip
-     * @param containFolder    是否包含文件夹
-     * @param containFile      是否包含文件
-     * @return
-     * @throws Exception
+     * param zipFilePath     需要解析的zip文件 /storage/emulated/0/zip/my.zip
+     * param containFolder    是否包含文件夹
+     * param containFile      是否包含文件
+     * return
+     * throws Exception
      */
     public static List<File> GetFileList(String zipFilePath, boolean containFolder, boolean containFile)throws Exception {
         List<File> fileList = new ArrayList<File>();

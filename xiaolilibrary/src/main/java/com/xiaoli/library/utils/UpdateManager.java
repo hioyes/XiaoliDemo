@@ -92,9 +92,9 @@ public class UpdateManager {
     /**
      * 显示更新对话框
      *
-     * @param title 标题
-     * @param msg   内容
-     * @param url   更新地址 包括文件名
+     * param title 标题
+     * param msg   内容
+     * param url   更新地址 包括文件名
      */
     public void showUpdataDialog(String title, String msg, final String url) {
         View view = View.inflate(context, C.DLG_UPDATE, null);
@@ -143,7 +143,7 @@ public class UpdateManager {
     /**
      * 下载文件
      *
-     * @param fileUrl
+     * param fileUrl
      */
     void downFile(final String fileUrl) {
         if (!InternetUtils.checkNet(context)) {
