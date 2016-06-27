@@ -13,6 +13,7 @@ import com.xiaolidemo.R;
 import com.xiaolidemo.model.Branch;
 import com.xiaolidemo.model.Test;
 import com.xiaolidemo.services.BranchService;
+import com.xiaolidemo.services.JMOptionService;
 import com.xiaolidemo.services.TestService;
 
 import java.io.File;
@@ -23,6 +24,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * demo
@@ -56,7 +58,9 @@ public class DemoActivity extends BaseActivity {
 
         Log.e(TAG,Environment.getExternalStorageDirectory().toString());
 
-        writeDb();
+//        writeDb();
+
+        JMOptionService.getInstance(this).list(mHandler,12335);
 
 
 
@@ -172,6 +176,11 @@ public class DemoActivity extends BaseActivity {
             case 12334:
 //                PromptUtils.showToast(msg.obj.toString());
                 mTvDemo.setText(mTvDemo.getText()+"\r\n"+msg.obj.toString());
+                break;
+            case 12335:
+                if(msg.obj!=null){
+                    mTvDemo.setText(mTvDemo.getText()+"\r\n"+msg.obj.toString());
+                }
                 break;
         }
     }

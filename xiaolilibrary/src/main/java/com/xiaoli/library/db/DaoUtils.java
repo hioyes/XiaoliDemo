@@ -168,6 +168,9 @@ public class DaoUtils {
      */
     @SuppressWarnings("rawtypes")
     public static <T> T cursorToVo(Cursor c, Class clazz) {
+        if(clazz.toString().startsWith(Map.class.toString())){
+            return cursorToMap(c);
+        }
         Object obj = null;
         String[] columnNames = c.getColumnNames();// 字段数组
         try {
@@ -211,6 +214,14 @@ public class DaoUtils {
             e.printStackTrace();
         }
         return (T) obj;
+    }
+
+    public static <T> T cursorToMap(Cursor c) {
+        Map map = new HashMap();
+        for (int i=0;i<c.getColumnCount();i++){
+            map.put(c.getColumnName(i),c.getString(i));
+        }
+        return (T) map;
     }
 
     /**
