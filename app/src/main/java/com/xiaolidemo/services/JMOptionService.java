@@ -40,22 +40,24 @@ public class JMOptionService extends CarModelService{
     }
 
     public void list(final Handler handler,final int taskid){
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                List<Map> list = list();
-                List<Map> list2 = list2();
-                list.addAll(list2);
-                Message message = handler.obtainMessage();
-                message.obj = list;
-                message.what = taskid;
-                handler.sendMessage(message);
-            }
-        };
-        Thread thread = new Thread(runnable);
-        thread.setName(UUID.randomUUID().toString());
-        thread.start();
-        ThreadPoolUtils.addMyThread(C.mCurrentActivity,thread);
+//        Runnable runnable = new Runnable() {
+//            @Override
+//            public void run() {
+//                List<Map> list = list();
+//                List<Map> list2 = list2();
+//                list.addAll(list2);
+//                Message message = handler.obtainMessage();
+//                message.obj = list;
+//                message.what = taskid;
+//                handler.sendMessage(message);
+//            }
+//        };
+//        Thread thread = new Thread(runnable);
+//        thread.setName(UUID.randomUUID().toString());
+//        thread.start();
+//        ThreadPoolUtils.addMyThread(C.mCurrentActivity,thread);
+
+        dbHelper.queryForList("select * from JM_Option ",Map.class,handler,taskid);
     }
 
     private List<Map> list(){

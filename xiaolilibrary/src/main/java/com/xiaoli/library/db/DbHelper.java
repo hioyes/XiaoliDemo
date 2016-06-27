@@ -4,12 +4,18 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
+
+import com.xiaoli.library.C;
+import com.xiaoli.library.utils.ThreadPoolUtils;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * sqllite操作基类
@@ -29,9 +35,9 @@ public class DbHelper<T> {
 
     /**
      * 构建db工具类
-     * @param context
-     * @param dbPath 数据库保存目录,必须斜杠结尾
-     * @param dbName 数据库名称
+     * param context
+     * param dbPath 数据库保存目录,必须斜杠结尾
+     * param dbName 数据库名称
      */
     public DbHelper(Context context,String dbPath,String dbName){
         sqliteHelper = new SqliteHelper(context,dbPath,dbName);
@@ -41,8 +47,8 @@ public class DbHelper<T> {
     /**
      * 插入表记录(单条)
      *
-     * @param table  表名称
-     * @param fields 字段键值对
+     * param table  表名称
+     * param fields 字段键值对
      */
     public void insert(String table, Map fields) {
         String sql = "";
@@ -76,8 +82,8 @@ public class DbHelper<T> {
     /**
      * 插入表记录
      *
-     * @param table 表名称
-     * @param vo    值对象
+     * param table 表名称
+     * param vo    值对象
      */
     public void insert(String table, T vo) {
         this.insert(table, DaoUtils.voToMap(vo));
@@ -86,8 +92,8 @@ public class DbHelper<T> {
     /**
      * 插入表记录(单条),并返回主键id
      *
-     * @param table
-     * @param fields
+     * param table
+     * param fields
      * @return 主键id 失败为-1
      */
     public long insertRecord(String table, Map fields) {
@@ -108,8 +114,8 @@ public class DbHelper<T> {
     /**
      * 插入表记录(单条),并返回主键id
      *
-     * @param table
-     * @param vo
+     * param table
+     * param vo
      * @return 主键id, 失败为-1
      */
     public long insertRecord(String table, T vo) {
@@ -120,9 +126,9 @@ public class DbHelper<T> {
     /**
      * 表记录更新
      *
-     * @param table  表名称
-     * @param fields 字段键值对
-     * @param where  更新条件
+     * param table  表名称
+     * param fields 字段键值对
+     * param where  更新条件
      */
     public void update(String table, Map fields, String where) {
         String sql = "";
@@ -154,9 +160,9 @@ public class DbHelper<T> {
     /**
      * 表记录更新
      *
-     * @param table 表名称
-     * @param vo    值对象
-     * @param where 更新条件
+     * param table 表名称
+     * param vo    值对象
+     * param where 更新条件
      */
     public void update(String table, T vo, String where) {
         this.update(table, DaoUtils.voToMap(vo), where);
@@ -165,8 +171,8 @@ public class DbHelper<T> {
     /**
      * 删除表数据
      *
-     * @param table 表名称
-     * @param where 删除条件
+     * param table 表名称
+     * param where 删除条件
      */
     public void delete(String table, String where) {
         db.execSQL("delete from  " + table + " where " + where);
@@ -175,7 +181,7 @@ public class DbHelper<T> {
     /**
      * 执行一个sql语句
      *
-     * @param sql
+     * param sql
      */
     public void execute(String sql) {
         db.execSQL(sql);
@@ -184,8 +190,8 @@ public class DbHelper<T> {
     /**
      * 查询记录总数
      *
-     * @param table
-     * @param where
+     * param table
+     * param where
      */
     public int getTotal(String table, String where) {
         String sql = "select count(0) as count from " + table;
@@ -206,9 +212,32 @@ public class DbHelper<T> {
     }
 
     /**
-     * 查询一个一行表记录
+     * 异步查询记录总数
+     * param sql
+     * param clazz
+     * param handler
+     * param taskId
+     */
+    public void getTotal(final String table, final String where, final Handler handler,final int taskId){
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                Message message = handler.obtainMessage();
+                message.obj = getTotal(table,where);
+                message.what = taskId;
+                handler.sendMessage(message);
+            }
+        };
+        Thread thread = new Thread(runnable);
+        thread.setName(UUID.randomUUID().toString());
+        thread.start();
+        ThreadPoolUtils.addMyThread(C.mCurrentActivity,thread);
+    }
+
+    /**
+     * 返回一个对象
      *
-     * @param sql
+     * param sql
      * @return
      */
     public T queryForObject(String sql, Class clazz) {
@@ -227,6 +256,35 @@ public class DbHelper<T> {
         return null;
     }
 
+    /**
+     * 异步查询 返回一个对象
+     * param sql
+     * param clazz
+     * param handler
+     * param taskId
+     */
+    public void queryForObject(final String sql, final Class clazz, final Handler handler,final int taskId){
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                Message message = handler.obtainMessage();
+                message.obj = queryForObject(sql,clazz);
+                message.what = taskId;
+                handler.sendMessage(message);
+            }
+        };
+        Thread thread = new Thread(runnable);
+        thread.setName(UUID.randomUUID().toString());
+        thread.start();
+        ThreadPoolUtils.addMyThread(C.mCurrentActivity,thread);
+    }
+
+    /**
+     * 查询返回list集合
+     * param sql
+     * param clazz
+     * @return
+     */
     public List<T> queryForList(String sql, Class clazz) {
         List<T> list = new ArrayList<T>();
         Log.e("queryForList->", sql);
@@ -242,5 +300,28 @@ public class DbHelper<T> {
             c.close();
         }
         return list;
+    }
+
+    /**
+     * 异步查询 返回list集合
+     * param sql
+     * param clazz
+     * param handler
+     * param taskId
+     */
+    public void queryForList(final String sql, final Class clazz, final Handler handler,final int taskId){
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                Message message = handler.obtainMessage();
+                message.obj = queryForList(sql,clazz);
+                message.what = taskId;
+                handler.sendMessage(message);
+            }
+        };
+        Thread thread = new Thread(runnable);
+        thread.setName(UUID.randomUUID().toString());
+        thread.start();
+        ThreadPoolUtils.addMyThread(C.mCurrentActivity,thread);
     }
 }
