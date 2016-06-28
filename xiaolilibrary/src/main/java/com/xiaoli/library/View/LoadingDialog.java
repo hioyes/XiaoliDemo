@@ -36,7 +36,9 @@ public class LoadingDialog extends ProgressDialog {
             mLoadingDialog = new LoadingDialog(context,isCancel);
         }
         if (mLoadingDialog.isShowing() == false) {
-            mLoadingDialog.show();
+            try{
+                mLoadingDialog.show();
+            }catch (Exception e){}
         }
     }
 
@@ -45,7 +47,9 @@ public class LoadingDialog extends ProgressDialog {
      */
     public synchronized static void closeDialog(){
         if (mLoadingDialog!=null && mLoadingDialog.isShowing()) {
-            mLoadingDialog.dismiss();
+            try{
+                mLoadingDialog.dismiss();
+            }catch (Exception e){}
         }
     }
 
