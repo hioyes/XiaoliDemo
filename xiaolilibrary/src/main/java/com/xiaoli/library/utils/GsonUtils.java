@@ -8,15 +8,15 @@ import java.util.Map;
 
 /**
  * Google旗下的Json与Java映射工具类
- *  xiaokx
- *  hioyes@qq.com
- *  2014-11-6
+ * xiaokx
+ * hioyes@qq.com
+ * 2014-11-6
  */
 public class GsonUtils {
     private static Gson gson = null;
 
     /**
-     *获取Gson对象
+     * 获取Gson对象
      * return
      */
     public Gson getInstance() {
@@ -47,7 +47,7 @@ public class GsonUtils {
      * param <T>
      * return
      */
-    public static <T> T toObject(String json,Type type){
+    public static <T> T toObject(String json, Type type) {
         try {
             return (T) new GsonUtils().getInstance().fromJson(json, type);
         } catch (Exception e) {
@@ -58,7 +58,7 @@ public class GsonUtils {
 
     /**
      * 将Map参数转成json格式传输
-     *
+     * <p>
      * param map
      * return
      */
@@ -69,15 +69,20 @@ public class GsonUtils {
     /**
      * 把json字符串变成集合
      * params: new TypeToken<List<yourbean>>(){}.getType(),
-     *
+     * <p>
      * param json
      * param type  new TypeToken<List<yourbean>>(){}.getType()
      * return
      */
     public static List<?> toList(String json, Type type) {
-        Gson gson = new Gson();
-        List<?> list = gson.fromJson(json, type);
-        return list;
+        try {
+            Gson gson = new Gson();
+            List<?> list = gson.fromJson(json, type);
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 
@@ -86,8 +91,8 @@ public class GsonUtils {
      * param obj
      * return
      */
-    public static String toJson(Object obj){
+    public static String toJson(Object obj) {
         Gson gson = new Gson();
-      return   gson.toJson(obj);
+        return gson.toJson(obj);
     }
 }
