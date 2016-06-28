@@ -73,14 +73,30 @@ public class StringUtils {
      * param str
      * return
      */
-    public static Integer toInteger(String str) {
+    public static Integer toInteger(Object str) {
         if (str == null || "".equals(str)) return null;
         try {
-            return Integer.valueOf(str);
+            return Integer.valueOf(str.toString());
         } catch (Exception e) {
             // TODO: handle exception
         }
         return null;
+    }
+
+    /**
+     * 字符串转成Integer,非数字返回0
+     *
+     * param str
+     * return
+     */
+    public static int toInt(Object str){
+        if (str == null || "".equals(str)) return 0;
+        try {
+            return Integer.valueOf(str.toString());
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        return 0;
     }
 
     /**
