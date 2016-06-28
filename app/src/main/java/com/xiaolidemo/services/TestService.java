@@ -43,6 +43,11 @@ public class TestService extends DetectService {
         dbHelper.insert("carInfo",test);
     }
 
+    public void update(Test test){
+        test.setVin(test.getVin()+"_update");
+        dbHelper.update("carInfo",test,"id="+test.getId());
+    }
+
     /**
      * 获取一个列表
      * @return

@@ -7,6 +7,7 @@ package com.xiaolidemo.model;
  * 2016-6-22
  */
 public class Test {
+    private int id;
     private int carId;
 
     public int getCarId() {
@@ -27,7 +28,11 @@ public class Test {
 
     private String vin;
 
+    public int getId() {
+        return id;
+    }
 
-
-
+    public void setId(int id) {
+        this.id = id;
+    }
 }

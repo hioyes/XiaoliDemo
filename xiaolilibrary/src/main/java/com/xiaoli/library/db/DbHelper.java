@@ -52,6 +52,7 @@ public class DbHelper<T> {
      */
     public void insert(String table, Map fields) {
         String sql = "";
+        fields.remove("id");
 
         try {
             table = DaoUtils.quoteCol(table);

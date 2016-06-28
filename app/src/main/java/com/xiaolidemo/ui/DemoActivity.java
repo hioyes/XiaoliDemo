@@ -58,9 +58,9 @@ public class DemoActivity extends BaseActivity {
 
         Log.e(TAG,Environment.getExternalStorageDirectory().toString());
 
-//        writeDb();
+        writeDb();
 
-        JMOptionService.getInstance(this).list(mHandler,12335);
+//        JMOptionService.getInstance(this).list(mHandler,12335);
 
 
 
@@ -73,8 +73,9 @@ public class DemoActivity extends BaseActivity {
         List<Test> list = TestService.getInstance(this).list();
         String str = "";
         for (Test test1 : list){
-            str += test1.getVin();
+            str += test1.getVin()+"\t\t\t"+test1.getId();
             str += "\r\n";
+            TestService.getInstance(this).update(test1);
         }
         Message message = mHandler.obtainMessage();
         message.what = 12333;
