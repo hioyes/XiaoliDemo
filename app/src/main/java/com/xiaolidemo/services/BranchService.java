@@ -1,6 +1,7 @@
 package com.xiaolidemo.services;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.xiaolidemo.model.Branch;
 
@@ -43,7 +44,17 @@ public class BranchService extends CarModelService{
      */
     public List<Branch> list(){
         List<Branch> list = dbHelper.queryForList("select * from Branch",Branch.class);
+        add();
         return list;
+    }
+
+    public void add(){
+        Branch branch = new Branch();
+        branch.setBranchCode("33333sa");
+        branch.setBranchID(334);
+        branch.setBranchName("dddd");
+        int id = dbHelper.insert("Branch",branch);
+        Log.e("idd",id+"---Branch");
     }
 
 }

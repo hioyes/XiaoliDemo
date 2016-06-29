@@ -1,6 +1,7 @@
 package com.xiaolidemo.services;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.xiaolidemo.model.Test;
 
@@ -40,7 +41,10 @@ public class TestService extends DetectService {
      * @param test
      */
     public void insert(Test test){
-        dbHelper.insert("carInfo",test);
+//        dbHelper.insert("carInfo",test);
+
+       int id =  dbHelper.insert("carInfo",test);
+        Log.e("idd",id+"---0000000000000000000000000");
     }
 
     public void update(Test test){

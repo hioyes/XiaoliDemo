@@ -50,7 +50,7 @@ public class DbHelper<T> {
      * param table  表名称
      * param fields 字段键值对
      */
-    public void insert(String table, Map fields) {
+    public int insert(String table, Map fields) {
         String sql = "";
         fields.remove("id");
 
@@ -73,10 +73,16 @@ public class DbHelper<T> {
                     + DaoUtils.implodeValue(", ", values) + ");";
             Log.e("sql->", sql);
             db.execSQL(sql);
+
+            Cursor c = db.rawQuery("select LAST_INSERT_ROWID() as id",null);
+            if (c.moveToNext()) {
+                return c.getInt(c.getColumnIndex("id"));
+            }
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException("插入表数据错误：" + sql);
         }
+        return 0;
     }
 
 
@@ -86,16 +92,16 @@ public class DbHelper<T> {
      * param table 表名称
      * param vo    值对象
      */
-    public void insert(String table, T vo) {
-        this.insert(table, DaoUtils.voToMap(vo));
+    public int insert(String table, T vo) {
+       return this.insert(table, DaoUtils.voToMap(vo));
     }
 
     /**
-     * 插入表记录(单条),并返回主键id
+     * 插入表记录(单条),返回影响记录行数
      *
      * param table
      * param fields
-     * @return 主键id 失败为-1
+     * @return  失败为-1
      */
     public long insertRecord(String table, Map fields) {
         ContentValues cv = new ContentValues();
@@ -113,11 +119,11 @@ public class DbHelper<T> {
     }
 
     /**
-     * 插入表记录(单条),并返回主键id
+     * 插入表记录(单条),返回影响记录行数
      *
      * param table
      * param vo
-     * @return 主键id, 失败为-1
+     * @return 失败为-1
      */
     public long insertRecord(String table, T vo) {
         Map fields = DaoUtils.voToMap(vo);

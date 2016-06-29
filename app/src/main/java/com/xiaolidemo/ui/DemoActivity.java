@@ -61,7 +61,7 @@ public class DemoActivity extends BaseActivity {
 
         Log.e(TAG,Environment.getExternalStorageDirectory().toString());
 
-//        writeDb();
+        writeDb();
 
 //        JMOptionService.getInstance(this).list(mHandler,12335);
 
