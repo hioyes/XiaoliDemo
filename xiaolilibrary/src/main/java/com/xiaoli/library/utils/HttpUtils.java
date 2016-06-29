@@ -311,6 +311,8 @@ public class HttpUtils {
                     while ((ch = in.read()) != -1) {
                         sb2.append((char) ch);
                     }
+                }else{
+                    System.out.println("服务器返回错误码："+res);
                 }
                 outStream.close();
                 conn.disconnect();
@@ -339,7 +341,8 @@ public class HttpUtils {
         }
         String result = null;
         try {
-            result = StringUtils.changeCharset(sb2.toString().getBytes("ISO8859-1"), "UTF-8");
+            if(sb2!=null && !sb2.equals(""))
+                result = StringUtils.changeCharset(sb2.toString().getBytes("ISO8859-1"), "UTF-8");
         } catch (Exception e) {
             e.printStackTrace();
         }

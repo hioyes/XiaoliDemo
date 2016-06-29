@@ -7,6 +7,8 @@ import android.widget.TextView;
 
 import com.xiaoli.library.ui.BaseActivity;
 import com.xiaoli.library.utils.FileUtils;
+import com.xiaoli.library.utils.GsonUtils;
+import com.xiaoli.library.utils.HttpUtils;
 import com.xiaoli.library.utils.PromptUtils;
 import com.xiaoli.library.utils.ZipUtils;
 import com.xiaolidemo.R;
@@ -23,6 +25,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -58,11 +61,40 @@ public class DemoActivity extends BaseActivity {
 
         Log.e(TAG,Environment.getExternalStorageDirectory().toString());
 
-        writeDb();
+//        writeDb();
 
 //        JMOptionService.getInstance(this).list(mHandler,12335);
 
 
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                testUploadImg();
+            }
+        }).start();
+
+
+    }
+
+    /**
+     * 测试图片提交
+     */
+    private void  testUploadImg(){
+        String imgUrl = "/storage/emulated/0/lebrowser/homeicon/1639853567_342188932.jpg";
+        imgUrl = "/storage/emulated/0/DCIM/Camera/IMG_20160629_140029.jpg";
+        String filename = imgUrl.substring(imgUrl.lastIndexOf("/")+1,imgUrl.length());
+        System.out.println(filename);
+        String url = "http://192.168.5.61:8018/api/Vehicle/UpLoadImg/123/2/1639853567_342188932.jpg/1";
+        Map params = new HashMap();
+        params.put("sessionKey","123");
+        params.put("carId","2");
+        params.put("filename","1639853567_342188932.jpg");
+        params.put("photoTypeId","1");
+
+        Map<String, File> files = new HashMap<>();
+        files.put("fn",new File(imgUrl));
+        String result = HttpUtils.postImg(url,params,files);
+        Log.e(TAG,result==null?"上传图片返回空结果":"上传图片提交结果："+result);
 
     }
 
