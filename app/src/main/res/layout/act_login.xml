@@ -39,13 +39,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@null"
-            android:hint="@string/loginUserHint"
+            android:hint="@string/login_user_hint"
             android:maxLength="11"
             android:paddingRight="10dp"
             android:singleLine="true"
-            android:text=""
-            android:textColor="@color/loginEdColor"
-            android:textColorHint="@color/loginEtHintColor"
+            android:text="arvin"
+            android:textColor="@color/login_color"
+            android:textColorHint="@color/login_color_hint"
             android:textSize="15dp" />
 
 
@@ -87,13 +87,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@null"
-            android:hint="@string/loginPwdHint"
+            android:hint="@string/login_pwd_hint"
             android:maxLength="20"
             android:password="true"
             android:singleLine="true"
-            android:text=""
-            android:textColor="@color/loginEdColor"
-            android:textColorHint="@color/loginEtHintColor"
+            android:text="arvin"
+            android:textColor="@color/login_color"
+            android:textColorHint="@color/login_color_hint"
             android:textSize="14dp" />
 
         <ImageButton

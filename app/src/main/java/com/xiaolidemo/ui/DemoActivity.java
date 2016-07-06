@@ -6,34 +6,26 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.xiaoli.library.ui.BaseActivity;
-import com.xiaoli.library.utils.FileUtils;
-import com.xiaoli.library.utils.GsonUtils;
 import com.xiaoli.library.utils.HttpUtils;
 import com.xiaoli.library.utils.PromptUtils;
-import com.xiaoli.library.utils.ZipUtils;
+import com.xiaoli.library.utils.SharedPreferencesUtils;
 import com.xiaolidemo.R;
 import com.xiaolidemo.model.Branch;
 import com.xiaolidemo.model.Test;
 import com.xiaolidemo.services.BranchService;
-import com.xiaolidemo.services.JMOptionService;
 import com.xiaolidemo.services.TestService;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 /**
- * demo
- *
- * @author xiaokx on 2016-5-24 18:10
- * @Email:hioyes@qq.com
+ *  乱七八糟的小例子
+ * xiaokx
+ * hioyes@qq.com
+ * 2016-5-6
  */
 public class DemoActivity extends BaseActivity {
 
@@ -43,7 +35,7 @@ public class DemoActivity extends BaseActivity {
 
     @Override
     protected int getLayoutResId() {
-        return R.layout.demo;
+        return R.layout.act_demo;
     }
 
     @Override
@@ -61,7 +53,7 @@ public class DemoActivity extends BaseActivity {
 
         Log.e(TAG,Environment.getExternalStorageDirectory().toString());
 
-        writeDb();
+//        writeDb();
 
 //        JMOptionService.getInstance(this).list(mHandler,12335);
 
@@ -73,6 +65,9 @@ public class DemoActivity extends BaseActivity {
             }
         }).start();
 
+        int a = SharedPreferencesUtils.getInstance(DemoActivity.this).getInteger("aaaa",0);
+        PromptUtils.showToast("aa="+a);
+
 
     }
 
@@ -80,6 +75,7 @@ public class DemoActivity extends BaseActivity {
      * 测试图片提交
      */
     private void  testUploadImg(){
+        SharedPreferencesUtils.getInstance(DemoActivity.this).saveInteger("aaaa",22);
         String imgUrl = "/storage/emulated/0/lebrowser/homeicon/1639853567_342188932.jpg";
         imgUrl = "/storage/emulated/0/DCIM/Camera/IMG_20160629_140029.jpg";
         String filename = imgUrl.substring(imgUrl.lastIndexOf("/")+1,imgUrl.length());

@@ -1,9 +1,15 @@
 <resources>
     <string name="app_name">萧离</string>
-    <string name="demo">第一个DEMO</string>
+    <string name="demo_label">乱七八糟</string>
+    <!--引导页-->
     <string name="guide_btn_start">开始体验</string>
     <!-- 登录 -->
-    <string name="loginUserHint">请输入用户名</string>
-    <string name="loginPwdHint">请输入密码</string>
+    <string name="login_user_hint">请输入用户名</string>
+    <string name="login_pwd_hint">请输入密码</string>
     <string name="login">登录</string>
+
+    <!--主页-->
+    <string name="main_label">主页</string>
+    <string name="main_subtitle">欢迎来到萧离的代码工厂</string>
+    <string name="main_btn_demo">查看</string>
 </resources>

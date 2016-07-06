@@ -67,12 +67,12 @@ public class LoadingDialog extends ProgressDialog {
      *            对话框是否可以取消 false 触碰屏幕不能取消
      **/
     public LoadingDialog(Context context, boolean cancleable) {
-        super(context, R.style.loading_dialog);
+        super(context, R.style.loadingDialog);
         mCancleable = cancleable;
     }
 
     public LoadingDialog(Context context, boolean cancleable, String message) {
-        super(context,R.style.loading_dialog);
+        super(context,R.style.loadingDialog);
         mCancleable = cancleable;
         this.message = message;
     }

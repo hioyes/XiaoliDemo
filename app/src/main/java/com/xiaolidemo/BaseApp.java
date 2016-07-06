@@ -1,7 +1,6 @@
 package com.xiaolidemo;
 
 import android.app.Application;
-import android.content.Context;
 import android.os.Environment;
 
 import com.xiaoli.library.C;
@@ -9,8 +8,6 @@ import com.xiaoli.library.utils.CrashHandler;
 import com.xiaoli.library.utils.FileUtils;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
 
 /**
  * 应用全局对象
@@ -38,7 +35,7 @@ public class BaseApp extends Application {
             //生产
             C.CHECK_VERSION_URL = "http://app.lubaocar.com/android/analytics/production/version.js";
         }
-        C.DLG_UPDATE = R.layout.update;
+        C.DLG_UPDATE = R.layout.dlg_update;
 
         copyDbFile();
     }

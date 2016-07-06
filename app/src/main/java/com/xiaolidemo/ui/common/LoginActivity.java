@@ -13,15 +13,13 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
-import com.xiaoli.library.View.LoadingDialog;
 import com.xiaoli.library.ui.BaseActivity;
 import com.xiaoli.library.View.ClearEditText;
-import com.xiaoli.library.utils.DateUtils;
-import com.xiaoli.library.utils.FileUtils;
 import com.xiaoli.library.utils.ForwardUtils;
 import com.xiaoli.library.utils.StringUtils;
 import com.xiaolidemo.R;
 import com.xiaolidemo.ui.DemoActivity;
+import com.xiaolidemo.ui.demo.MainActivity;
 
 /**
  * 登陆页面
@@ -49,7 +47,7 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected int getLayoutResId() {
-        return R.layout.login;
+        return R.layout.act_login;
     }
 
     @Override
@@ -124,7 +122,7 @@ public class LoginActivity extends BaseActivity {
                 break;
             case R.id.mBtnLogin:
                 hiddenKeyBoard();
-                ForwardUtils.to(LoginActivity.this, DemoActivity.class);
+                ForwardUtils.to(LoginActivity.this, MainActivity.class);
                 break;
         }
 

@@ -18,18 +18,18 @@ import com.xiaolidemo.R;
  */
 public class SplashActivity extends BaseActivity {
 
-    private RelativeLayout rlSplash;
+    private RelativeLayout mRlSplash;
     //动画集合
     private AnimationSet set;
 
     @Override
     protected int getLayoutResId() {
-        return R.layout.splash;
+        return R.layout.act_splash;
     }
 
     @Override
     protected void initView() {
-        rlSplash = (RelativeLayout)findViewById(R.id.rlSplash);
+        mRlSplash = (RelativeLayout)findViewById(R.id.mRlSplash);
         set = new AnimationSet(true);
         //旋转
         RotateAnimation rotateAnimation = new RotateAnimation(0,360, Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
@@ -74,6 +74,6 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        rlSplash.startAnimation(set);
+        mRlSplash.startAnimation(set);
     }
 }

@@ -32,7 +32,12 @@
 
         <activity
             android:name=".ui.DemoActivity"
-            android:label="@string/demo"
+            android:label="@string/demo_label"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity android:name=".ui.demo.MainActivity"
+            android:label="@string/main_label"
             android:screenOrientation="portrait">
         </activity>
 

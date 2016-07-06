@@ -20,7 +20,7 @@ public class LauncherActivity extends BaseActivity {
 
     @Override
     protected int getLayoutResId() {
-        return R.layout.launcher;
+        return R.layout.act_launcher;
     }
 
     @Override
