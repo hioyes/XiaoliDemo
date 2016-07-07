@@ -4,7 +4,6 @@ package com.xiaoli.library;
 import android.app.Activity;
 import android.os.Environment;
 
-import com.umeng.analytics.MobclickAgent;
 import com.xiaoli.library.utils.ThreadPoolUtils;
 
 import java.lang.reflect.Field;
@@ -32,28 +31,6 @@ public abstract class C {
         ThreadPoolUtils.init();
         WRITE_LOG = allowWriteLog;
     }
-
-    /**
-     * 开启友盟统计功能
-     * UMAnalyticsConfig(Context context, String appkey, String channelId)
-     * UMAnalyticsConfig(Context context, String appkey, String channelId, EScenarioType eType)
-     * UMAnalyticsConfig(Context context, String appkey, String channelId, EScenarioType eType,Boolean isCrashEnable)
-     * 构造意义：
-     * String appkey:官方申请的Appkey
-     * String channel: 渠道号
-     * EScenarioType eType: 场景模式，包含统计、游戏、统计盒子、游戏盒子
-     * Boolean isCrashEnable: 可选初始化. 是否开启crash模式
-     * @param config
-     */
-    public static void openUMAnalytics(MobclickAgent.UMAnalyticsConfig config){
-        MobclickAgent.startWithConfigure(config);
-        UMENG_ANALYTICS_ENABLE = true;
-    }
-
-    /**
-     *友盟统计是否启用
-     */
-    public static boolean UMENG_ANALYTICS_ENABLE = false;
 
     /**
      * 是否开启记录日志

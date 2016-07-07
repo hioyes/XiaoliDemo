@@ -49,7 +49,7 @@
             android:name="com.umeng.message.RegistrationReceiver"
             android:exported="false" >
             <intent-filter>
-                <action android:name="${applicationId}.intent.action.COMMAND" />
+                <action android:name="com.xiaolidemo.intent.action.COMMAND" />
             </intent-filter>
         </receiver>
         <receiver android:name="com.umeng.message.UmengMessageBootReceiver" >
@@ -64,10 +64,10 @@
             android:label="PushService"
             android:process=":push" >
             <intent-filter>
-                <action android:name="${applicationId}.intent.action.START" />
+                <action android:name="com.xiaolidemo.intent.action.START" />
             </intent-filter>
             <intent-filter>
-                <action android:name="${applicationId}.intent.action.COCKROACH" />
+                <action android:name="com.xiaolidemo.intent.action.COCKROACH" />
             </intent-filter>
             <intent-filter>
                 <action android:name="org.agoo.android.intent.action.PING_V4" />

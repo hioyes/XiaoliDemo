@@ -4,17 +4,13 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
 
-import com.umeng.analytics.MobclickAgent;
 import com.xiaoli.library.C;
 import com.xiaoli.library.model.Update;
 import com.xiaoli.library.net.CommonHandler;
 import com.xiaoli.library.net.HttpWrapper;
-import com.xiaoli.library.task.LogThread;
 import com.xiaoli.library.task.PollingService;
-import com.xiaoli.library.utils.DateUtils;
 import com.xiaoli.library.utils.GsonUtils;
 import com.xiaoli.library.utils.PollingUtils;
 import com.xiaoli.library.utils.ThreadPoolUtils;
@@ -95,18 +91,12 @@ public abstract class BaseActivity extends Activity implements CommonHandler.Han
         if(!C.NONE_CHEECK_VERSION.contains(C.mCurrentActivity.getPackageName()) && C.CHECK_VERSION_URL!=null) {
             PollingUtils.startPollingService(C.mCurrentActivity, 5, PollingService.class, PollingService.ACTION);
         }
-        if(C.UMENG_ANALYTICS_ENABLE){
-            MobclickAgent.onResume(this);
-        }
 
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        if(C.UMENG_ANALYTICS_ENABLE) {
-            MobclickAgent.onPause(this);
-        }
     }
 
     @Override

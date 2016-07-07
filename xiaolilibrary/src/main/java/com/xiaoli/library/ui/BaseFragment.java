@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.umeng.analytics.MobclickAgent;
 import com.xiaoli.library.C;
 import com.xiaoli.library.net.HttpWrapper;
 import com.xiaoli.library.utils.ThreadPoolUtils;
@@ -90,17 +89,11 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     public void onResume() {
         super.onResume();
         C.mCurrentActivity = getActivity();
-        if(C.UMENG_ANALYTICS_ENABLE) {
-            MobclickAgent.onPageStart(getContext().toString());
-        }
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        if(C.UMENG_ANALYTICS_ENABLE) {
-            MobclickAgent.onPageEnd(getContext().toString());
-        }
     }
 
     @Override
