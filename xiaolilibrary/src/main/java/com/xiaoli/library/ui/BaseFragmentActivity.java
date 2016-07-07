@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
 
+import com.umeng.analytics.MobclickAgent;
 import com.xiaoli.library.C;
 import com.xiaoli.library.model.Update;
 import com.xiaoli.library.net.CommonHandler;
@@ -96,6 +97,17 @@ public abstract class BaseFragmentActivity extends FragmentActivity implements C
         CommonHandler.getInstance().setHandlerWork(this);
         if(!C.NONE_CHEECK_VERSION.contains(C.mCurrentActivity.getPackageName()) && C.CHECK_VERSION_URL!=null) {
             PollingUtils.startPollingService(C.mCurrentActivity, 5, PollingService.class, PollingService.ACTION);
+        }
+        if(C.UMENG_ANALYTICS_ENABLE) {
+            MobclickAgent.onResume(this);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if(C.UMENG_ANALYTICS_ENABLE) {
+            MobclickAgent.onPause(this);
         }
     }
 

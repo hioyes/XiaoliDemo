@@ -2,6 +2,7 @@ package com.xiaolidemo.ui;
 
 import android.os.Message;
 
+import com.umeng.analytics.MobclickAgent;
 import com.xiaoli.library.ui.BaseActivity;
 
 import butterknife.ButterKnife;
@@ -38,5 +39,15 @@ public class CoreActivity extends BaseActivity {
     @Override
     public void handleMessageImpl(Message msg) {
         super.handleMessageImpl(msg);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
     }
 }

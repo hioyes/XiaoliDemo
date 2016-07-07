@@ -12,6 +12,7 @@ import com.xiaoli.library.ui.BaseActivity;
 import com.xiaoli.library.utils.DensityUtils;
 import com.xiaoli.library.utils.ForwardUtils;
 import com.xiaolidemo.R;
+import com.xiaolidemo.ui.CoreActivity;
 
 import java.util.ArrayList;
 
@@ -20,7 +21,7 @@ import java.util.ArrayList;
  * @author xiaokx on 2016-6-1 17:11
  * @Email:hioyes@qq.com
  */
-public class GuideActivity extends BaseActivity {
+public class GuideActivity extends CoreActivity {
 
     private static final String TAG = "GuideActivity";
     private int[] resImgIds;

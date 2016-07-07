@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import com.xiaoli.library.ui.BaseActivity;
 import com.xiaoli.library.utils.ForwardUtils;
 import com.xiaolidemo.R;
+import com.xiaolidemo.ui.CoreActivity;
 import com.xiaolidemo.ui.DemoActivity;
 
 /**
@@ -14,7 +15,7 @@ import com.xiaolidemo.ui.DemoActivity;
  * @author xiaokx on 2016-5-27 16:36
  * @Email:hioyes@qq.com
  */
-public class LauncherActivity extends BaseActivity {
+public class LauncherActivity extends CoreActivity {
 
     private ImageView mIvLauncher;
 

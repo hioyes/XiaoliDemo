@@ -10,13 +10,14 @@ import android.widget.RelativeLayout;
 import com.xiaoli.library.ui.BaseActivity;
 import com.xiaoli.library.utils.ForwardUtils;
 import com.xiaolidemo.R;
+import com.xiaolidemo.ui.CoreActivity;
 
 /**
  * 启动页面效果
  * @author xiaokx on 2016-6-1 15:58
  * @Email:hioyes@qq.com
  */
-public class SplashActivity extends BaseActivity {
+public class SplashActivity extends CoreActivity {
 
     private RelativeLayout mRlSplash;
     //动画集合

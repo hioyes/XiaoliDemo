@@ -18,6 +18,7 @@ import com.xiaoli.library.View.ClearEditText;
 import com.xiaoli.library.utils.ForwardUtils;
 import com.xiaoli.library.utils.StringUtils;
 import com.xiaolidemo.R;
+import com.xiaolidemo.ui.CoreActivity;
 import com.xiaolidemo.ui.DemoActivity;
 import com.xiaolidemo.ui.demo.MainActivity;
 
@@ -26,7 +27,7 @@ import com.xiaolidemo.ui.demo.MainActivity;
  * @author xiaokx on 2016-6-2 14:25
  * @Email:hioyes@qq.com
  */
-public class LoginActivity extends BaseActivity {
+public class LoginActivity extends CoreActivity {
 
     private RelativeLayout mRlLogin;
 

@@ -4,6 +4,7 @@ package com.xiaoli.library;
 import android.app.Activity;
 import android.os.Environment;
 
+import com.umeng.analytics.MobclickAgent;
 import com.xiaoli.library.utils.ThreadPoolUtils;
 
 import java.lang.reflect.Field;
@@ -22,15 +23,37 @@ public abstract class C {
     /**
      * app初始化参数
      * param packageName 包
-     * param root_catalog 存储根目录
+     * param rootCatalog 存储根目录
      * param allowWriteLog 是否开启记录日志
      */
-    public static void init(String packageName,String root_catalog,boolean allowWriteLog){
+    public static void init(String packageName,String rootCatalog,boolean allowWriteLog){
         PACKAGE_NAME = packageName;
-        ROOT_CATALOG = root_catalog;
+        ROOT_CATALOG = rootCatalog;
         ThreadPoolUtils.init();
         WRITE_LOG = allowWriteLog;
     }
+
+    /**
+     * 开启友盟统计功能
+     * UMAnalyticsConfig(Context context, String appkey, String channelId)
+     * UMAnalyticsConfig(Context context, String appkey, String channelId, EScenarioType eType)
+     * UMAnalyticsConfig(Context context, String appkey, String channelId, EScenarioType eType,Boolean isCrashEnable)
+     * 构造意义：
+     * String appkey:官方申请的Appkey
+     * String channel: 渠道号
+     * EScenarioType eType: 场景模式，包含统计、游戏、统计盒子、游戏盒子
+     * Boolean isCrashEnable: 可选初始化. 是否开启crash模式
+     * @param config
+     */
+    public static void openUMAnalytics(MobclickAgent.UMAnalyticsConfig config){
+        MobclickAgent.startWithConfigure(config);
+        UMENG_ANALYTICS_ENABLE = true;
+    }
+
+    /**
+     *友盟统计是否启用
+     */
+    public static boolean UMENG_ANALYTICS_ENABLE = false;
 
     /**
      * 是否开启记录日志

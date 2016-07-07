@@ -40,8 +40,6 @@
             android:label="@string/main_label"
             android:screenOrientation="portrait">
         </activity>
-
-
     </application>
 
 </manifest>
