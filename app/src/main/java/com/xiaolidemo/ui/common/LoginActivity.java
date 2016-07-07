@@ -5,6 +5,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -13,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
+import com.umeng.message.UmengRegistrar;
 import com.xiaoli.library.ui.BaseActivity;
 import com.xiaoli.library.View.ClearEditText;
 import com.xiaoli.library.utils.ForwardUtils;
@@ -109,6 +111,9 @@ public class LoginActivity extends CoreActivity {
 
     @Override
     protected void initData() {
+        String device_token = UmengRegistrar.getRegistrationId(getApplicationContext());
+        device_token = device_token==null?"token is null":device_token;
+        Log.e(TAG,"device_token->"+device_token);
     }
 
     @Override

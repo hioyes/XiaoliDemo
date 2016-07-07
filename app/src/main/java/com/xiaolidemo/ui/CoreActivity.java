@@ -3,6 +3,7 @@ package com.xiaolidemo.ui;
 import android.os.Message;
 
 import com.umeng.analytics.MobclickAgent;
+import com.umeng.message.PushAgent;
 import com.xiaoli.library.ui.BaseActivity;
 
 import butterknife.ButterKnife;
@@ -23,6 +24,7 @@ public class CoreActivity extends BaseActivity {
     @Override
     protected void initView() {
         ButterKnife.bind(this);
+        PushAgent.getInstance(getApplicationContext()).onAppStart();
 
     }
 

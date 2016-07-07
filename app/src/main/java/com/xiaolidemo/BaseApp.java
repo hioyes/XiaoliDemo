@@ -1,9 +1,18 @@
 package com.xiaolidemo;
 
 import android.app.Application;
+import android.content.Context;
 import android.os.Environment;
+import android.os.Handler;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.umeng.analytics.MobclickAgent;
+import com.umeng.message.PushAgent;
+import com.umeng.message.UTrack;
+import com.umeng.message.UmengMessageHandler;
+import com.umeng.message.UmengNotificationClickHandler;
+import com.umeng.message.entity.UMessage;
 import com.xiaoli.library.C;
 import com.xiaoli.library.utils.CrashHandler;
 import com.xiaoli.library.utils.FileUtils;
@@ -27,7 +36,8 @@ public class BaseApp extends Application {
         super.onCreate();
         CrashHandler.getInstance().init(getApplicationContext(), C.ROOT_CATALOG+"log/");
         C.init("com.xiaolidemo", Environment.getExternalStorageDirectory().getAbsolutePath()+"/xiaolidemo/",true);
-        C.openUMAnalytics(new MobclickAgent.UMAnalyticsConfig(this,"577c9911e0f55a7c78000149","arvin"));
+//        C.openUMAnalytics(new MobclickAgent.UMAnalyticsConfig(this,"577c9911e0f55a7c78000149","arvin"));
+        C.UMENG_ANALYTICS_ENABLE = true;
         C.NONE_CHEECK_VERSION.add("SplashActivity");
         C.NONE_CHEECK_VERSION.add("GuideActivity");
         if (Config.PRODUCTION_ENVIRONMENT == 2) {
@@ -38,9 +48,23 @@ public class BaseApp extends Application {
             C.CHECK_VERSION_URL = "http://app.lubaocar.com/android/analytics/production/version.js";
         }
         C.DLG_UPDATE = R.layout.dlg_update;
-
         copyDbFile();
+        PushAgent mPushAgent = PushAgent.getInstance(this);
+        mPushAgent.enable();
+        UmengNotificationClickHandler notificationClickHandler = new UmengNotificationClickHandler(){
+            @Override
+            public void dealWithCustomAction(Context context, UMessage msg) {
+                Toast.makeText(context, msg.custom, Toast.LENGTH_LONG).show();
+                Log.e(TAG,"umeng custom-->"+msg.custom);
+                if(msg.extra!=null) {
+                    Log.e(TAG, "umeng custom-->" +msg.extra.toString());
+                }
+            }
+        };
+        mPushAgent.setNotificationClickHandler(notificationClickHandler);
     }
+
+
 
 
     /**
