@@ -1,4 +1,4 @@
-package com.xiaolidemo.ui;
+package com.xiaolidemo.ui.demo;
 
 import android.os.Environment;
 import android.os.Message;

@@ -4,11 +4,10 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 
-import com.xiaoli.library.ui.BaseActivity;
 import com.xiaoli.library.utils.ForwardUtils;
 import com.xiaolidemo.R;
 import com.xiaolidemo.ui.CoreActivity;
-import com.xiaolidemo.ui.DemoActivity;
+import com.xiaolidemo.ui.demo.DemoActivity;
 
 /**
  * 启动页面

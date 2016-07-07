@@ -15,13 +15,11 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
 import com.umeng.message.UmengRegistrar;
-import com.xiaoli.library.ui.BaseActivity;
 import com.xiaoli.library.View.ClearEditText;
 import com.xiaoli.library.utils.ForwardUtils;
 import com.xiaoli.library.utils.StringUtils;
 import com.xiaolidemo.R;
 import com.xiaolidemo.ui.CoreActivity;
-import com.xiaolidemo.ui.DemoActivity;
 import com.xiaolidemo.ui.demo.MainActivity;
 
 /**

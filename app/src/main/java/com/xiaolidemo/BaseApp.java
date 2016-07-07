@@ -36,8 +36,6 @@ public class BaseApp extends Application {
         super.onCreate();
         CrashHandler.getInstance().init(getApplicationContext(), C.ROOT_CATALOG+"log/");
         C.init("com.xiaolidemo", Environment.getExternalStorageDirectory().getAbsolutePath()+"/xiaolidemo/",true);
-//        C.openUMAnalytics(new MobclickAgent.UMAnalyticsConfig(this,"577c9911e0f55a7c78000149","arvin"));
-        C.UMENG_ANALYTICS_ENABLE = true;
         C.NONE_CHEECK_VERSION.add("SplashActivity");
         C.NONE_CHEECK_VERSION.add("GuideActivity");
         if (Config.PRODUCTION_ENVIRONMENT == 2) {
