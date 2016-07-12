@@ -5,14 +5,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.xiaoli.library.utils.ForwardUtils;
 import com.xiaoli.library.utils.PromptUtils;
 import com.xiaolidemo.R;
 import com.xiaolidemo.adapter.MainRecyclerViewAdapter;
 import com.xiaolidemo.adapter.MainRecyclerViewDecoration;
 import com.xiaolidemo.listener.OnRecyclerItemClickListener;
 import com.xiaolidemo.ui.CoreActivity;
-
-import org.w3c.dom.Text;
 
 import butterknife.Bind;
 
@@ -43,9 +42,7 @@ public class MainActivity extends CoreActivity implements View.OnClickListener{
         super.initData();
         String[] datas = {
                 getResources().getString(R.string.demo_label),
-                getResources().getString(R.string.main_subtitle),
-                getResources().getString(R.string.demo_label),
-                getResources().getString(R.string.main_subtitle)
+                getResources().getString(R.string.DropDownListView_label)
         };
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(new MainRecyclerViewAdapter(datas));
@@ -54,7 +51,13 @@ public class MainActivity extends CoreActivity implements View.OnClickListener{
             @Override
             public void onItemClick(RecyclerView.ViewHolder viewHolder) {
                 int position = viewHolder.getAdapterPosition();
-                PromptUtils.showToast("点击了="+position);
+                if(position==0){
+                    ForwardUtils.to(MainActivity.this,DemoActivity.class);
+                }
+                else if(position==1){
+                    ForwardUtils.to(MainActivity.this,DropDownListViewActivity.class);
+
+                }
 
             }
 
@@ -66,6 +69,13 @@ public class MainActivity extends CoreActivity implements View.OnClickListener{
                 mTvItem.setText("改变走这里开始");
             }
         });
+
+
+//        List<Map<String, Object>> list = getData(path);
+//        for (Map<String,Object> map: list) {
+//            Log.e(TAG,map.get("title").toString());
+//
+//        }
     }
 
     @Override
@@ -75,4 +85,7 @@ public class MainActivity extends CoreActivity implements View.OnClickListener{
 
         }
     }
+
+
+
 }

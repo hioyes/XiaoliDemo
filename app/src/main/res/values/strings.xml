@@ -12,4 +12,8 @@
     <string name="main_label">主页</string>
     <string name="main_subtitle">欢迎来到萧离的代码工厂</string>
     <string name="main_btn_demo">查看</string>
+
+    <!---->
+    <string name="DropDownListView_label">自定义ListView</string>
+    <string name="update_at">更新于:&#160;</string>
 </resources>

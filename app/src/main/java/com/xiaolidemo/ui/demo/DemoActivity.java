@@ -53,7 +53,7 @@ public class DemoActivity extends BaseActivity {
 
         Log.e(TAG,Environment.getExternalStorageDirectory().toString());
 
-//        writeDb();
+        writeDb();
 
 //        JMOptionService.getInstance(this).list(mHandler,12335);
 
@@ -66,7 +66,7 @@ public class DemoActivity extends BaseActivity {
         }).start();
 
         int a = SharedPreferencesUtils.getInstance(DemoActivity.this).getInteger("aaaa",0);
-        PromptUtils.showToast("aa="+a);
+        PromptUtils.showToast("SharedPreferences 保存变量="+a);
 
 
     }
