@@ -1,0 +1,6 @@
+几个开源的Binner导航
+https://github.com/imbryk/LoopingViewPager
+https://github.com/wanliyang1990/AdViewPager
+https://github.com/Trinea/android-auto-scroll-view-pager
+https://github.com/Jude95/RollViewPager
+https://github.com/FlyRecker/FlyBanner
