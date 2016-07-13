@@ -17,6 +17,11 @@
         android:background="@color/color_accent"
         android:layout_below="@id/mTitleBarLayout"
         >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="https://github.com/HeZaiJin/SlantedTextView/"
+            android:visibility="gone"/>
         <com.haozhang.lib.SlantedTextView
             android:id="@+id/mStvDemo"
             android:layout_alignParentBottom="true"
