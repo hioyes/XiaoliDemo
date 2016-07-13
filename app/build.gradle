@@ -31,4 +31,5 @@ dependencies {
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.umeng.analytics:analytics:latest.integration'
     compile project(':PushSDK')
+    compile 'com.haozhang.libary:android-slanted-textview:1.2'
 }

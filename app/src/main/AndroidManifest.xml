@@ -48,8 +48,6 @@
             android:name=".ui.demo.DemoActivity"
             android:label="@string/demo_label"
             android:screenOrientation="portrait">
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.SAMPLE_CODE" />
         </activity>
 
         <activity android:name=".ui.demo.MainActivity"
@@ -60,10 +58,14 @@
         <activity android:name=".ui.demo.DropDownListViewActivity"
             android:label="@string/DropDownListView_label"
             android:screenOrientation="portrait">
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.SAMPLE_CODE" />
 
         </activity>
+
+        <activity android:name=".ui.demo.SlantedActivity"
+            android:label="@string/slanted_label"
+            android:screenOrientation="portrait">
+        </activity>
+
     </application>
 
 </manifest>
