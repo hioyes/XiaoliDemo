@@ -3,9 +3,9 @@ package com.xiaolidemo.ui.demo;
 import android.os.Environment;
 import android.os.Message;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
-import com.xiaoli.library.ui.BaseActivity;
 import com.xiaoli.library.utils.HttpUtils;
 import com.xiaoli.library.utils.PromptUtils;
 import com.xiaoli.library.utils.SharedPreferencesUtils;
@@ -14,6 +14,7 @@ import com.xiaolidemo.model.Branch;
 import com.xiaolidemo.model.Test;
 import com.xiaolidemo.services.BranchService;
 import com.xiaolidemo.services.TestService;
+import com.xiaolidemo.ui.CoreActivity;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ import java.util.Map;
  * hioyes@qq.com
  * 2016-5-6
  */
-public class DemoActivity extends BaseActivity {
+public class DemoActivity extends CoreActivity {
 
     private ArrayList<String> mArrayList = new ArrayList<String>();
 
@@ -40,17 +41,25 @@ public class DemoActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        super.initView();
         mTvDemo = (TextView)findViewById(R.id.mTvDemo);
     }
 
     @Override
     protected void initListener() {
-
+        super.initListener();
     }
 
     @Override
     protected void initData() {
-
+        super.initData();
+        mTitleBarLayout.setRightText("确定");
+        mTitleBarLayout.setRightOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PromptUtils.showToast("点击了确定");
+            }
+        });
         Log.e(TAG,Environment.getExternalStorageDirectory().toString());
 
         writeDb();

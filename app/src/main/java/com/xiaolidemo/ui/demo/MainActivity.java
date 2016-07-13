@@ -31,6 +31,10 @@ public class MainActivity extends CoreActivity implements View.OnClickListener{
     RecyclerView mRecyclerView;
 
 
+    @Override
+    protected int getTitleResId() {
+        return R.id.mTitleBarLayout;
+    }
 
     @Override
     protected int getLayoutResId() {

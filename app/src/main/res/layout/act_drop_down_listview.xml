@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:listViewAttr="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
     >
 
+    <com.xiaoli.library.View.TitleBarLayout
+        android:id="@+id/mTitleBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleBarTitle="@string/DropDownListView_label"
+        app:titleBarBackgroundLeft="@drawable/shape_login_btn"
+        />
+
     <com.xiaoli.library.View.DropDownListView
         android:id="@+id/mDropDownListView"
+        android:layout_below="@id/mTitleBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawSelectorOnTop="false"
         android:paddingBottom="40dp"
-        listViewAttr:isDropDownStyle="true"
-        listViewAttr:isOnBottomStyle="true"
-        listViewAttr:isAutoLoadOnBottom="true" />
+        app:isDropDownStyle="true"
+        app:isOnBottomStyle="true"
+        app:isAutoLoadOnBottom="true" />
 
 
 </RelativeLayout>
