@@ -19,7 +19,7 @@ public class ForwardUtils {
      * paramclazz   目标类
      */
     public static void to(Activity activity, Class<?> clazz) {
-        to(activity, clazz, false, null, false, -1);
+        to(activity, clazz, true, null, false, -1);
     }
 
     /**
@@ -30,7 +30,7 @@ public class ForwardUtils {
      * paramparams  参数
      */
     public static void to(Activity activity, Class<?> clazz, Bundle params) {
-        to(activity, clazz, false, params, false, -1);
+        to(activity, clazz, true, params, false, -1);
     }
 
     /**
@@ -41,7 +41,7 @@ public class ForwardUtils {
      * paramparams  参数
      */
     public static void to(Activity activity, Class<?> clazz, Bundle params, int requestCode) {
-        to(activity, clazz, false, params, true, requestCode);
+        to(activity, clazz, true, params, true, requestCode);
     }
 
     /**
@@ -63,7 +63,7 @@ public class ForwardUtils {
      * paramrequestCode 请求码，用于回调
      */
     public static void to(Activity activity, Class<?> clazz, int requestCode) {
-        to(activity, clazz, false, null, true, requestCode);
+        to(activity, clazz, true, null, true, requestCode);
     }
 
     /**

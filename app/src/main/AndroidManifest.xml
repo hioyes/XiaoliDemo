@@ -23,9 +23,9 @@
             android:value="xiaoli" >
         </meta-data>
 
-        <service android:name="com.xiaoli.library.task.PollingService">
+        <service android:name="com.xiaoli.library.service.PollingService"></service>
+        <service android:name="com.xiaoli.library.service.FloatBallService"></service>
 
-        </service>
         <activity android:name="com.xiaoli.library.ui.NullActivity"
             android:screenOrientation="portrait">
         </activity>
@@ -65,6 +65,12 @@
             android:label="@string/slanted_label"
             android:screenOrientation="portrait">
         </activity>
+
+        <activity android:name=".ui.demo.FloatBallActivity"
+            android:label="@string/floatfall_label"
+            android:screenOrientation="portrait">
+        </activity>
+
 
     </application>
 

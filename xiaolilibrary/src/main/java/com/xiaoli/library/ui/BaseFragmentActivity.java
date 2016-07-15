@@ -12,7 +12,7 @@ import com.xiaoli.library.C;
 import com.xiaoli.library.model.Update;
 import com.xiaoli.library.net.CommonHandler;
 import com.xiaoli.library.net.HttpWrapper;
-import com.xiaoli.library.task.PollingService;
+import com.xiaoli.library.service.PollingService;
 import com.xiaoli.library.utils.GsonUtils;
 import com.xiaoli.library.utils.PollingUtils;
 import com.xiaoli.library.utils.ThreadPoolUtils;

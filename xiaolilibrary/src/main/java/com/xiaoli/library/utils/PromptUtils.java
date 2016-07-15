@@ -3,6 +3,7 @@ package com.xiaoli.library.utils;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Handler;
 import android.view.Gravity;
@@ -32,6 +33,7 @@ public class PromptUtils {
      * param msg
      */
     public synchronized  static void showMessage(final String msg){
+        if (C.mCurrentActivity==null)return ;
         myDialog = new MyDialog(C.mCurrentActivity, R.layout.dlg_common_info,R.style.MyDialog);
         myDialog.setDuration(2*1000);
         myDialog.setResetView(new MyDialog.ResetView() {
@@ -49,8 +51,18 @@ public class PromptUtils {
      * param tip
      */
     public synchronized static void showToast(int tip) {
+        showToast(C.mCurrentActivity,tip);
+    }
+
+    /**
+     * 信息提示
+     * @param context
+     * @param tip
+     */
+    public synchronized static void showToast(Context context,int tip) {
+        if (C.mCurrentActivity==null)return ;
         if(toast==null){
-            toast = Toast.makeText(C.mCurrentActivity, tip, Toast.LENGTH_SHORT);
+            toast = Toast.makeText(context, tip, Toast.LENGTH_SHORT);
         }else{
             toast.setText(tip);
             toast.setDuration(Toast.LENGTH_SHORT);
@@ -65,17 +77,25 @@ public class PromptUtils {
      * param tipStr
      *            提示内容
      */
-    public synchronized static void showToast(String tipStr) {
+    public synchronized static void showToast(String tipStr){
+        showToast(C.mCurrentActivity,tipStr);
+    }
+
+    /**
+     * 信息提示
+     * @param context
+     * @param tipStr
+     */
+    public synchronized static void showToast(Context context,String tipStr) {
+        if (context==null)return ;
         if (StringUtils.isEmpty(tipStr))return ;
         if(toast==null){
-            toast = Toast.makeText(C.mCurrentActivity, tipStr, Toast.LENGTH_SHORT);
+            toast = Toast.makeText(context, tipStr, Toast.LENGTH_SHORT);
         }else{
             toast.setText(tipStr);
             toast.setDuration(Toast.LENGTH_SHORT);
         }
         toast.show();
-//		Toast.makeText(BuyerApplication.getInstance(), tipStr,
-//					Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -107,6 +127,7 @@ public class PromptUtils {
      * param view
      */
     public synchronized static void showToast(View view) {
+        if(C.mCurrentActivity==null)return;
         if(toast==null){
             toast = Toast.makeText(C.mCurrentActivity, "",Toast.LENGTH_SHORT);
         }else{

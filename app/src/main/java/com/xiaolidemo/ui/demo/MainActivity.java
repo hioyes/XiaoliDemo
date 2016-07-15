@@ -47,7 +47,8 @@ public class MainActivity extends CoreActivity implements View.OnClickListener{
         String[] datas = {
                 getResources().getString(R.string.demo_label),
                 getResources().getString(R.string.DropDownListView_label),
-                getResources().getString(R.string.slanted_label)
+                getResources().getString(R.string.slanted_label),
+                getResources().getString(R.string.floatfall_label)
         };
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(new MainRecyclerViewAdapter(datas));
@@ -64,6 +65,9 @@ public class MainActivity extends CoreActivity implements View.OnClickListener{
 
                 }else if(position==2){
                     ForwardUtils.to(MainActivity.this,SlantedActivity.class);
+
+                }else if(position==3){
+                    ForwardUtils.to(MainActivity.this,FloatBallActivity.class);
 
                 }
 

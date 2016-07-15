@@ -1,4 +1,4 @@
-package com.xiaoli.library.task;
+package com.xiaoli.library.service;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -26,7 +26,7 @@ import com.xiaoli.library.utils.HttpUtils;
 public class PollingService extends Service {
 
     private String TAG = "PollingService";
-    public static final String ACTION = "com.xiaoli.library.task.PollingService";
+    public static final String ACTION = "com.xiaoli.library.service.PollingService";
 
     /**
      * 通知栏icon

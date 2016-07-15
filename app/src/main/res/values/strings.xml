@@ -19,4 +19,9 @@
 
     <!--倾斜标签-->
     <string name="slanted_label">倾斜标签</string>
+
+    <!--悬浮球-->
+    <string name="floatfall_label">悬浮球</string>
+    <string name="floatfall_mBtnStart">启动</string>
+    <string name="floatfall_mBtnCanel">取消</string>
 </resources>

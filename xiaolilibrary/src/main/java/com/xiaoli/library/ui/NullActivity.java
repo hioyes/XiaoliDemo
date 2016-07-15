@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.xiaoli.library.C;
 import com.xiaoli.library.R;
-import com.xiaoli.library.task.PollingService;
+import com.xiaoli.library.service.PollingService;
 import com.xiaoli.library.utils.PollingUtils;
 
 /**
