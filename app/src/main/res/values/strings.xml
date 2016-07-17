@@ -24,4 +24,7 @@
     <string name="floatfall_label">悬浮球</string>
     <string name="floatfall_mBtnStart">启动</string>
     <string name="floatfall_mBtnCanel">取消</string>
+
+    <!--圆角图片-->
+    <string name="shape_image_label">圆角图片</string>
 </resources>

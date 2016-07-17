@@ -23,5 +23,11 @@ public class NullActivity extends Activity{
         C.IS_CHECK_VERSION = true;
         PollingUtils.stopPollingService(C.mCurrentActivity, PollingService.class,PollingService.ACTION);
         finish();
+
+//        try{
+//            android.os.Process.killProcess(android.os.Process.myPid());
+//        }catch (Exception e){
+//
+//        }
     }
 }

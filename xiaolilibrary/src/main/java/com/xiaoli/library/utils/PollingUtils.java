@@ -46,8 +46,10 @@ public class PollingUtils {
      * param action 动作
      */
     public static void stopPollingService(Context context, Class<?> cls,String action) {
+        if(context==null)return;
         String fileContent = DateUtils.toString(System.currentTimeMillis(),"yyyy-MM-dd HH:mm:ss")+"->stopPollingService";
         AlarmManager manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        if(manager==null)return;
         Intent intent = new Intent(context, cls);
         intent.setAction(action);
         PendingIntent pendingIntent = PendingIntent.getService(context, 0,intent, PendingIntent.FLAG_UPDATE_CURRENT);

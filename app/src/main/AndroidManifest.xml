@@ -71,6 +71,11 @@
             android:screenOrientation="portrait">
         </activity>
 
+        <activity android:name=".ui.demo.ShapeImageActivity"
+            android:label="@string/shape_image_label"
+            android:screenOrientation="portrait">
+        </activity>
+
 
     </application>
 

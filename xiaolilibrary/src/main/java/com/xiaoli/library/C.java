@@ -2,8 +2,11 @@ package com.xiaoli.library;
 
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Environment;
 
+import com.xiaoli.library.ui.NullActivity;
 import com.xiaoli.library.utils.ThreadPoolUtils;
 
 import java.lang.reflect.Field;
@@ -143,6 +146,17 @@ public abstract class C {
         }
         if(resid!=0)
             activity.setContentView(resid);
+    }
+
+    /**
+     * 退出app
+     * @param context
+     */
+    public static void exit(Context context){
+        Intent intentOut = new Intent();
+        intentOut.setClass(context, NullActivity.class);
+        intentOut.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);//当需要一次清空基于此类上所有的activity时，调用此方法
+        context.startActivity(intentOut);
     }
 
 }

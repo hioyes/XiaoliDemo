@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 
+import com.xiaoli.library.C;
 import com.xiaoli.library.service.FloatBallService;
+import com.xiaoli.library.ui.NullActivity;
 import com.xiaolidemo.R;
 import com.xiaolidemo.ui.CoreActivity;
 
@@ -35,11 +37,7 @@ public class FloatBallActivity extends CoreActivity{
             public void onClick(View v) {
                 Intent intent = new Intent(FloatBallActivity.this, FloatBallService.class);
                 startService(intent);
-                try{
-                    android.os.Process.killProcess(android.os.Process.myPid());
-                }catch (Exception e){
-
-                }
+                C.exit(FloatBallActivity.this);
             }
         });
         mBtnCanel.setOnClickListener(new View.OnClickListener() {

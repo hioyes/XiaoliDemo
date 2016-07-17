@@ -131,10 +131,7 @@ public class UpdateManager {
                 if (context != null) {
                     dialog.dismiss();
                 }
-                Intent intent = new Intent();
-                intent.setClass(context, NullActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);//当需要一次清空基于此类上所有的activity时，调用此方法
-                context.startActivity(intent);
+                C.exit(context);
             }
         });
         dialog.show();
