@@ -32,4 +32,5 @@ dependencies {
     compile 'com.umeng.analytics:analytics:latest.integration'
     compile project(':PushSDK')
     compile 'com.haozhang.libary:android-slanted-textview:1.2'
+    compile 'com.github.siyamed:android-shape-imageview:0.9.+@aar'
 }
