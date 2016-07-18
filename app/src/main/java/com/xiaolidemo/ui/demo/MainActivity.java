@@ -49,7 +49,8 @@ public class MainActivity extends CoreActivity implements View.OnClickListener{
                 getResources().getString(R.string.DropDownListView_label),
                 getResources().getString(R.string.slanted_label),
                 getResources().getString(R.string.floatfall_label),
-                getResources().getString(R.string.shape_image_label)
+                getResources().getString(R.string.shape_image_label),
+                getResources().getString(R.string.binner_label)
         };
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(new MainRecyclerViewAdapter(datas));
@@ -63,16 +64,14 @@ public class MainActivity extends CoreActivity implements View.OnClickListener{
                 }
                 else if(position==1){
                     ForwardUtils.to(MainActivity.this,DropDownListViewActivity.class);
-
                 }else if(position==2){
                     ForwardUtils.to(MainActivity.this,SlantedActivity.class);
-
                 }else if(position==3){
                     ForwardUtils.to(MainActivity.this,FloatBallActivity.class);
-
                 }else if(position==4){
                     ForwardUtils.to(MainActivity.this,ShapeImageActivity.class);
-
+                }else if(position==5){
+                    ForwardUtils.to(MainActivity.this,BinnerActivity.class);
                 }
 
             }

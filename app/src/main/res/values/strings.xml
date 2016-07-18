@@ -27,4 +27,7 @@
 
     <!--圆角图片-->
     <string name="shape_image_label">圆角图片</string>
+
+    <!--自动轮播Binner-->
+    <string name="binner_label">自动轮播Binner</string>
 </resources>
