@@ -11,19 +11,29 @@
         app:titleBarTitle="@string/binner_label"
         app:titleBarBackgroundLeft="@drawable/shape_login_btn"
         />
-    <com.recker.flybanner.FlyBanner
-        android:id="@+id/mFlyBanner"
+    <com.xiaoli.library.View.AutoBanner
+        android:id="@+id/mAutoBanner"
         android:layout_below="@id/mTitleBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="200dp"/>
-    <com.recker.flybanner.FlyBanner
-        android:id="@+id/mFlyBanner2"
-        android:layout_below="@id/mFlyBanner"
+        android:layout_height="150dp"/>
+    <com.xiaoli.library.View.AutoBanner
+        android:id="@+id/mAutoBanner2"
+        android:layout_below="@id/mAutoBanner"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:points_position="RIGHT"
+        android:layout_height="150dp"
+        app:pointsPosition="RIGHT"
         />
+
+    <com.xiaoli.library.View.AutoBanner
+        android:id="@+id/mAutoBanner3"
+        android:layout_below="@id/mAutoBanner2"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:pointsPosition="LEFT"
+        />
+
 
 
 </RelativeLayout>

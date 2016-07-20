@@ -33,5 +33,4 @@ dependencies {
     compile project(':PushSDK')
     compile 'com.haozhang.libary:android-slanted-textview:1.2'
     compile 'com.github.siyamed:android-shape-imageview:0.9.+@aar'
-    compile 'com.recker.flybanner:flybanner:1.3'
 }

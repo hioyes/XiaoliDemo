@@ -103,6 +103,11 @@ public abstract class C {
     public static final int NET_FILE_NOT_FOUND = 90007;
 
     /**
+     * 自动轮播banner
+     */
+    public static final int AUTO_BANNER_AUTO_PLAY = 91000;
+
+    /**
      * 是否检查升级
      */
     public static boolean IS_CHECK_VERSION = true;
