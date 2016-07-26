@@ -178,6 +178,7 @@ public class DaoUtils {
             Field[] fields = clazz.getDeclaredFields();
             for (Field _field : fields) {
                 Class<? extends Object> typeClass = _field.getType();// 属性类型
+                if(typeClass.toString().startsWith("interface"))continue;
                 for (int j = 0; j < columnNames.length; j++) {
                     String columnName = columnNames[j];
                     typeClass = getBasicClass(typeClass);

@@ -1,5 +1,6 @@
 package com.xiaolidemo.ui.common;
 
+import android.content.Intent;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
@@ -30,6 +31,8 @@ public class SplashActivity extends CoreActivity {
 
     @Override
     protected void initView() {
+        Intent intent = getIntent();
+        String uri = intent.getDataString();
         mRlSplash = (RelativeLayout)findViewById(R.id.mRlSplash);
         set = new AnimationSet(true);
         //旋转
