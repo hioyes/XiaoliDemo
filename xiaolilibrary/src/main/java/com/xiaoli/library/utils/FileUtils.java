@@ -2,6 +2,7 @@ package com.xiaoli.library.utils;
 
 import android.app.Activity;
 import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -10,6 +11,7 @@ import android.graphics.Matrix;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.WindowManager;
 
 import com.xiaoli.library.C;
@@ -24,6 +26,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
@@ -37,6 +40,7 @@ import java.util.regex.Pattern;
  *  2014-11-6
  */
 public class FileUtils {
+    private final  static String TAG = "FileUtils";
 
     /**
      * 创建目录
@@ -204,8 +208,8 @@ public class FileUtils {
      * return
      */
     private static Bitmap rotateBitmap(Bitmap bitmap, int rotate){
-        if(bitmap == null)
-            return null ;
+        if(bitmap == null || rotate==0)
+            return bitmap ;
 
         int w = bitmap.getWidth();
         int h = bitmap.getHeight();
@@ -213,7 +217,16 @@ public class FileUtils {
         // Setting post rotate to 90
         Matrix mtx = new Matrix();
         mtx.postRotate(rotate);
-        return Bitmap.createBitmap(bitmap, 0, 0, w, h, mtx, true);
+        try{
+            Bitmap b2 = Bitmap.createBitmap(bitmap, 0, 0, w, h, mtx, true);
+            if(bitmap != b2){
+                bitmap.recycle();
+                bitmap = b2;
+            }
+        }catch (OutOfMemoryError e){
+
+        }
+        return bitmap;
     }
 
     /**
@@ -463,4 +476,58 @@ public class FileUtils {
         LogThread logThread = new LogThread(_fileName, _fileContent);
         ThreadPoolUtils.add(logThread);
     }
+
+
+    /**
+     * 存储图像并将信息添加入媒体数据库
+     * @param cr
+     * @param name
+     * @param dateTaken
+     * @param directory
+     * @param filename
+     * @param source
+     * @param jpegData
+     * @return
+     */
+    public static Uri saveImage(ContentResolver cr, String name, long dateTaken,
+                            String directory, String filename, Bitmap source, byte[] jpegData) {
+        OutputStream outputStream = null;
+        String filePath = directory + filename;
+        try {
+            File dir = new File(directory);
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+            File file = new File(directory, filename);
+            if (file.createNewFile()) {
+                outputStream = new FileOutputStream(file);
+                if (source != null) {
+                    source.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+                } else {
+                    outputStream.write(jpegData);
+                }
+            }
+        } catch (FileNotFoundException e) {
+            Log.e(TAG, e.getMessage());
+            return null;
+        } catch (IOException e) {
+            Log.e(TAG, e.getMessage());
+            return null;
+        } finally {
+            if (outputStream != null) {
+                try {
+                    outputStream.close();
+                } catch (Throwable t) {
+                }
+            }
+        }
+        ContentValues values = new ContentValues(7);
+        values.put(MediaStore.Images.Media.TITLE, name);
+        values.put(MediaStore.Images.Media.DISPLAY_NAME, filename);
+        values.put(MediaStore.Images.Media.DATE_TAKEN, dateTaken);
+        values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
+        values.put(MediaStore.Images.Media.DATA, filePath);
+        return cr.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+    }
+
 }

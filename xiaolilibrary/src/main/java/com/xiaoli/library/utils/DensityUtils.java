@@ -1,6 +1,7 @@
 package com.xiaoli.library.utils;
 
 import android.content.Context;
+import android.util.DisplayMetrics;
 
 
 /**
@@ -30,5 +31,17 @@ public class DensityUtils {
     public static int px2dip(Context context, float pxValue) {  
         final float scale = context.getResources().getDisplayMetrics().density;  
         return (int) (pxValue / scale + 0.5f);  
-    }  
+    }
+
+
+    /**
+     * 获取DisplayMetrics对象
+     * @param context
+     * @return
+     */
+    public static DisplayMetrics getDisplayMetrics(Context context) {
+        DisplayMetrics dMetrics = new DisplayMetrics();
+        dMetrics = context.getResources().getDisplayMetrics();
+        return dMetrics;
+    }
 }

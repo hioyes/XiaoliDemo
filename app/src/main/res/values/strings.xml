@@ -30,4 +30,7 @@
 
     <!--自动轮播Binner-->
     <string name="binner_label">自动轮播Binner</string>
+
+    <!--自定义相机-->
+    <string name="camera_label">自定义相机</string>
 </resources>

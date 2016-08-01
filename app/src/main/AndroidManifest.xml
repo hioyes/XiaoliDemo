@@ -1,6 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.xiaolidemo">
-
     <application
         android:name=".BaseApp"
         android:allowBackup="true"
@@ -86,6 +85,10 @@
             android:screenOrientation="portrait">
         </activity>
 
+        <activity android:name="com.xiaoli.library.camera.CameraActivity"
+            android:label="@string/camera_label"
+            android:screenOrientation="portrait">
+        </activity>
 
     </application>
 

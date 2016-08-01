@@ -38,13 +38,13 @@ public class BaseApp extends Application {
         C.init("com.xiaolidemo", Environment.getExternalStorageDirectory().getAbsolutePath()+"/xiaolidemo/",true);
         C.NONE_CHEECK_VERSION.add("SplashActivity");
         C.NONE_CHEECK_VERSION.add("GuideActivity");
-        if (Config.PRODUCTION_ENVIRONMENT == 2) {
-            //准生产
-            C.CHECK_VERSION_URL = "http://app.lubaocar.com/android/analytics/quasi/version.js";
-        } else if (Config.PRODUCTION_ENVIRONMENT == 3) {
-            //生产
-            C.CHECK_VERSION_URL = "http://app.lubaocar.com/android/analytics/production/version.js";
-        }
+//        if (Config.PRODUCTION_ENVIRONMENT == 2) {
+//            //准生产
+//            C.CHECK_VERSION_URL = "http://app.lubaocar.com/android/analytics/quasi/version.js";
+//        } else if (Config.PRODUCTION_ENVIRONMENT == 3) {
+//            //生产
+//            C.CHECK_VERSION_URL = "http://app.lubaocar.com/android/analytics/production/version.js";
+//        }
         C.DLG_UPDATE = R.layout.dlg_update;
         copyDbFile();
         PushAgent mPushAgent = PushAgent.getInstance(this);

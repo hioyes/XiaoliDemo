@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.xiaoli.library.camera.CameraActivity;
 import com.xiaoli.library.utils.ForwardUtils;
 import com.xiaoli.library.utils.PromptUtils;
 import com.xiaolidemo.R;
@@ -50,7 +51,8 @@ public class MainActivity extends CoreActivity implements View.OnClickListener{
                 getResources().getString(R.string.slanted_label),
                 getResources().getString(R.string.floatfall_label),
                 getResources().getString(R.string.shape_image_label),
-                getResources().getString(R.string.binner_label)
+                getResources().getString(R.string.binner_label),
+                getResources().getString(R.string.camera_label)
         };
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(new MainRecyclerViewAdapter(datas));
@@ -72,6 +74,8 @@ public class MainActivity extends CoreActivity implements View.OnClickListener{
                     ForwardUtils.to(MainActivity.this,ShapeImageActivity.class);
                 }else if(position==5){
                     ForwardUtils.to(MainActivity.this,BinnerActivity.class);
+                }else if(position==6){
+                    ForwardUtils.to(MainActivity.this,CameraActivity.class);
                 }
 
             }
