@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.animation.LinearInterpolator;
 
 /**
- * 自定义相机--聚焦view
+ * 鐒︾偣view
  * xiaokx
  * hioyes@qq.com
  * 2016-7-29
@@ -43,7 +43,7 @@ public class FocusView extends View {
 		mLinePaint.setStyle(Paint.Style.STROKE);
 		mLinePaint.setColor(Color.parseColor("#45ffffff"));
 		mLinePaint.setStrokeWidth(mBorderWidth);
-		this.setAlpha(0f);  //初始化设置透明
+		this.setAlpha(0f);  //锟斤拷始锟斤拷锟斤拷锟斤拷透锟斤拷
 	}
 
 	private void setMainColor() {

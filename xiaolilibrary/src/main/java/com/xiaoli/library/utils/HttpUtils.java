@@ -361,7 +361,15 @@ public class HttpUtils {
         String paramStr = "";
         for (Map.Entry<String, String> entry : params.entrySet()) {
             String val = entry.getValue();
-            if (val.contains("###")) {//判断是否为参数数组
+            if(val==null){
+                paramStr = paramStr + "&";
+                paramStr = paramStr + (String)entry.getKey() + "=";
+            }
+            else if(val==""){
+                paramStr = paramStr + "&";
+                paramStr = paramStr + (String)entry.getKey() + "=\"\"";
+            }
+            else if (val.contains("###")) {//判断是否为参数数组
                 String[] arr = val.split("###");
                 val = "";
                 for (String str : arr) {
