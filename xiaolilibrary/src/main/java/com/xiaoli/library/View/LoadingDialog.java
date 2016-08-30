@@ -32,9 +32,7 @@ public class LoadingDialog extends ProgressDialog {
      * @param isCancel 是否可手动取消
      */
     public synchronized static void showDialog(Context context,boolean isCancel){
-        if(mLoadingDialog==null){
-            mLoadingDialog = new LoadingDialog(context,isCancel);
-        }
+        mLoadingDialog = new LoadingDialog(context,isCancel);
         if (mLoadingDialog.isShowing() == false) {
             try{
                 mLoadingDialog.show();
