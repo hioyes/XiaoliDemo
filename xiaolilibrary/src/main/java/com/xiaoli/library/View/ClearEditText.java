@@ -1,6 +1,7 @@
 package com.xiaoli.library.View;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.text.Editable;
@@ -24,6 +25,7 @@ public class ClearEditText extends EditText implements View.OnFocusChangeListene
     //EditText右侧的删除按钮  
     private Drawable mClearDrawable;
     private boolean hasFoucs;
+    private Drawable delIcon;
 
     public ClearEditText(Context context) {
         this(context, null);
@@ -35,15 +37,30 @@ public class ClearEditText extends EditText implements View.OnFocusChangeListene
 
     public ClearEditText(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        initAttrs(context,attrs);
         init();
+    }
+
+    /**
+     * 初始化自定义属性
+     * @param context
+     * @param attrs
+     */
+    private void initAttrs(Context context, AttributeSet attrs){
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ClearEditText);
+        delIcon = typedArray.getDrawable(R.styleable.ClearEditText_delIcon);
+        typedArray.recycle();
+
     }
 
     private void init() {
         // 获取EditText的DrawableRight,假如没有设置我们就使用默认的图片,获取图片的顺序是左上右下（0,1,2,3,）  
         mClearDrawable = getCompoundDrawables()[2];
+        if(delIcon==null){
+            delIcon =  getResources().getDrawable(R.mipmap.login_del);
+        }
         if (mClearDrawable == null) {
-            mClearDrawable = getResources().getDrawable(
-                    R.mipmap.login_del);
+            mClearDrawable = delIcon;
         }
 
         mClearDrawable.setBounds(0, 0, mClearDrawable.getIntrinsicWidth(),

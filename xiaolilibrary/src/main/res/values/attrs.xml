@@ -43,4 +43,9 @@
         <attr name="pointsContainerBackground" format="reference|color"></attr>
     </declare-styleable>
 
+    <!--ClearEditText-->
+    <declare-styleable name="ClearEditText">
+        <attr  name="delIcon" format="reference" ></attr>
+    </declare-styleable>
+
 </resources>
