@@ -224,7 +224,6 @@ public class HttpUtils {
         return result;
     }
 
-
     /**
      * 通过拼接的方式构造请求内容，实现参数传输以及文件传输
      *
@@ -234,7 +233,19 @@ public class HttpUtils {
      * return
      * @throws IOException
      */
-    public static String postImg(String actionUrl, Map<String, String> params, Map<String, File> files) {
+    public static String postImg(String actionUrl, Map<String, String> params, Map<String, File> files){
+        return postImg(actionUrl,params,files,10);
+    }
+    /**
+     * 通过拼接的方式构造请求内容，实现参数传输以及文件传输
+     *
+     * param actionUrl
+     * param params
+     * param files
+     * return
+     * @throws IOException
+     */
+    public static String postImg(String actionUrl, Map<String, String> params, Map<String, File> files,int timeout) {
         HttpURLConnection conn = null;
         DataOutputStream outStream = null;
         InputStream is = null;
@@ -247,7 +258,8 @@ public class HttpUtils {
 
             URL uri = new URL(actionUrl);
             conn = (HttpURLConnection) uri.openConnection();
-            conn.setReadTimeout(120 * 1000); // 缓存的最长时间
+            conn.setReadTimeout(timeout*1000);
+            conn.setConnectTimeout(timeout*1000);
             conn.setDoInput(true);// 允许输入
             conn.setDoOutput(true);// 允许输出
             conn.setUseCaches(false); // 不允许使用缓存
