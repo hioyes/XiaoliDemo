@@ -112,6 +112,7 @@ public class DaoUtils {
      * @return
      */
     public static boolean checkBasicType(Field field){
+        if("serialVersionUID".equals(field.getName()))return false;
         String gt = field.getGenericType().toString();
         List<String> list = new ArrayList<String>();
         list.add("class java.lang.String");
