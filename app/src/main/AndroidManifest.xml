@@ -29,7 +29,7 @@
             android:screenOrientation="portrait">
         </activity>
 
-        <activity android:name=".ui.common.SplashActivity">
+        <activity android:name=".ui.demo.PuzzleActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -89,6 +89,12 @@
             android:label="@string/camera_label"
             android:screenOrientation="portrait">
         </activity>
+
+       <!-- <activity android:name=".ui.demo.PuzzleActivity"
+            android:label="@string/puzzle_label"
+            android:screenOrientation="portrait">
+        </activity>-->
+
 
     </application>
 

@@ -2,6 +2,7 @@ package com.xiaolidemo;
 
 import android.app.Application;
 import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Environment;
 import android.os.Handler;
 import android.util.Log;
@@ -60,6 +61,14 @@ public class BaseApp extends Application {
             }
         };
         mPushAgent.setNotificationClickHandler(notificationClickHandler);
+        Config.puzzleImgList.add(((BitmapDrawable)getResources().getDrawable(R.drawable.puzzle_default)).getBitmap());
+        Config.puzzleImgList.add(((BitmapDrawable)getResources().getDrawable(R.drawable.p1)).getBitmap());
+        Config.puzzleImgList.add(((BitmapDrawable)getResources().getDrawable(R.drawable.p2)).getBitmap());
+        Config.puzzleImgList.add(((BitmapDrawable)getResources().getDrawable(R.drawable.p3)).getBitmap());
+        Config.puzzleImgList.add(((BitmapDrawable)getResources().getDrawable(R.drawable.p4)).getBitmap());
+        Config.puzzleImgList.add(((BitmapDrawable)getResources().getDrawable(R.drawable.p5)).getBitmap());
+        Config.puzzleImgList.add(((BitmapDrawable)getResources().getDrawable(R.drawable.p6)).getBitmap());
+
     }
 
 

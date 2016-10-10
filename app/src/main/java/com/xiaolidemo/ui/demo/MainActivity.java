@@ -1,5 +1,6 @@
 package com.xiaolidemo.ui.demo;
 
+import android.app.Activity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -13,6 +14,9 @@ import com.xiaolidemo.adapter.MainRecyclerViewAdapter;
 import com.xiaolidemo.adapter.MainRecyclerViewDecoration;
 import com.xiaolidemo.listener.OnRecyclerItemClickListener;
 import com.xiaolidemo.ui.CoreActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 
@@ -46,6 +50,7 @@ public class MainActivity extends CoreActivity implements View.OnClickListener{
     protected void initData() {
         super.initData();
         String[] datas = {
+                getResources().getString(R.string.puzzle_label),
                 getResources().getString(R.string.demo_label),
                 getResources().getString(R.string.DropDownListView_label),
                 getResources().getString(R.string.slanted_label),
@@ -54,6 +59,15 @@ public class MainActivity extends CoreActivity implements View.OnClickListener{
                 getResources().getString(R.string.binner_label),
                 getResources().getString(R.string.camera_label)
         };
+        final List<Class> list = new ArrayList<>();
+        list.add(PuzzleActivity.class);
+        list.add(DemoActivity.class);
+        list.add(DropDownListViewActivity.class);
+        list.add(SlantedActivity.class);
+        list.add(FloatBallActivity.class);
+        list.add(ShapeImageActivity.class);
+        list.add(BinnerActivity.class);
+        list.add(CameraActivity.class);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(new MainRecyclerViewAdapter(datas));
         mRecyclerView.addItemDecoration(new MainRecyclerViewDecoration(this,MainRecyclerViewDecoration.VERTICAL_LIST));
@@ -61,23 +75,7 @@ public class MainActivity extends CoreActivity implements View.OnClickListener{
             @Override
             public void onItemClick(RecyclerView.ViewHolder viewHolder) {
                 int position = viewHolder.getAdapterPosition();
-                if(position==0){
-                    ForwardUtils.to(MainActivity.this,DemoActivity.class);
-                }
-                else if(position==1){
-                    ForwardUtils.to(MainActivity.this,DropDownListViewActivity.class);
-                }else if(position==2){
-                    ForwardUtils.to(MainActivity.this,SlantedActivity.class);
-                }else if(position==3){
-                    ForwardUtils.to(MainActivity.this,FloatBallActivity.class);
-                }else if(position==4){
-                    ForwardUtils.to(MainActivity.this,ShapeImageActivity.class);
-                }else if(position==5){
-                    ForwardUtils.to(MainActivity.this,BinnerActivity.class);
-                }else if(position==6){
-                    ForwardUtils.to(MainActivity.this,CameraActivity.class);
-                }
-
+                ForwardUtils.to(MainActivity.this,list.get(position));
             }
 
             @Override

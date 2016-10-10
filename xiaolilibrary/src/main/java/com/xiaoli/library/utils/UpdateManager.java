@@ -110,7 +110,7 @@ public class UpdateManager {
         positiveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pBar = new ProgressDialog(context);
+                pBar = new ProgressDialog(context, ProgressDialog.THEME_HOLO_LIGHT);
                 pBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
                 pBar.setTitle("软件更新");
                 pBar.setMessage("正在下载新版本，请稍候…");

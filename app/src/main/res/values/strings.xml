@@ -33,4 +33,10 @@
 
     <!--自定义相机-->
     <string name="camera_label">自定义相机</string>
+
+    <!--拼图-->
+    <string name="puzzle_label">小屁股拼拼</string>
+    <string name="puzzle_previou">上一张</string>
+    <string name="puzzle_next">下一张</string>
+    <string name="puzzle_select">选择图片</string>
 </resources>
