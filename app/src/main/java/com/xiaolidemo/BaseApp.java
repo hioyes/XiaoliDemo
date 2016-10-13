@@ -1,10 +1,12 @@
 package com.xiaolidemo;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Environment;
 import android.os.Handler;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -17,6 +19,7 @@ import com.umeng.message.entity.UMessage;
 import com.xiaoli.library.C;
 import com.xiaoli.library.utils.CrashHandler;
 import com.xiaoli.library.utils.FileUtils;
+import com.xiaoli.library.utils.MobileUtils;
 
 import java.io.File;
 
@@ -61,13 +64,28 @@ public class BaseApp extends Application {
             }
         };
         mPushAgent.setNotificationClickHandler(notificationClickHandler);
-        Config.puzzleImgList.add(((BitmapDrawable)getResources().getDrawable(R.drawable.puzzle_default)).getBitmap());
-        Config.puzzleImgList.add(((BitmapDrawable)getResources().getDrawable(R.drawable.p1)).getBitmap());
-        Config.puzzleImgList.add(((BitmapDrawable)getResources().getDrawable(R.drawable.p2)).getBitmap());
-        Config.puzzleImgList.add(((BitmapDrawable)getResources().getDrawable(R.drawable.p3)).getBitmap());
-        Config.puzzleImgList.add(((BitmapDrawable)getResources().getDrawable(R.drawable.p4)).getBitmap());
-        Config.puzzleImgList.add(((BitmapDrawable)getResources().getDrawable(R.drawable.p5)).getBitmap());
-        Config.puzzleImgList.add(((BitmapDrawable)getResources().getDrawable(R.drawable.p6)).getBitmap());
+//        if(MobileUtils.getSystemVersionCode()>21){
+//            Config.puzzleImgList.add(((BitmapDrawable)getResources().getDrawable(R.drawable.puzzle_default,null)).getBitmap());
+//            Config.puzzleImgList.add(((BitmapDrawable)getResources().getDrawable(R.drawable.p1,null)).getBitmap());
+//            Config.puzzleImgList.add(((BitmapDrawable)getResources().getDrawable(R.drawable.p2,null)).getBitmap());
+//            Config.puzzleImgList.add(((BitmapDrawable)getResources().getDrawable(R.drawable.p3,null)).getBitmap());
+//            Config.puzzleImgList.add(((BitmapDrawable)getResources().getDrawable(R.drawable.p4,null)).getBitmap());
+//            Config.puzzleImgList.add(((BitmapDrawable)getResources().getDrawable(R.drawable.p5,null)).getBitmap());
+//            Config.puzzleImgList.add(((BitmapDrawable)getResources().getDrawable(R.drawable.p6,null)).getBitmap());
+//        }else{
+//
+//        }
+
+
+
+//        Config.puzzleImgList.add(((BitmapDrawable)getResources().getDrawable(R.drawable.puzzle_default)).getBitmap());
+//        Config.puzzleImgList.add(((BitmapDrawable)getResources().getDrawable(R.drawable.p1)).getBitmap());
+//        Config.puzzleImgList.add(((BitmapDrawable)getResources().getDrawable(R.drawable.p2)).getBitmap());
+//        Config.puzzleImgList.add(((BitmapDrawable)getResources().getDrawable(R.drawable.p3)).getBitmap());
+//        Config.puzzleImgList.add(((BitmapDrawable)getResources().getDrawable(R.drawable.p4)).getBitmap());
+//        Config.puzzleImgList.add(((BitmapDrawable)getResources().getDrawable(R.drawable.p5)).getBitmap());
+//        Config.puzzleImgList.add(((BitmapDrawable)getResources().getDrawable(R.drawable.p6)).getBitmap());
+
 
     }
 

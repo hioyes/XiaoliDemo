@@ -29,7 +29,7 @@
             android:screenOrientation="portrait">
         </activity>
 
-        <activity android:name=".ui.demo.PuzzleActivity">
+        <activity android:name=".ui.common.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -37,8 +37,6 @@
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <data android:scheme="app" android:host="app.lubaocar.com"/>
             </intent-filter>
         </activity>
         <activity android:name=".ui.common.GuideActivity"
@@ -90,10 +88,10 @@
             android:screenOrientation="portrait">
         </activity>
 
-       <!-- <activity android:name=".ui.demo.PuzzleActivity"
+       <activity android:name=".ui.demo.PuzzleActivity"
             android:label="@string/puzzle_label"
             android:screenOrientation="portrait">
-        </activity>-->
+        </activity>
 
 
     </application>
